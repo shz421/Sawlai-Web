@@ -528,6 +528,12 @@ main > section {
     box-shadow: 0 12px 35px rgba(41, 182, 246, 0.22);
 }
 
+/* Keep device-support card corners identical to other feature cards */
+.feature-card-device {
+    border-radius: 18px;
+    overflow: hidden;
+}
+
 .showcase-grid {
     grid-template-columns: repeat(4, 1fr);
 }
