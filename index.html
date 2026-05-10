@@ -1,187 +1,273 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Sawlai Library - Premium digital library with Myanmar and English books, audiobooks, and offline reading.">
+    <title>Sawlai Library</title>
+    <link rel="icon" type="image/png" href="assets/images/app-logo.png">
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="https://azuki990.github.io/download/templates/css/icofont.min.css">
-    <link rel="stylesheet" href="https://azuki990.github.io/download/templates/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="https://azuki990.github.io/download/templates/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://azuki990.github.io/download/templates/css/aos.css">
-    <link rel="stylesheet" href="https://azuki990.github.io/download/templates/css/style.css">
-    <link rel="stylesheet" href="https://azuki990.github.io/download/templates/css/responsive.css">
-    <link rel="stylesheet" href="https://azuki990.github.io/download/templates/css/custom-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Myanmar:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 
-    <title>Sawlai BookStore</title>
+    <link rel="stylesheet" href="assets/styles/icofont.min.css">
+    <link rel="stylesheet" href="assets/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/styles/aos.css">
+    <link rel="stylesheet" href="assets/styles/style.css">
+    <link rel="stylesheet" href="assets/styles/responsive.css">
+    <link rel="stylesheet" href="assets/styles/site.css">
 </head>
 
 <body>
-    <div class="page_wrapper">
-
-        <!-- Preloader -->
-        <div id="preloader">
-            <div id="loader"></div>
+    <div class="page_wrapper sawlai_site">
+        <div id="preloader" aria-hidden="true">
+            <div class="brand-loader">
+                <img src="assets/images/app-logo.png" alt="Sawlai Library">
+                <p>Preparing Sawlai Library</p>
+                <div id="loader"></div>
+            </div>
         </div>
 
-        <!-- Header -->
-        <header>
+        <header class="saw-header" id="home">
             <div class="container">
-                <nav class="navbar navbar-expand-lg">
-                    <a class="navbar-brand" href="/"> <img src="templates/images/logo.png" alt="Sawlai Library Logo"
-                            style="height: 40px; width: 40px;"> </a>
+                <nav class="navbar navbar-expand-lg saw-nav" aria-label="Main Navigation">
+                    <a class="navbar-brand saw-brand" href="/">
+                        <img src="assets/images/app-logo.png" alt="Sawlai Library Logo">
+                        <span>Sawlai Library</span>
+                    </a>
 
-
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    <button class="navbar-toggler saw-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon">
-                            <div class="toggle-wrap">
-                                <span class="toggle-bar"></span>
-                            </div>
-                        </span>
+                        <span></span><span></span><span></span>
                     </button>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item"><a class="nav-link" href="/" style="font-weight: bold;">Home</a></li>
-
-                            <li class="nav-item"><a class="nav-link" href="about-us.html"
-                                    style="font-weight: bold;">About Us</a></li>
-
-                            <li class="nav-item"><a class="nav-link" href="privacy-policy.html"
-                                    style="font-weight: bold;">Privacy Policy</a></li>
+                        <ul class="navbar-nav ml-auto saw-links">
+                            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#download">Download</a></li>
+                            <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
                         </ul>
                     </div>
                 </nav>
             </div>
         </header>
 
-        <!-- Banner Section -->
-        <section class="banner_section">
-            <div class="container">
-                <div class="anim_line">
-                    <!-- 9 anim lines -->
-                    <!-- <span><img src="templates/frontend/images/snow.png" alt="line"></span>
-                    <span><img src="templates/frontend/images/snow1.png" alt="line1"></span>
-                    <span><img src="templates/frontend/images/snow3.png" alt="line2"></span>
-                    <span><img src="templates/frontend/images/snow4.png" alt="line3"></span>
-                    <span><img src="templates/frontend/images/snow.png" alt="line4"></span>
-                    <span><img src="templates/frontend/images/snow2.png" alt="line5"></span>
-                    <span><img src="templates/frontend/images/snow4.png" alt="line6"></span>
-                    <span><img src="templates/frontend/images/snow1.png" alt="line7"></span>
-                    <span><img src="templates/frontend/images/snow4.png" alt="line8"></span> -->
-                </div>
-
-                <div class="row">
-                    <!-- Banner text -->
-                    <div class="col-lg-6 col-md-12" data-aos="fade-right" data-aos-duration="1500">
-                        <div class="banner_text">
-                            <h1>Sawlai Library<br><span style="font-size: 25px; color: #165a93;">5000+ books and
-                                    Audio</span>
+        <main>
+            <section class="hero-section section-pad" aria-labelledby="hero-title">
+                <div class="hero-bg" aria-hidden="true"></div>
+                <div class="particle-layer" aria-hidden="true"></div>
+                <div class="container">
+                    <div class="hero-grid">
+                        <div class="hero-copy" data-aos="fade-up" data-aos-duration="900">
+                            <p class="eyebrow">Premium Digital Library</p>
+                            <h1 id="hero-title">
+                                <span class="fixed-mm">သင်အကြိုက်ဆုံး</span>
+                                <span class="rotate-wrap" aria-live="polite">
+                                    <span id="rotating-word"
+                                        class="rotating-word rotating-word-small">စာရေးဆရာများ</span>
+                                </span>
                             </h1>
-                            <p>အောက်က နေရာလေးမှာ အက်ဖိုင်လေးတွေ ဒေါင်းယူလို့ ရနေပါပြီ။</p>
-                        </div>
+                            <p class="hero-sub">Myanmar and English reading experience designed for speed, clarity, and
+                                deep focus across every device.</p>
 
-
-                        <div class="download-buttons-row"
-                            style="margin-top: 50px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; justify-items: center;">
-
-                            <a href="https://play.google.com/store/apps/details?id=digital.online.books"
-                                style="background: transparent; border: none;">
-                                <img src="templates/images/playstore.png" alt="Download on Play Store"
-                                    style="height: 40px; width: auto;">
-                            </a>
-
-                            <a href="" style="background: transparent; border: none;">
-                                <img src="templates/images/desktop.png" alt="Download for Desktop"
-                                    style="height: 40px; width: auto;">
-                            </a>
-
-                            <a href="" style="background: transparent; border: none;">
-                                <img src="templates/images/apple.png" alt="Download for iOS"
-                                    style="height: 40px; width: auto;">
-                            </a>
-
-                            <a href="" style="background: transparent; border: none;">
-                                <img src="templates/images/demo.png" alt="Download for iOS"
-                                    style="height: 40px; width: auto;">
-                            </a>
-                        </div>
-
-
-
-                    </div>
-
-                    <!-- Banner slider -->
-                    <div class="col-lg-6 col-md-12" data-aos="fade-in" data-aos-duration="1500">
-                        <div class="banner_slider">
-                            <div id="frmae_slider" class="owl-carousel owl-theme">
-
-                                <div class="item">
-                                    <div class="slider_img"><img src="templates/images/home.png" alt="Slide 1"></div>
+                            <div class="hero-buttons">
+                                <div class="premium-cta-bar" data-aos="fade-up" data-aos-delay="120">
+                                    <p class="premium-cta-text">Read Anywhere. Anytime.</p>
+                                    <a href="https://play.google.com/store/apps/details?id=digital.online.books"
+                                        id="download-now-btn" class="btn-premium cta-pulse premium-cta-btn">Download
+                                        Now</a>
+                                    <span class="premium-cta-dot" aria-hidden="true"></span>
                                 </div>
-
-                                <div class="item">
-                                    <div class="slider_img"><img src="templates/images/bookinfo.png" alt="Slide 2">
-                                    </div>
-                                </div>
-
-                                <div class="item">
-                                    <div class="slider_img"><img src="templates/images/ethnic.png" alt="Slide 3"></div>
-                                </div>
-
-                                <div class="item">
-                                    <div class="slider_img"><img src="templates/images/search.png" alt="Slide 4"></div>
-                                </div>
-
-                                <div class="item">
-                                    <div class="slider_img"><img src="templates/images/authors.png" alt="Slide 5"></div>
-                                </div>
-
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <br> <br>
-        <!-- Footer -->
-        <footer>
-            <div class="bottom_footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <p style="color: black;">© Copyrights 2024 - 2026 All rights reserved.</p>
-                        </div>
-                        <div class="col-md-6">
-                            <p class="developer_text" style="color: black;">
-                                Developed by
-                                <a href="https://t.me/shz421" target="_blank"
-                                    style="color: rgb(34, 158, 192); font-weight: bold; text-decoration: none;">
-                                    Sawlai Team
-                                </a>
-                            </p>
+                        <div class="hero-visual" data-aos="fade-left" data-aos-duration="1000">
+                            <div class="phone-orb"></div>
+                            <div class="phone-mockup">
+                                <img src="assets/images/home.png" alt="Sawlai app home screen">
+                            </div>
+                            <div class="floating-card card-top">8000+ Books</div>
+                            <div class="floating-card card-bottom">Audio Books</div>
                         </div>
                     </div>
                 </div>
+            </section>
+
+            <section class="features-section section-pad" id="features" aria-labelledby="features-title">
+                <div class="container">
+                    <div class="section-head" data-aos="fade-up">
+                        <p class="eyebrow">Core Features</p>
+                        <h2 id="features-title">Built for serious readers</h2>
+                    </div>
+
+                    <div class="feature-grid">
+                        <article class="feature-card" data-aos="fade-up"><i class="icofont-book"></i>
+                            <h3>Offline Reading</h3>
+                            <p>Download and read without internet interruptions.</p>
+                        </article>
+                        <article class="feature-card" data-aos="fade-up" data-aos-delay="60"><i class="icofont-mic"></i>
+                            <h3>Audio Books</h3>
+                            <p>Listen with smooth playback while on the move.</p>
+                        </article>
+                        <article class="feature-card" data-aos="fade-up" data-aos-delay="120"><i
+                                class="icofont-search-2"></i>
+                            <h3>Fast Search</h3>
+                            <p>Find books and authors instantly with smart filters.</p>
+                        </article>
+                        <article class="feature-card" data-aos="fade-up" data-aos-delay="180"><i
+                                class="icofont-device"></i>
+                            <h3>Multi Device Support</h3>
+                            <p>Continue reading on phone, tablet, or desktop.</p>
+                        </article>
+                        <article class="feature-card" data-aos="fade-up" data-aos-delay="240"><i
+                                class="icofont-book-mark"></i>
+                            <h3>Bookmark System</h3>
+                            <p>Save progress and jump back to exact pages.</p>
+                        </article>
+                        <article class="feature-card" data-aos="fade-up" data-aos-delay="300"><i
+                                class="icofont-moon"></i>
+                            <h3>Dark Mode Reading</h3>
+                            <p>Comfortable low-light reading for long sessions.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="showcase-section section-pad" aria-labelledby="showcase-title">
+                <div class="container">
+                    <div class="section-head" data-aos="fade-up">
+                        <p class="eyebrow">Screenshots</p>
+                        <h2 id="showcase-title">Inside the app experience</h2>
+                    </div>
+                    <div class="showcase-grid">
+                        <div class="shot-card" data-aos="zoom-in"><img src="assets/images/home.png"
+                                alt="Home screenshot"></div>
+                        <div class="shot-card" data-aos="zoom-in" data-aos-delay="80"><img
+                                src="assets/images/bookinfo.png" alt="Book info screenshot"></div>
+                        <div class="shot-card" data-aos="zoom-in" data-aos-delay="160"><img
+                                src="assets/images/search.png" alt="Search screenshot"></div>
+                        <div class="shot-card" data-aos="zoom-in" data-aos-delay="240"><img
+                                src="assets/images/authors.png" alt="Authors screenshot"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="download-section section-pad" id="download" aria-labelledby="download-title">
+                <div class="container">
+                    <div class="section-head" data-aos="fade-up">
+                        <p class="eyebrow">Download</p>
+                        <h2 id="download-title">Choose your platform</h2>
+                    </div>
+                    <div class="download-grid">
+                        <a class="download-card"
+                            href="https://play.google.com/store/apps/details?id=digital.online.books"
+                            data-aos="fade-up">
+                            <span>Google Play</span><small>Android Version</small>
+                        </a>
+                        <a class="download-card" href="#" data-aos="fade-up" data-aos-delay="80">
+                            <span>App Store / TestFlight</span><small>iOS Version</small>
+                        </a>
+                        <a class="download-card" href="#" data-aos="fade-up" data-aos-delay="160">
+                            <span>Windows Version</span><small>Desktop App</small>
+                        </a>
+                        <a class="download-card" href="#" data-aos="fade-up" data-aos-delay="240">
+                            <span>Watch Demo</span><small>Product Walkthrough</small>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="faq-section section-pad" id="faq" aria-labelledby="faq-title">
+                <div class="container">
+                    <div class="section-head" data-aos="fade-up">
+                        <p class="eyebrow">FAQ</p>
+                        <h2 id="faq-title">Frequently asked questions</h2>
+                    </div>
+
+                    <div class="faq-list" data-aos="fade-up" data-aos-delay="100">
+                        <article class="faq-item">
+                            <button class="faq-toggle" aria-expanded="false">Can I read books
+                                offline?<span>+</span></button>
+                            <div class="faq-content">
+                                <p>Yes. Download your selected books and read anytime without internet.</p>
+                            </div>
+                        </article>
+                        <article class="faq-item">
+                            <button class="faq-toggle" aria-expanded="false">Premium bought, but ads still appear.
+                                Why?<span>+</span></button>
+                            <div class="faq-content">
+                                <p>Premium status may take a short time to sync. Please reopen the app with internet on,
+                                    then refresh from Home or Profile.</p>
+                            </div>
+                        </article>
+                        <article class="faq-item">
+                            <button class="faq-toggle" aria-expanded="false">What is the free-user download
+                                limit?<span>+</span></button>
+                            <div class="faq-content">
+                                <p>Free users have a limited number of downloads. Premium members can download without
+                                    that limit.</p>
+                            </div>
+                        </article>
+                        <article class="faq-item">
+                            <button class="faq-toggle" aria-expanded="false">I tap a notification, but it opens Home
+                                only.<span>+</span></button>
+                            <div class="faq-content">
+                                <p>Update to the latest app version and try again. If it still fails, report it with
+                                    screenshot and time so we can trace the exact notification route.</p>
+                            </div>
+                        </article>
+                        <article class="faq-item">
+                            <button class="faq-toggle" aria-expanded="false">What does Account Restricted (Ban)
+                                mean?<span>+</span></button>
+                            <div class="faq-content">
+                                <p>Your account may be temporarily or permanently restricted for policy reasons. The
+                                    reason is shown in-app, and you can submit an appeal from Reports.</p>
+                            </div>
+                        </article>
+                        <article class="faq-item">
+                            <button class="faq-toggle" aria-expanded="false">New books are not showing. What should I
+                                do?<span>+</span></button>
+                            <div class="faq-content">
+                                <p>Check internet connection, reopen the app, and update to the latest version. If
+                                    needed, wait a little and check again.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="saw-footer" id="about">
+            <div class="container">
+                <div class="footer-top">
+                    <a class="footer-brand" href="/">
+                        <img src="assets/images/app-logo.png" alt="Sawlai Library logo">
+                        <span>Sawlai Library</span>
+                    </a>
+                    <ul class="social-links" aria-label="Social links">
+                        <li><a href="https://t.me/shz421" target="_blank" rel="noopener">Telegram</a></li>
+                        <li><a href="privacy-policy.html">Privacy</a></li>
+                        <li><a href="dmca.html">DMCA</a></li>
+                    </ul>
+                </div>
+                <p class="copyright">Copyright 2024 - 2026 Sawlai Library. All rights reserved.</p>
             </div>
         </footer>
-
-
-        <div class="purple_backdrop"></div>
     </div>
 
-    <!-- Scripts -->
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    <script src="https://azuki990.github.io/download/templates/js/jquery.js"></script>
-    <script src="https://azuki990.github.io/download/templates/js/owl.carousel.min.js"></script>
-    <script src="https://azuki990.github.io/download/templates/js/bootstrap.min.js"></script>
-    <script src="https://azuki990.github.io/download/templates/js/aos.js"></script>
-    <script src="https://azuki990.github.io/download/templates/js/main.js"></script>
+    <script src="assets/scripts/jquery.js"></script>
+    <script src="assets/scripts/bootstrap.min.js"></script>
+    <script src="assets/scripts/aos.js"></script>
+    <script src="assets/scripts/site.js"></script>
 </body>
 
 </html>
+
