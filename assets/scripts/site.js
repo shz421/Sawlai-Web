@@ -18,6 +18,8 @@
     const nav = document.getElementById("navbarSupportedContent");
     const navLinks = document.querySelectorAll(".saw-links .nav-link");
     const path = window.location.pathname.toLowerCase();
+    const isHomePath = path === "/" || path.endsWith("/index.html");
+    const isDownloadPath = path === "/download" || path === "/download/" || path.endsWith("/download/index.html");
 
     const clearActiveLinks = function () {
         navLinks.forEach(function (item) {
@@ -31,8 +33,10 @@
         navLinks.forEach(function (item) {
             const href = (item.getAttribute("href") || "").toLowerCase();
             const isAbout = path.indexOf("about-us.html") > -1 && href.indexOf("about-us.html") > -1;
-            const isDownload = (currentHash === "#download" && href.indexOf("#download") > -1) || (path === "/" && href === "#download" && currentHash === "#download");
-            const isHome = (path === "/" || path.endsWith("/index.html")) && (href === "#home" || href === "/");
+            const isDownloadHash = currentHash === "#download" && href.indexOf("#download") > -1;
+            const isDownloadRoute = isDownloadPath && href === "/download";
+            const isDownload = isDownloadHash || isDownloadRoute;
+            const isHome = isHomePath && (href === "#home" || href === "/");
 
             if (isAbout || isDownload || isHome) {
                 item.classList.add("nav-active");
@@ -118,7 +122,7 @@
             const androidFallback = "https://play.google.com/store/apps/details?id=digital.online.books";
             const iosDeepLink = "sawlai://open";
             const iosFallback = "https://apps.apple.com/";
-            const desktopFallback = "/#download";
+            const desktopFallback = "/download";
 
             let fallbackUrl = desktopFallback;
             let deepLink = "";
