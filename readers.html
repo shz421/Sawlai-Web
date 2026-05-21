@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sawlai readers leaderboard and completed books.">
+    <title>Readers - Sawlai Library</title>
+    <link rel="icon" type="image/png" href="assets/images/app-logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Myanmar:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles/icofont.min.css">
+    <link rel="stylesheet" href="assets/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/styles/aos.css">
+    <link rel="stylesheet" href="assets/styles/style.css">
+    <link rel="stylesheet" href="assets/styles/responsive.css">
+    <link rel="stylesheet" href="assets/styles/site.css">
+</head>
+
+<body>
+    <div class="page_wrapper sawlai_site">
+        <header class="saw-header" id="home">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg saw-nav" aria-label="Main Navigation">
+                    <a class="navbar-brand saw-brand" href="/">
+                        <img src="assets/images/app-logo.png" alt="Sawlai Library Logo">
+                        <span>Sawlai Library</span>
+                    </a>
+
+                    <button class="navbar-toggler saw-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span></span><span></span><span></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto saw-links">
+                            <li class="nav-item"><a class="nav-link" href="index.html#home">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="readers.html">Readers</a></li>
+                            <li class="nav-item"><a class="nav-link" href="index.html#download">Download</a></li>
+                            <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <section class="reader-shell section-pad" aria-labelledby="reader-list-title">
+                <div class="container">
+                    <div class="reader-head" data-aos="fade-up">
+                        <p class="eyebrow">Public Reading</p>
+                        <h1 id="reader-list-title">Readers finishing the most books</h1>
+                        <p class="reader-sub">Only safe public reading data is shown here: username, profile photo, and completed approved books.</p>
+                    </div>
+
+                    <div class="reader-toolbar" data-aos="fade-up" data-aos-delay="60">
+                        <div class="reader-stat">
+                            <span>Total readers</span>
+                            <strong id="reader-total">-</strong>
+                        </div>
+                        <div class="reader-stat">
+                            <span>Ranking</span>
+                            <strong>Most completed books first</strong>
+                        </div>
+                    </div>
+
+                    <div id="readers-loading" class="reader-empty" data-aos="fade-up">Loading readers...</div>
+                    <div id="readers-error" class="reader-empty" hidden></div>
+                    <div id="readers-list" class="reader-grid" hidden></div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="saw-footer">
+            <div class="container">
+                <div class="footer-top">
+                    <a class="footer-brand" href="/">
+                        <img src="assets/images/app-logo.png" alt="Sawlai Library logo">
+                        <span>Sawlai Library</span>
+                    </a>
+                    <ul class="social-links" aria-label="Social links">
+                        <li><a href="https://t.me/shz421" target="_blank" rel="noopener">Telegram</a></li>
+                        <li><a href="privacy-policy.html">Privacy</a></li>
+                        <li><a href="dmca.html">DMCA</a></li>
+                    </ul>
+                </div>
+                <p class="copyright">Copyright 2024 - 2026 Sawlai Library. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="assets/scripts/jquery.js"></script>
+    <script src="assets/scripts/bootstrap.min.js"></script>
+    <script src="assets/scripts/aos.js"></script>
+    <script src="assets/scripts/site.js"></script>
+</body>
+
+</html>
