@@ -1,4 +1,26 @@
 ﻿$(function () {
+    const fetchJsonStrict = function (url) {
+        return fetch(url).then(function (response) {
+            return response.text().then(function (text) {
+                let data = null;
+                try {
+                    data = text ? JSON.parse(text) : null;
+                } catch (e) {
+                    data = null;
+                }
+
+                if (!response.ok) {
+                    const message = data && (data.error || data.message)
+                        ? String(data.error || data.message)
+                        : "Request failed.";
+                    throw new Error(message);
+                }
+
+                return data || {};
+            });
+        });
+    };
+
     window.setTimeout(function () {
         $("#preloader").fadeOut("slow");
     }, 500);
@@ -188,11 +210,7 @@
         const error = document.getElementById("readers-error");
         const total = document.getElementById("reader-total");
 
-        fetch("/v2/public/readers?limit=50")
-            .then(function (response) {
-                if (!response.ok) throw new Error("Could not load readers.");
-                return response.json();
-            })
+        fetchJsonStrict("/v2/public/readers?limit=50")
             .then(function (data) {
                 const readers = Array.isArray(data.readers) ? data.readers : [];
                 if (loading) loading.hidden = true;
@@ -254,11 +272,7 @@
             return;
         }
 
-        fetch("/v2/public/reader?id=" + encodeURIComponent(readerId))
-            .then(function (response) {
-                if (!response.ok) throw new Error("Could not load reader profile.");
-                return response.json();
-            })
+        fetchJsonStrict("/v2/public/reader?id=" + encodeURIComponent(readerId))
             .then(function (data) {
                 const reader = data.reader || null;
                 const books = Array.isArray(data.books) ? data.books : [];
