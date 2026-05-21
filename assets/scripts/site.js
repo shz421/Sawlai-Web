@@ -32,10 +32,11 @@
         navLinks.forEach(function (item) {
             const href = (item.getAttribute("href") || "").toLowerCase();
             const isAbout = path.indexOf("about-us.html") > -1 && href.indexOf("about-us.html") > -1;
+            const isReaders = (path.indexOf("readers.html") > -1 || path.indexOf("reader.html") > -1) && href.indexOf("readers.html") > -1;
             const isDownload = (currentHash === "#download" && href.indexOf("#download") > -1) || (path === "/" && href === "#download" && currentHash === "#download");
             const isHome = isHomePath && (href === "#home" || href === "/");
 
-            if (isAbout || isDownload || isHome) {
+            if (isAbout || isReaders || isDownload || isHome) {
                 item.classList.add("nav-active");
             }
         });
@@ -158,5 +159,149 @@
             easing: "ease-out-cubic"
         });
     }
+
+    const escapeHtml = function (value) {
+        return String(value || "")
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/\"/g, "&quot;")
+            .replace(/'/g, "&#39;");
+    };
+
+    const formatCompletedDate = function (value) {
+        const stamp = Number(value || 0);
+        if (!stamp) return "";
+        const date = new Date(stamp);
+        return date.toLocaleDateString(undefined, {
+            year: "numeric",
+            month: "short",
+            day: "numeric"
+        });
+    };
+
+    const renderReadersPage = function () {
+        const list = document.getElementById("readers-list");
+        if (!list) return;
+
+        const loading = document.getElementById("readers-loading");
+        const error = document.getElementById("readers-error");
+        const total = document.getElementById("reader-total");
+
+        fetch("/v2/public/readers?limit=50")
+            .then(function (response) {
+                if (!response.ok) throw new Error("Could not load readers.");
+                return response.json();
+            })
+            .then(function (data) {
+                const readers = Array.isArray(data.readers) ? data.readers : [];
+                if (loading) loading.hidden = true;
+                if (error) error.hidden = true;
+                if (total) total.textContent = String(data.total || readers.length || 0);
+
+                if (!readers.length) {
+                    if (error) {
+                        error.hidden = false;
+                        error.textContent = "No public readers yet.";
+                    }
+                    return;
+                }
+
+                list.innerHTML = readers.map(function (reader) {
+                    const rankClass = reader.rank <= 3 ? " reader-rank-top" : "";
+                    const photo = reader.photo ? escapeHtml(reader.photo) : "assets/images/app-logo.png";
+                    return '<a class="reader-card" href="reader.html?id=' + encodeURIComponent(String(reader.id || "")) + '">' +
+                        '<span class="reader-rank' + rankClass + '">#' + escapeHtml(reader.rank) + '</span>' +
+                        '<img class="reader-avatar" src="' + photo + '" alt="' + escapeHtml(reader.username) + '">' +
+                        '<div class="reader-card-copy">' +
+                        '<h3>' + escapeHtml(reader.username) + '</h3>' +
+                        '<p>' + escapeHtml(reader.completedCount) + ' completed books</p>' +
+                        '<small>Latest finish ' + escapeHtml(formatCompletedDate(reader.latestFinishedAt)) + '</small>' +
+                        '</div>' +
+                        '</a>';
+                }).join("");
+                list.hidden = false;
+            })
+            .catch(function (err) {
+                if (loading) loading.hidden = true;
+                if (error) {
+                    error.hidden = false;
+                    error.textContent = err && err.message ? err.message : "Could not load readers.";
+                }
+            });
+    };
+
+    const renderReaderProfilePage = function () {
+        const profile = document.getElementById("reader-profile");
+        if (!profile) return;
+
+        const params = new URLSearchParams(window.location.search);
+        const readerId = params.get("id");
+        const loading = document.getElementById("reader-profile-loading");
+        const error = document.getElementById("reader-profile-error");
+        const title = document.getElementById("reader-profile-title");
+        const subtitle = document.getElementById("reader-profile-sub");
+        const avatar = document.getElementById("reader-profile-avatar");
+        const booksTotal = document.getElementById("reader-books-total");
+        const booksWrap = document.getElementById("reader-books");
+
+        if (!readerId) {
+            if (loading) loading.hidden = true;
+            if (error) {
+                error.hidden = false;
+                error.textContent = "Reader not found.";
+            }
+            return;
+        }
+
+        fetch("/v2/public/reader?id=" + encodeURIComponent(readerId))
+            .then(function (response) {
+                if (!response.ok) throw new Error("Could not load reader profile.");
+                return response.json();
+            })
+            .then(function (data) {
+                const reader = data.reader || null;
+                const books = Array.isArray(data.books) ? data.books : [];
+                if (!reader) throw new Error("Reader not found.");
+
+                if (loading) loading.hidden = true;
+                if (error) error.hidden = true;
+
+                title.textContent = reader.username || "Reader";
+                subtitle.textContent = (reader.completedCount || books.length || 0) + " completed books visible on the web.";
+                booksTotal.textContent = String(data.total || books.length || 0);
+                avatar.src = reader.photo || "assets/images/app-logo.png";
+                avatar.alt = reader.username || "Reader";
+
+                booksWrap.innerHTML = books.map(function (book) {
+                    const cover = book.photo ? escapeHtml(book.photo) : "assets/images/app-logo.png";
+                    const author = book.author ? '<p>' + escapeHtml(book.author) + '</p>' : "";
+                    return '<a class="completed-book-card" href="' + escapeHtml(book.appLink || "#") + '">' +
+                        '<img class="completed-book-cover" src="' + cover + '" alt="' + escapeHtml(book.title) + '">' +
+                        '<div class="completed-book-copy">' +
+                        '<h3>' + escapeHtml(book.title) + '</h3>' +
+                        author +
+                        '<small>Completed ' + escapeHtml(formatCompletedDate(book.finishedAt)) + '</small>' +
+                        '</div>' +
+                        '</a>';
+                }).join("");
+
+                if (!books.length) {
+                    booksWrap.innerHTML = '<div class="reader-empty">No public completed books found.</div>';
+                }
+
+                profile.hidden = false;
+            })
+            .catch(function (err) {
+                if (loading) loading.hidden = true;
+                if (error) {
+                    error.hidden = false;
+                    error.textContent = err && err.message ? err.message : "Could not load reader profile.";
+                }
+            });
+    };
+
+    renderReadersPage();
+    renderReaderProfilePage();
 });
 
