@@ -1,4 +1,5 @@
 ﻿$(function () {
+    const API_BASE = "https://lib.sawlai.com";
     const fetchJsonStrict = function (url) {
         return fetch(url).then(function (response) {
             return response.text().then(function (text) {
@@ -210,7 +211,7 @@
         const error = document.getElementById("readers-error");
         const total = document.getElementById("reader-total");
 
-        fetchJsonStrict("/v2/public/readers?limit=50")
+        fetchJsonStrict(API_BASE + "/v2/public/readers?limit=50")
             .then(function (data) {
                 const readers = Array.isArray(data.readers) ? data.readers : [];
                 if (loading) loading.hidden = true;
@@ -272,7 +273,7 @@
             return;
         }
 
-        fetchJsonStrict("/v2/public/reader?id=" + encodeURIComponent(readerId))
+        fetchJsonStrict(API_BASE + "/v2/public/reader?id=" + encodeURIComponent(readerId))
             .then(function (data) {
                 const reader = data.reader || null;
                 const books = Array.isArray(data.books) ? data.books : [];
