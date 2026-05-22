@@ -263,6 +263,7 @@
         const avatar = document.getElementById("reader-profile-avatar");
         const booksTotal = document.getElementById("reader-books-total");
         const booksWrap = document.getElementById("reader-books");
+        const shareBtn = document.getElementById("reader-profile-share");
 
         if (!readerId) {
             if (loading) loading.hidden = true;
@@ -287,6 +288,33 @@
                 booksTotal.textContent = String(data.total || books.length || 0);
                 avatar.src = reader.photo || "assets/images/app-logo.png";
                 avatar.alt = reader.username || "Reader";
+                if (shareBtn) {
+                    const shareUrl = window.location.href;
+                    shareBtn.hidden = false;
+                    shareBtn.href = shareUrl;
+                    shareBtn.addEventListener("click", function (event) {
+                        event.preventDefault();
+                        if (navigator.share) {
+                            navigator.share({
+                                title: (reader.username || "Reader") + " - Sawlai Library",
+                                url: shareUrl
+                            }).catch(function () { });
+                            return;
+                        }
+                        if (navigator.clipboard && navigator.clipboard.writeText) {
+                            navigator.clipboard.writeText(shareUrl).then(function () {
+                                shareBtn.textContent = "Copied";
+                                window.setTimeout(function () {
+                                    shareBtn.textContent = "Share Profile";
+                                }, 1200);
+                            }).catch(function () {
+                                window.open(shareUrl, "_blank");
+                            });
+                            return;
+                        }
+                        window.open(shareUrl, "_blank");
+                    });
+                }
 
                 booksWrap.innerHTML = books.map(function (book) {
                     const cover = book.photo ? escapeHtml(book.photo) : "assets/images/app-logo.png";
