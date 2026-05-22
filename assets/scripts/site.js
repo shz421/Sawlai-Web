@@ -291,7 +291,11 @@
                 booksWrap.innerHTML = books.map(function (book) {
                     const cover = book.photo ? escapeHtml(book.photo) : "assets/images/app-logo.png";
                     const author = book.author ? '<p>' + escapeHtml(book.author) + '</p>' : "";
-                    return '<a class="completed-book-card" href="' + escapeHtml(book.appLink || "#") + '">' +
+                    const rawLink = String(book.appLink || "");
+                    const openLink = rawLink.indexOf("http://") === 0 || rawLink.indexOf("https://") === 0
+                        ? rawLink
+                        : (API_BASE + (rawLink.indexOf("/") === 0 ? rawLink : ("/" + rawLink)));
+                    return '<a class="completed-book-card" href="' + escapeHtml(openLink) + '">' +
                         '<img class="completed-book-cover" src="' + cover + '" alt="' + escapeHtml(book.title) + '">' +
                         '<div class="completed-book-copy">' +
                         '<h3>' + escapeHtml(book.title) + '</h3>' +
