@@ -214,22 +214,43 @@
             return result || '<p>No content available.</p>';
         }
 
+        function renderContent(data) {
+            if (!data || !data.length) return;
+            var item = data[0];
+            var title = item.Title || 'Privacy Policy';
+            var body = item.Body || '';
+            document.getElementById('privacy-title').textContent = title;
+            container.innerHTML = renderMarkdown(body);
+            if (typeof AOS !== 'undefined') AOS.refresh();
+        }
+
+        // Inline fallback content (same as server JSON, used when KV fetch fails)
+        var _fallbackBody = "Last Updated: [15 May 2025]\n\n"
+            + "Developer: Sawlai (shz)\nApp Name: **Sawlai Library : Books & Audio**\nContact Email: [sawlai.library@gmail.com]\n\n"
+            + "This Privacy Policy explains how Sawlai (shz) collects, uses, and protects your information when you use Sawlai Library the app. By using this app, you agree to the terms outlined in this policy.\n\n"
+            + "1. <m> **Information Collection and Use**<m>\nFor a better user experience, Sawlai Library may collect certain personally identifiable information, including but not limited to:\n\n"
+            + "- Google Advertising ID (for analytics and ad personalization)\n- Device Information (model, OS version)\n- Log Data (app crashes, usage statistics via third-party services like Google Play Services)\n\n"
+            + "We do not store personal data on our servers. All collected data remains on your device unless shared with third-party services (see Section 3).\n\n"
+            + "2. <m>**Third-Party Services**<m>\nThe app uses third-party services that may collect data:\n\n"
+            + "- Google Play Services (Privacy Policy)\n- Firebase Analytics (Privacy Policy)\n\n"
+            + "These services help improve app functionality, analyze usage, and display ads (if applicable).\n\n"
+            + "3. <m>**Cookies & Tracking Technologies**<m>\nSawlai Library does not explicitly use cookies. However, third-party libraries (e.g., Google Ads) may use cookies for analytics. You can opt out of cookie tracking in your device settings.\n\n"
+            + "4. <m> **Data Security**<m>\nWe prioritize your data security but cannot guarantee 100% protection due to internet risks. We recommend:\n\n- Using secure networks when accessing the app.\n- Avoiding sharing sensitive personal information.\n\n"
+            + "5. <m> **Links to External Sites**<m>\nThe app may contain links to third-party websites. We are not responsible for their privacy practices. Review their policies before sharing data.\n\n"
+            + "6. - <m> **Children's Privacy**<m>\nSawlai Library does not knowingly collect data from children under 13. If we discover such data, we will delete it immediately. Parents/guardians may contact us at [sawlai.library@gmail.com] for concerns.\n\n"
+            + "7. - <m> **Changes to This Policy**<m>\nWe may update this policy periodically. Check this page for changes. Continued app use means you accept the updated policy.\n\n"
+            + "8. - <m> **Copyright & User-Uploaded Content**<m>\nUsers may upload books, but we do not claim ownership of copyrighted material. If you believe your rights were violated, contact the original author/publisher or email us for removal.\n\n"
+            + "9. <m>**- Contact Us**<m>\nFor privacy-related questions, contact: [sawlai.library@gmail.com]";
+
         fetch(API_URL)
             .then(function(r) {
                 if (!r.ok) throw new Error('HTTP ' + r.status);
                 return r.json();
             })
-            .then(function(data) {
-                if (!data || !data.length) throw new Error('Empty data');
-                var item = data[0];
-                var title = item.Title || 'Privacy Policy';
-                var body = item.Body || '';
-                document.getElementById('privacy-title').textContent = title;
-                container.innerHTML = renderMarkdown(body);
-                if (typeof AOS !== 'undefined') AOS.refresh();
-            })
-            .catch(function(err) {
-                container.innerHTML = '<div class="error-msg"><p>⚠️ Content not available.</p></div>';
+            .then(function(data) { renderContent(data); })
+            .catch(function() {
+                // Fallback to inline content when server is unreachable
+                renderContent([{ Title: 'Privacy Policy', Body: _fallbackBody }]);
             });
     })();
     </script>
