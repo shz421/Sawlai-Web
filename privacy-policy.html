@@ -130,6 +130,24 @@
                 .replace(/</g, '&lt;')
                 .replace(/>/g, '&gt;');
 
+            // Strip SpannableText-style tags (<m>, <s>)
+            html = html.replace(/<m>\s*/g, '');
+            html = html.replace(/\s*<m>/g, '');
+            html = html.replace(/<s>\s*/g, '');
+            html = html.replace(/\s*<s>/g, '');
+
+            // Convert **bold** to <strong> (BEFORE link parsing)
+            html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+
+            // Convert _*italic*_ to <em>
+            html = html.replace(/_\*([^*]+)\*_/g, '<em>$1</em>');
+
+            // Convert simple [email] brackets to mailto links
+            html = html.replace(
+                /\[([^\]]*@[^\]]+\.\w+)\]/g,
+                function(m, email) { return '<a href="mailto:' + encodeURIComponent(email.trim()) + '">' + email.trim() + '</a>'; }
+            );
+
             html = html.replace(
                 /\[([^\]]+)\]\(email=([^&)]+)(?:&subject=([^&)]*))?(?:&body=([^)]*))?\)/g,
                 function(match, display, email, subject, body) {
@@ -160,9 +178,6 @@
                 /\[([^\]]+)\]\(fetch=([^)]+)\)/g,
                 '<a href="/">$1</a>'
             );
-
-            html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-            html = html.replace(/_\*([^*]+)\*_/g, '<em>$1</em>');
 
             html = html.replace(
                 /\[image\]\(([^)|]+)(?:\|(\d+))?(?:\|(\d+))?\)/g,
@@ -214,7 +229,7 @@
                 if (typeof AOS !== 'undefined') AOS.refresh();
             })
             .catch(function(err) {
-                container.innerHTML = '<div class="error-msg"><p>⚠️ Failed to load content.</p><p style="font-size:0.85rem;opacity:0.6;">' + err.message + '</p></div>';
+                container.innerHTML = '<div class="error-msg"><p>⚠️ Content not available.</p></div>';
             });
     })();
     </script>
