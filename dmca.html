@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -11,7 +11,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Myanmar:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Myanmar:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="assets/styles/icofont.min.css">
     <link rel="stylesheet" href="assets/styles/bootstrap.min.css">
@@ -20,7 +22,11 @@
     <link rel="stylesheet" href="assets/styles/responsive.css">
     <link rel="stylesheet" href="assets/styles/site.css">
     <style>
-        .legal-wrap { max-width: 980px; margin: 0 auto; }
+        .legal-wrap {
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
         .legal-card {
             background: rgba(255, 255, 255, 0.06);
             border: 1px solid rgba(255, 255, 255, 0.14);
@@ -29,19 +35,83 @@
             color: #e2e8f0;
             line-height: 1.8;
         }
-        .legal-card h2 { color: #fff; font-size: 1.2rem; margin-top: 24px; }
-        .legal-card strong { color: #fff; }
-        .legal-card a { color: #57c7ff; font-weight: 600; text-decoration: underline; }
-        .legal-card a:hover { color: #90e0ff; }
-        .legal-card ul { padding-left: 20px; margin: 8px 0; }
-        .legal-card li { margin-bottom: 4px; }
-        .legal-card .email-link { color: #57c7ff; font-weight: 700; word-break: break-all; }
-        .legal-divider { border-top: 1px solid rgba(255,255,255,0.2); margin: 28px 0; }
-        .loading-spinner { text-align: center; padding: 40px 0; }
-        .loading-spinner .spinner { width: 40px; height: 40px; border: 3px solid rgba(255,255,255,0.1); border-top-color: #57c7ff; border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 12px; }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        .error-msg { color: #ff6b6b; text-align: center; padding: 20px; }
-        .badge-tag { display: inline-block; background: rgba(87, 199, 255, 0.15); color: #57c7ff; border-radius: 12px; padding: 0 10px; font-size: 0.75rem; margin-bottom: 4px; }
+
+        .legal-card h2 {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-top: 24px;
+        }
+
+        .legal-card strong {
+            color: #fff;
+        }
+
+        .legal-card a {
+            color: #57c7ff;
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        .legal-card a:hover {
+            color: #90e0ff;
+        }
+
+        .legal-card ul {
+            padding-left: 20px;
+            margin: 8px 0;
+        }
+
+        .legal-card li {
+            margin-bottom: 4px;
+        }
+
+        .legal-card .email-link {
+            color: #57c7ff;
+            font-weight: 700;
+            word-break: break-all;
+        }
+
+        .legal-divider {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            margin: 28px 0;
+        }
+
+        .loading-spinner {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .loading-spinner .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top-color: #57c7ff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 12px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .error-msg {
+            color: #ff6b6b;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .badge-tag {
+            display: inline-block;
+            background: rgba(87, 199, 255, 0.15);
+            color: #57c7ff;
+            border-radius: 12px;
+            padding: 0 10px;
+            font-size: 0.75rem;
+            margin-bottom: 4px;
+        }
     </style>
 </head>
 
@@ -63,7 +133,9 @@
                         <span>Sawlai Library</span>
                     </a>
 
-                    <button class="navbar-toggler saw-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler saw-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
                         <span></span><span></span><span></span>
                     </button>
 
@@ -121,142 +193,127 @@
     <script src="assets/scripts/aos.js"></script>
     <script src="assets/scripts/site.js"></script>
     <script>
-    (function() {
-        const API_URL = 'https://lib.sawlai.com/json/Others/DMCA.json';
-        const container = document.getElementById('dmca-content');
+        (function () {
+            const API_URL = 'https://lib.sawlai.com/json/Others/DMCA.json';
+            const container = document.getElementById('dmca-content');
 
-        function renderMarkdown(text) {
-            if (!text) return '<p>No content available.</p>';
+            function renderMarkdown(text) {
+                if (!text) return '<p>No content available.</p>';
 
-            // Escape HTML to prevent XSS
-            let html = text
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;');
+                let html = text
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;');
 
-            // Convert [text](email=...&subject=...&body=...) to mailto link
-            html = html.replace(
-                /\[([^\]]+)\]\(email=([^&)]+)(?:&subject=([^&)]*))?(?:&body=([^)]*))?\)/g,
-                function(match, display, email, subject, body) {
-                    let href = 'mailto:' + encodeURIComponent(email.trim());
-                    if (subject) href += '?subject=' + encodeURIComponent(subject.trim());
-                    if (body) href += (subject ? '&' : '?') + 'body=' + encodeURIComponent(body.trim());
-                    return '<a href="' + href + '" class="email-link">' + display.trim() + '</a>';
-                }
-            );
-
-            // Convert [text](link=url) to anchor tag
-            html = html.replace(
-                /\[([^\]]+)\]\(link=([^)]+)\)/g,
-                '<a href="$2" target="_blank" rel="noopener">$1</a>'
-            );
-
-            // Convert [text](activity=...) to anchor tag (link to relevant page)
-            html = html.replace(
-                /\[([^\]]+)\]\(activity=([^)]+)\)/g,
-                function(match, display, activity) {
-                    var a = activity.trim().toLowerCase();
-                    if (a === 'faqactivity' || a === 'help') {
-                        return '<a href="/#faq">' + display.trim() + '</a>';
+                html = html.replace(
+                    /\[([^\]]+)\]\(email=([^&)]+)(?:&subject=([^&)]*))?(?:&body=([^)]*))?\)/g,
+                    function (match, display, email, subject, body) {
+                        let href = 'mailto:' + encodeURIComponent(email.trim());
+                        if (subject) href += '?subject=' + encodeURIComponent(subject.trim());
+                        if (body) href += (subject ? '&' : '?') + 'body=' + encodeURIComponent(body.trim());
+                        return '<a href="' + href + '" class="email-link">' + display.trim() + '</a>';
                     }
-                    if (a === 'home') {
+                );
+
+                html = html.replace(
+                    /\[([^\]]+)\]\(link=([^)]+)\)/g,
+                    '<a href="$2" target="_blank" rel="noopener">$1</a>'
+                );
+
+                html = html.replace(
+                    /\[([^\]]+)\]\(activity=([^)]+)\)/g,
+                    function (match, display, activity) {
+                        var a = activity.trim().toLowerCase();
+                        if (a === 'faqactivity' || a === 'help') {
+                            return '<a href="/#faq">' + display.trim() + '</a>';
+                        }
+                        if (a === 'home') {
+                            return '<a href="/">' + display.trim() + '</a>';
+                        }
+                        if (a === 'dmca' || a === 'copyright') {
+                            return '<a href="dmca.html">' + display.trim() + '</a>';
+                        }
+                        if (a === 'about') {
+                            return '<a href="about-us.html">' + display.trim() + '</a>';
+                        }
+                        if (a === 'reports') {
+                            return '<a href="mailto:sawlai.library@gmail.com?subject=Report%20-%20Sawlai%20Library">' + display.trim() + '</a>';
+                        }
                         return '<a href="/">' + display.trim() + '</a>';
                     }
-                    if (a === 'dmca' || a === 'copyright') {
-                        return '<a href="dmca.html">' + display.trim() + '</a>';
+                );
+
+                html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+
+                html = html.replace(/_\*([^*]+)\*_/g, '<em>$1</em>');
+
+                html = html.replace(
+                    /\[([^\]]+)\]\(fetch=([^)]+)\)/g,
+                    '<a href="/">$1</a>'
+                );
+
+                html = html.replace(
+                    /\[image\]\(([^)|]+)(?:\|(\d+))?(?:\|(\d+))?\)/g,
+                    function (match, url, w, h) {
+                        var width = w ? Math.min(parseInt(w), 300) : 300;
+                        var height = h ? Math.min(parseInt(h), 300) : 300;
+                        return '<img src="' + url.trim() + '" alt="image" style="max-width:' + width + 'px;max-height:' + height + 'px;border-radius:8px;vertical-align:middle;" loading="lazy">';
                     }
-                    if (a === 'about') {
-                        return '<a href="about-us.html">' + display.trim() + '</a>';
-                    }
-                    if (a === 'reports') {
-                        return '<a href="mailto:sawlai.library@gmail.com?subject=Report%20-%20Sawlai%20Library">' + display.trim() + '</a>';
-                    }
-                    return '<a href="/">' + display.trim() + '</a>';
-                }
-            );
+                );
 
-            // Convert **bold** to <strong>
-            html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+                html = html.replace(
+                    /(https?:\/\/[^\s<]+)/g,
+                    '<a href="$1" target="_blank" rel="noopener">$1</a>'
+                );
 
-            // Convert _*italic*_ to <em>
-            html = html.replace(/_\*([^*]+)\*_/g, '<em>$1</em>');
-
-            // Convert [text](fetch=...) - treat as link
-            html = html.replace(
-                /\[([^\]]+)\]\(fetch=([^)]+)\)/g,
-                '<a href="/">$1</a>'
-            );
-
-            // Convert [image](url|w|h) to img tag
-            html = html.replace(
-                /\[image\]\(([^)|]+)(?:\|(\d+))?(?:\|(\d+))?\)/g,
-                function(match, url, w, h) {
-                    var width = w ? Math.min(parseInt(w), 300) : 300;
-                    var height = h ? Math.min(parseInt(h), 300) : 300;
-                    return '<img src="' + url.trim() + '" alt="image" style="max-width:' + width + 'px;max-height:' + height + 'px;border-radius:8px;vertical-align:middle;" loading="lazy">';
-                }
-            );
-
-            // Convert URLs to clickable links
-            html = html.replace(
-                /(https?:\/\/[^\s<]+)/g,
-                '<a href="$1" target="_blank" rel="noopener">$1</a>'
-            );
-
-            // Convert lines starting with - to bullet list items
-            var lines = html.split('\n');
-            var result = '';
-            var inList = false;
-            for (var i = 0; i < lines.length; i++) {
-                var line = lines[i];
-                var trimmed = line.trim();
-                if (trimmed.startsWith('- ')) {
-                    if (!inList) { result += '<ul>'; inList = true; }
-                    result += '<li>' + trimmed.substring(2) + '</li>';
-                } else {
-                    if (inList) { result += '</ul>'; inList = false; }
-                    // Check for common headers
-                    if (/^[\s]*\*{2}/.test(trimmed) || /^[\s]*<h>/.test(trimmed)) {
-                        result += '<p>' + line + '</p>';
-                    } else if (trimmed === '' || trimmed === '<br>') {
-                        // Skip empty lines (handled by paragraph wrapping)
+                var lines = html.split('\n');
+                var result = '';
+                var inList = false;
+                for (var i = 0; i < lines.length; i++) {
+                    var line = lines[i];
+                    var trimmed = line.trim();
+                    if (trimmed.startsWith('- ')) {
+                        if (!inList) { result += '<ul>'; inList = true; }
+                        result += '<li>' + trimmed.substring(2) + '</li>';
                     } else {
-                        result += '<p>' + line + '</p>';
+                        if (inList) { result += '</ul>'; inList = false; }
+                        if (/^[\s]*\*{2}/.test(trimmed) || /^[\s]*<h>/.test(trimmed)) {
+                            result += '<p>' + line + '</p>';
+                        } else if (trimmed === '' || trimmed === '<br>') {
+                            } else {
+                            result += '<p>' + line + '</p>';
+                        }
                     }
                 }
+                if (inList) result += '</ul>';
+
+                result = result.replace(/<p>\s*<br>\s*<\/p>/g, '');
+                result = result.replace(/(<br>\s*){2,}/g, '<br>');
+
+                return result || '<p>No content available.</p>';
             }
-            if (inList) result += '</ul>';
 
-            // Replace <p><br></p> with nothing
-            result = result.replace(/<p>\s*<br>\s*<\/p>/g, '');
-            // Replace multiple <br> with single
-            result = result.replace(/(<br>\s*){2,}/g, '<br>');
+            fetch(API_URL)
+                .then(function (r) {
+                    if (!r.ok) throw new Error('HTTP ' + r.status);
+                    return r.json();
+                })
+                .then(function (data) {
+                    if (!data || !data.length) throw new Error('Empty data');
+                    var item = data[0];
+                    var title = item.Title || 'Copyright & DMCA';
+                    var body = item.Body || '';
+                    document.getElementById('dmca-title').textContent = title;
+                    container.innerHTML = renderMarkdown(body);
 
-            return result || '<p>No content available.</p>';
-        }
-
-        fetch(API_URL)
-            .then(function(r) {
-                if (!r.ok) throw new Error('HTTP ' + r.status);
-                return r.json();
-            })
-            .then(function(data) {
-                if (!data || !data.length) throw new Error('Empty data');
-                var item = data[0];
-                var title = item.Title || 'Copyright & DMCA';
-                var body = item.Body || '';
-                document.getElementById('dmca-title').textContent = title;
-                container.innerHTML = renderMarkdown(body);
-
-                // Refresh AOS
-                if (typeof AOS !== 'undefined') {
-                    AOS.refresh();
-                }
-            })
-            .catch(function(err) {
-                container.innerHTML = '<div class="error-msg"><p>⚠️ Failed to load content.</p><p style="font-size:0.85rem;opacity:0.6;">' + err.message + '</p></div>';
-            });
-    })();
+                    if (typeof AOS !== 'undefined') {
+                        AOS.refresh();
+                    }
+                })
+                .catch(function (err) {
+                    container.innerHTML = '<div class="error-msg"><p>⚠️ Failed to load content.</p><p style="font-size:0.85rem;opacity:0.6;">' + err.message + '</p></div>';
+                });
+        })();
     </script>
 </body>
 
