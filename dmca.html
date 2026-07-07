@@ -34,6 +34,7 @@
             padding: 28px 22px;
             color: #e2e8f0;
             line-height: 1.8;
+            text-align: left;
         }
 
         .legal-card h2 {
@@ -205,7 +206,6 @@
                     .replace(/</g, '&lt;')
                     .replace(/>/g, '&gt;');
 
-                // Strip SpannableText-style tags first (<m>, <s>, <h>, <b>, etc.)
                 html = html.replace(/<m>\s*/g, '');
                 html = html.replace(/\s*<m>/g, '');
                 html = html.replace(/<s>\s*/g, '');
@@ -213,13 +213,10 @@
                 html = html.replace(/<\/?h>/g, '');
                 html = html.replace(/<\/?b>/g, '');
 
-                // Convert **bold** to <strong> (BEFORE link parsing to avoid conflicts)
                 html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
 
-                // Convert _*italic*_ to <em>
                 html = html.replace(/_\*([^*]+)\*_/g, '<em>$1</em>');
 
-                // Convert simple [email] brackets to mailto links
                 html = html.replace(
                     /\[([^\]]*@[^\]]+\.\w+)\]/g,
                     function(m, email) { return '<a href="mailto:' + encodeURIComponent(email.trim()) + '">' + email.trim() + '</a>'; }
@@ -262,10 +259,6 @@
                         return '<a href="/">' + display.trim() + '</a>';
                     }
                 );
-
-                html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-
-                html = html.replace(/_\*([^*]+)\*_/g, '<em>$1</em>');
 
                 html = html.replace(
                     /\[([^\]]+)\]\(fetch=([^)]+)\)/g,
