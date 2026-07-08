@@ -201,17 +201,20 @@
             function renderMarkdown(text) {
                 if (!text) return '<p>No content available.</p>';
 
-                let html = text
-                    .replace(/&/g, '&amp;')
-                    .replace(/</g, '&lt;')
-                    .replace(/>/g, '&gt;');
+                let html = text;
 
+                // Strip SpannableText-style tags BEFORE HTML escaping
                 html = html.replace(/<m>\s*/g, '');
                 html = html.replace(/\s*<m>/g, '');
                 html = html.replace(/<s>\s*/g, '');
                 html = html.replace(/\s*<s>/g, '');
                 html = html.replace(/<\/?h>/g, '');
                 html = html.replace(/<\/?b>/g, '');
+
+                html = html
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;');
 
                 html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
 
