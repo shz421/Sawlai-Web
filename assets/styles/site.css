@@ -898,14 +898,25 @@ main > section {
 .contact-socials .social-pill {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    min-height: 40px;
-    padding: 0 16px 0 9px;
+    gap: 10px;
+    min-height: 44px;
+    padding: 0 20px;
     border-radius: 999px;
     color: #fff;
     text-decoration: none;
     border: 1px solid rgba(255, 255, 255, 0.14);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.contact-socials .social-pill i {
+    font-size: 1.25rem;
+    line-height: 1;
+}
+
+.contact-socials .social-pill:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
 }
 
 .contact-socials .social-pill span {
