@@ -220,11 +220,7 @@
 
                 html = html.replace(/_\*([^*]+)\*_/g, '<em>$1</em>');
 
-                html = html.replace(
-                    /\[([^\]]*@[^\]]+\.\w+)\]/g,
-                    function(m, email) { return '<a href="mailto:' + encodeURIComponent(email.trim()) + '">' + email.trim() + '</a>'; }
-                );
-
+                // Full email link [text](email=addr&subject=...&body=...) MUST run before simple [email@domain]
                 html = html.replace(
                     /\[([^\]]+)\]\(email=([^&)]+)(?:&subject=([^&)]*))?(?:&body=([^)]*))?\)/g,
                     function (match, display, email, subject, body) {
@@ -233,6 +229,12 @@
                         if (body) href += (subject ? '&' : '?') + 'body=' + encodeURIComponent(body.trim());
                         return '<a href="' + href + '" class="email-link">' + display.trim() + '</a>';
                     }
+                );
+
+                // Simple [email@domain.com] without subject/body
+                html = html.replace(
+                    /\[([^\]]*@[^\]]+\.\w+)\]/g,
+                    function(m, email) { return '<a href="mailto:' + encodeURIComponent(email.trim()) + '">' + email.trim() + '</a>'; }
                 );
 
                 html = html.replace(
