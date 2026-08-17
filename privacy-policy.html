@@ -68,7 +68,7 @@
                         <ul class="navbar-nav ml-auto saw-links">
                             <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
                             <li class="nav-item"><a class="nav-link" href="/#download">Download</a></li>
-                            <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
+                            <li class="nav-item"><a class="nav-link" href="about-us">About Us</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -105,8 +105,8 @@
                     </a>
                     <ul class="social-links" aria-label="Social links">
                         <li><a href="/">Home</a></li>
-                        <li><a href="about-us.html">About</a></li>
-                        <li><a href="dmca.html">DMCA</a></li>
+                        <li><a href="about-us">About</a></li>
+                        <li><a href="dmca">DMCA</a></li>
                     </ul>
                 </div>
                 <p class="copyright">Copyright 2024 - 2026 Sawlai Library. All rights reserved.</p>
@@ -171,8 +171,8 @@
                 /\[([^\]]+)\]\(activity=([^)]+)\)/g,
                 function(match, display, activity) {
                     var a = activity.trim().toLowerCase();
-                    if (a === 'dmca' || a === 'copyright') return '<a href="dmca.html">' + display.trim() + '</a>';
-                    if (a === 'about') return '<a href="about-us.html">' + display.trim() + '</a>';
+                    if (a === 'dmca' || a === 'copyright') return '<a href="dmca">' + display.trim() + '</a>';
+                    if (a === 'about') return '<a href="about-us">' + display.trim() + '</a>';
                     if (a === 'home') return '<a href="/">' + display.trim() + '</a>';
                     return '<a href="/">' + display.trim() + '</a>';
                 }
