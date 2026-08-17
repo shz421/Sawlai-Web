@@ -54,10 +54,10 @@
         clearActiveLinks();
         navLinks.forEach(function (item) {
             const href = (item.getAttribute("href") || "").toLowerCase();
-            const isAbout = path.indexOf("about-us.html") > -1 && href.indexOf("about-us.html") > -1;
-            const isReaders = (path.indexOf("readers.html") > -1 || path.indexOf("reader.html") > -1) && href.indexOf("readers.html") > -1;
+            const isAbout = path.indexOf("about-us") > -1 && href.indexOf("about-us") > -1;
+            const isReaders = (path.indexOf("readers") > -1 || path.indexOf("reader") > -1) && href.indexOf("readers") > -1;
             const isDownload = (currentHash === "#download" && href.indexOf("#download") > -1) || (path === "/" && href === "#download" && currentHash === "#download");
-            const isHome = isHomePath && (href === "#home" || href === "/");
+            const isHome = isHomePath && (href.indexOf("#home") > -1 || href === "/");
 
             if (isAbout || isReaders || isDownload || isHome) {
                 item.classList.add("nav-active");
@@ -70,11 +70,6 @@
 
     navLinks.forEach(function (link) {
         link.addEventListener("click", function () {
-            link.classList.add("nav-clicked");
-            window.setTimeout(function () {
-                link.classList.remove("nav-clicked");
-            }, 180);
-
             clearActiveLinks();
             link.classList.add("nav-active");
 
@@ -229,7 +224,7 @@
                 list.innerHTML = readers.map(function (reader) {
                     const rankClass = reader.rank <= 3 ? " reader-rank-top" : "";
                     const photo = reader.photo ? escapeHtml(reader.photo) : "assets/images/app-logo.png";
-                    return '<a class="reader-card" href="reader.html?id=' + encodeURIComponent(String(reader.id || "")) + '">' +
+                    return '<a class="reader-card" href="reader?id=' + encodeURIComponent(String(reader.id || "")) + '">' +
                         '<span class="reader-rank' + rankClass + '">#' + escapeHtml(reader.rank) + '</span>' +
                         '<img class="reader-avatar" src="' + photo + '" alt="' + escapeHtml(reader.username) + '">' +
                         '<div class="reader-card-copy">' +
