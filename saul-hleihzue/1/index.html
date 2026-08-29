@@ -103,6 +103,10 @@
             font-size: 1.5rem;
         }
 
+        .fb-post-main .fb-see-more {
+            font-size: 0.95rem;
+        }
+
         .fb-post-head {
             display: flex;
             align-items: center;
@@ -204,6 +208,35 @@
             line-height: 1.65;
             margin: 14px 0 6px;
             white-space: pre-line;
+        }
+
+        .fb-post-text.clamped #post-text {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 6;
+            line-clamp: 6;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .fb-see-more {
+            display: block;
+            background: none;
+            border: none;
+            padding: 0;
+            margin: 0 0 8px;
+            color: var(--fb-muted);
+            font-family: inherit;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .fb-see-more[hidden] {
+            display: none;
+        }
+
+        .fb-see-more:hover {
+            text-decoration: underline;
         }
 
         .fb-post-reactions {
@@ -386,6 +419,10 @@
             .fb-action {
                 font-size: 0.85rem;
             }
+
+            .fb-post-main .fb-see-more {
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
@@ -406,7 +443,8 @@
                         </div>
 
                         <!-- ✏️ Post text ✏️ -->
-                        <p class="fb-post-body">ကျနော့်ရဲ့အဖြစ်အပျက်ကို မခံစားနိင်‌‌ေတာ့လို့ ရင်ဖွင့်ချင်တယ်။ အကြံကောင်းလေး ပြောပြကြပါ။
+                        <div class="fb-post-text" id="fb-post-text">
+                            <p class="fb-post-body" id="post-text">ကျနော့်ရဲ့အဖြစ်အပျက်ကို မခံစားနိင်‌‌ေတာ့လို့ ရင်ဖွင့်ချင်တယ်။ အကြံကောင်းလေး ပြောပြကြပါ။
 
 ကျွန်တော်မိန်းကလေးတစ်ယောက်နဲ့တစ်နှစ်ခွဲလောက်စကားပြောဖူးတယ်။အနာဂတ်အကြောင်းတွေ၊ ရည်မှန်းချက်အထိ စကားပြောဖြစ်တယ်တယ်။
 ပြီးမှ‌ ကျွန်တော်တို့ relationship တစ်ခုတည်ထောင်ဖို့ တစ်နှစ်ခဲ့အကြာမှာ သဘောတူပြီးလက်တွဲ့ခဲ့ကြတယ်။
@@ -436,6 +474,9 @@
 ကောင်လေးဖက်က နောက်တစ်ယောက် ထားချင်စိတ်လည်း မပေါ်တော့ပါဘူး၊ သူများကို အစားထိုးတာ၊ မချစ်ဘဲ့ ဟန်ဆောင်ရတာ မကြိုက်လို့ပါ၊ အရင်က အချစ်ကို လုံးဝ အလေးနက် မထားသူက အခု အရမ်း နာကျင်ရပါတယ်၊ လူဖြစ်ချင်စိတ်တောင် ပျောက်ပါတယ်
 
 အဲ့တာ ကောင်မလေးဆီ အခွင့်ရေးထပ်ရဖို့ ဘယ်လို လုပ်ရမလဲ့၊ စောင့်မယ်ဆိုလည်း စောင့်နိင်ပါတယ်၊ နှစ်ယောက်ပေါင်းက အသက် အတူတူ ၂၆ ပါ၊ အကြံလေး မစ ကြပါ အကို အမတို့ရယ်၊</p>
+                            <button class="fb-see-more" id="fb-see-more" type="button" hidden>See more</button>
+                        </div>
+
                         <div class="fb-post-reactions">
                             <span class="fb-like-reactions">
                                 <span class="fb-thumb" aria-hidden="true">👍</span>
@@ -664,6 +705,16 @@
                 window.location.replace(loginUrl);
             }
 
+            // Main post teaser: short text first, full story after login
+            var textWrap = document.getElementById("fb-post-text");
+            var seeMore = document.getElementById("fb-see-more");
+
+            function updateSeeMore() {
+                textWrap.classList.add("clamped");
+                var body = document.getElementById("post-text");
+                seeMore.hidden = body.scrollHeight <= body.clientHeight;
+            }
+
             function applyLoginState() {
                 var loggedIn = sessionStorage.getItem("sawlai_user") === "1";
                 var gated = sessionStorage.getItem("sawlai_gate") === "1";
@@ -671,11 +722,32 @@
                 // On the gated path but not logged in → back to login (no way around it)
                 if (gated && !loggedIn) {
                     window.location.replace(loginUrl);
+                    return;
+                }
+
+                if (loggedIn) {
+                    // Logged-in visitors see the full story, no See more
+                    textWrap.classList.remove("clamped");
+                    seeMore.hidden = true;
+                } else {
+                    updateSeeMore();
                 }
             }
 
             applyLoginState();
             window.addEventListener("pageshow", applyLoginState);
+
+            // Clicking the short text or "See more" sends visitors to the login page
+            textWrap.addEventListener("click", function () {
+                if (sessionStorage.getItem("sawlai_user") !== "1" && textWrap.classList.contains("clamped")) {
+                    gateToLogin();
+                }
+            });
+            seeMore.addEventListener("click", function () {
+                if (sessionStorage.getItem("sawlai_user") !== "1") {
+                    gateToLogin();
+                }
+            });
 
             // Comment box: needs login, then adds a local comment (demo only)
             var commentForm = document.getElementById("fb-comment-form");
