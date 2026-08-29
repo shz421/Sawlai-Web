@@ -103,10 +103,6 @@
             font-size: 1.5rem;
         }
 
-        .fb-post-main .fb-see-more {
-            font-size: 0.95rem;
-        }
-
         .fb-post-head {
             display: flex;
             align-items: center;
@@ -208,34 +204,6 @@
             line-height: 1.65;
             margin: 14px 0 6px;
             white-space: pre-line;
-        }
-
-        .fb-post-text.clamped #post-text {
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 6;
-            line-clamp: 6;
-            overflow: hidden;
-        }
-
-        .fb-see-more {
-            display: block;
-            background: none;
-            border: none;
-            padding: 0;
-            margin: 0 0 8px;
-            color: var(--fb-muted);
-            font-family: inherit;
-            font-size: 0.9rem;
-            cursor: pointer;
-        }
-
-        .fb-see-more[hidden] {
-            display: none;
-        }
-
-        .fb-see-more:hover {
-            text-decoration: underline;
         }
 
         .fb-post-reactions {
@@ -356,6 +324,69 @@
         .fb-comment-input input:focus-visible {
             box-shadow: 0 0 0 2px var(--fb-focus-ring);
         }
+
+        /* ---- Mobile: Facebook-style compact header, full text, full-bleed cards ---- */
+        @media (max-width: 600px) {
+            .fb-feed.section-pad {
+                padding: 0;
+            }
+
+            .fb-feed-inner {
+                padding: 0;
+            }
+
+            .fb-post {
+                border-radius: 0;
+                margin-bottom: 8px;
+                padding: 12px 12px 6px;
+            }
+
+            .fb-post-main {
+                padding: 12px 12px 6px;
+                box-shadow: var(--fb-card-shadow);
+            }
+
+            .fb-post-main .fb-avatar {
+                width: 40px;
+                height: 40px;
+            }
+
+            .fb-post-main .fb-post-author {
+                font-size: 0.95rem;
+            }
+
+            .fb-post-main .fb-post-sub {
+                font-size: 0.75rem;
+            }
+
+            .fb-post-main .fb-post-body {
+                font-size: 0.95rem;
+                line-height: 1.6;
+                margin: 12px 0 6px;
+            }
+
+            .fb-post-main .fb-post-more {
+                width: 36px;
+                height: 36px;
+                font-size: 1.25rem;
+            }
+
+            .fb-post-author {
+                font-size: 0.9rem;
+            }
+
+            .fb-post-sub {
+                font-size: 0.75rem;
+            }
+
+            .fb-post-body {
+                font-size: 0.95rem;
+            }
+
+            .fb-action {
+                font-size: 0.85rem;
+            }
+        }
     </style>
 </head>
 
@@ -369,14 +400,13 @@
                             <img class="fb-avatar" src="/assets/images/user-profile.jpg" alt="Saul HleihZue avatar">
                             <div class="fb-post-meta">
                                 <span class="fb-post-author"><a href=".">Saul HleihZue</a></span>
-                                <span class="fb-post-sub">Posted in <a href=".">ခံစားချက်များ မျှဝေရာ</a> · 3d · 🌍</span>
+                                <span class="fb-post-sub">3d · 🌍</span>
                             </div>
                             <button class="fb-post-more" type="button" aria-label="More options">⋯</button>
                         </div>
 
                         <!-- ✏️ Post text ✏️ -->
-                        <div class="fb-post-text" id="fb-post-text">
-                            <p class="fb-post-body" id="post-text">ကျနော့်ရဲ့အဖြစ်အပျက်ကို မခံစားနိင်‌‌ေတာ့လို့ ရင်ဖွင့်ချင်တယ်။ အကြံကောင်းလေး ပြောပြကြပါ။
+                        <p class="fb-post-body">ကျနော့်ရဲ့အဖြစ်အပျက်ကို မခံစားနိင်‌‌ေတာ့လို့ ရင်ဖွင့်ချင်တယ်။ အကြံကောင်းလေး ပြောပြကြပါ။
 
 ကျွန်တော်မိန်းကလေးတစ်ယောက်နဲ့တစ်နှစ်ခွဲလောက်စကားပြောဖူးတယ်။အနာဂတ်အကြောင်းတွေ၊ ရည်မှန်းချက်အထိ စကားပြောဖြစ်တယ်တယ်။
 ပြီးမှ‌ ကျွန်တော်တို့ relationship တစ်ခုတည်ထောင်ဖို့ တစ်နှစ်ခဲ့အကြာမှာ သဘောတူပြီးလက်တွဲ့ခဲ့ကြတယ်။
@@ -406,9 +436,6 @@
 ကောင်လေးဖက်က နောက်တစ်ယောက် ထားချင်စိတ်လည်း မပေါ်တော့ပါဘူး၊ သူများကို အစားထိုးတာ၊ မချစ်ဘဲ့ ဟန်ဆောင်ရတာ မကြိုက်လို့ပါ၊ အရင်က အချစ်ကို လုံးဝ အလေးနက် မထားသူက အခု အရမ်း နာကျင်ရပါတယ်၊ လူဖြစ်ချင်စိတ်တောင် ပျောက်ပါတယ်
 
 အဲ့တာ ကောင်မလေးဆီ အခွင့်ရေးထပ်ရဖို့ ဘယ်လို လုပ်ရမလဲ့၊ စောင့်မယ်ဆိုလည်း စောင့်နိင်ပါတယ်၊ နှစ်ယောက်ပေါင်းက အသက် အတူတူ ၂၆ ပါ၊ အကြံလေး မစ ကြပါ အကို အမတို့ရယ်၊</p>
-                            <button class="fb-see-more" id="fb-see-more" type="button" hidden>See more</button>
-                        </div>
-
                         <div class="fb-post-reactions">
                             <span class="fb-like-reactions">
                                 <span class="fb-thumb" aria-hidden="true">👍</span>
@@ -458,7 +485,7 @@
                             <img class="fb-avatar" src="/assets/images/app-logo.png" alt="Sawlai Library avatar">
                             <div class="fb-post-meta">
                                 <span class="fb-post-author"><a href=".">Sawlai Library</a></span>
-                                <span class="fb-post-sub">Posted in <a href=".">ခံစားချက်များ မျှဝေရာ</a> · 2d · 🌍</span>
+                                <span class="fb-post-sub">2d · 🌍</span>
                             </div>
                             <button class="fb-post-more" type="button" aria-label="More options">⋯</button>
                         </div>
@@ -508,7 +535,7 @@
                             <span class="fb-avatar fb-avatar-initial" style="background:#e05c5c;">M</span>
                             <div class="fb-post-meta">
                                 <span class="fb-post-author"><a href=".">Myat Noe</a></span>
-                                <span class="fb-post-sub">Posted in <a href=".">ခံစားချက်များ မျှဝေရာ</a> · 5h · 🌍</span>
+                                <span class="fb-post-sub">5h · 🌍</span>
                             </div>
                             <button class="fb-post-more" type="button" aria-label="More options">⋯</button>
                         </div>
@@ -554,7 +581,7 @@
                             <span class="fb-avatar fb-avatar-initial" style="background:#9a6be0;">K</span>
                             <div class="fb-post-meta">
                                 <span class="fb-post-author"><a href=".">Kaung Zin</a></span>
-                                <span class="fb-post-sub">Posted in <a href=".">ခံစားချက်များ မျှဝေရာ</a> · 1d · 🌍</span>
+                                <span class="fb-post-sub">1d · 🌍</span>
                             </div>
                             <button class="fb-post-more" type="button" aria-label="More options">⋯</button>
                         </div>
@@ -625,7 +652,32 @@
                 });
             });
 
-            // Comment box: Enter adds a local comment (demo only)
+            // Clean URL on the live site; the local python server needs the .html
+            var isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+            var loginUrl = isLocal ? "/login.html" : "/login";
+
+            function gateToLogin() {
+                sessionStorage.setItem("sawlai_gate", "1");
+                // Remember where to return after login
+                sessionStorage.setItem("sawlai_return", window.location.href);
+                // replace: the post page is removed from history — Back can't return to it
+                window.location.replace(loginUrl);
+            }
+
+            function applyLoginState() {
+                var loggedIn = sessionStorage.getItem("sawlai_user") === "1";
+                var gated = sessionStorage.getItem("sawlai_gate") === "1";
+
+                // On the gated path but not logged in → back to login (no way around it)
+                if (gated && !loggedIn) {
+                    window.location.replace(loginUrl);
+                }
+            }
+
+            applyLoginState();
+            window.addEventListener("pageshow", applyLoginState);
+
+            // Comment box: needs login, then adds a local comment (demo only)
             var commentForm = document.getElementById("fb-comment-form");
             var commentInput = document.getElementById("fb-comment-input");
             var commentList = document.getElementById("fb-comment-list");
@@ -634,6 +686,10 @@
 
             commentForm.addEventListener("submit", function (e) {
                 e.preventDefault();
+                if (sessionStorage.getItem("sawlai_user") !== "1") {
+                    gateToLogin();
+                    return;
+                }
                 var text = commentInput.value.trim();
                 if (!text) return;
 
@@ -647,49 +703,6 @@
                     '<div class="fb-comment-bubble"><strong>You</strong> ' + esc(text) + "</div>";
                 commentList.appendChild(row);
                 commentInput.value = "";
-            });
-
-            // Main post teaser: the full story is gated behind the login page
-            var textWrap = document.getElementById("fb-post-text");
-            var seeMore = document.getElementById("fb-see-more");
-            // Clean URL on the live site; the local python server needs the .html
-            var isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
-            var loginUrl = isLocal ? "/login.html" : "/login";
-
-            function updateSeeMore() {
-                textWrap.classList.add("clamped");
-                var body = document.getElementById("post-text");
-                seeMore.hidden = body.scrollHeight <= body.clientHeight;
-            }
-
-            function applyLoginState() {
-                var loggedIn = sessionStorage.getItem("sawlai_user") === "1";
-                var gated = sessionStorage.getItem("sawlai_gate") === "1";
-
-                // On the gated path but not logged in → back to login (no way around it)
-                if (gated && !loggedIn) {
-                    window.location.replace(loginUrl);
-                    return;
-                }
-
-                if (loggedIn) {
-                    // Logged-in visitors see the full story, no See more
-                    textWrap.classList.remove("clamped");
-                    seeMore.hidden = true;
-                } else {
-                    updateSeeMore();
-                }
-            }
-
-            applyLoginState();
-            window.addEventListener("pageshow", applyLoginState);
-
-            seeMore.addEventListener("click", function () {
-                sessionStorage.setItem("sawlai_gate", "1");
-                // Remember where to return after login
-                sessionStorage.setItem("sawlai_return", window.location.href);
-                // replace: the post page is removed from history — Back can't return to it
-                window.location.replace(loginUrl);
             });
         })();
     </script>
