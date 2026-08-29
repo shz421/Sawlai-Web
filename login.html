@@ -326,10 +326,9 @@
                         }
                         sessionStorage.setItem("sawlai_user", "1");
                         sessionStorage.removeItem("sawlai_gate");
-                        // Return to the page they came from (the pretty post URL), else the home page
-                        var ret = sessionStorage.getItem("sawlai_return");
                         sessionStorage.removeItem("sawlai_return");
-                        window.location.replace(ret || "/");
+                        // After login, straight to the post page - never the home page
+                        window.location.replace("/saul-hleihzue/1/");
                     })
                     .catch(function (err) {
                         errorMsg.textContent = err && err.badCredentials
