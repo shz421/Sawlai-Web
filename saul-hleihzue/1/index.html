@@ -706,8 +706,6 @@
 
             function gateToLogin() {
                 sessionStorage.setItem("sawlai_gate", "1");
-                // Remember where to return after login
-                sessionStorage.setItem("sawlai_return", window.location.href);
                 // replace: the post page is removed from history — Back can't return to it
                 window.location.replace(loginUrl);
             }
