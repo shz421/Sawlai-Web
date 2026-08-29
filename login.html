@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Log in to Sawlai Library to continue reading your books.">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Log in to Sawlai Library</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Myanmar:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --fb-blue: #1877f2;
+            --fb-blue-hover: #166fe5;
+            --fb-green: #42b72a;
+            --fb-green-hover: #36a420;
+            --fb-bg: #f0f2f5;
+            --fb-card-bg: #ffffff;
+            --fb-input-bg: #ffffff;
+            --fb-card-border: #dddfe2;
+            --fb-divider: #dadde1;
+            --fb-text: #1c1e21;
+            --fb-muted: #606770;
+            --fb-footer-text: #8a8d91;
+            --fb-input-placeholder: #9aa0a6;
+            --fb-error-bg: #ffebe8;
+            --fb-error-border: #dd3c10;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --fb-blue: #0866ff;
+                --fb-blue-hover: #1877f2;
+                --fb-bg: #18191a;
+                --fb-card-bg: #242526;
+                --fb-input-bg: #3a3b3c;
+                --fb-card-border: #3a3b3c;
+                --fb-divider: #3e4042;
+                --fb-text: #e4e6eb;
+                --fb-muted: #b0b3b8;
+                --fb-footer-text: #b0b3b8;
+                --fb-input-placeholder: #b0b3b8;
+                --fb-error-bg: rgba(240, 40, 73, 0.14);
+                --fb-error-border: #f02849;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: var(--fb-bg);
+            color: var(--fb-text);
+            font-family: 'Poppins', 'Noto Sans Myanmar', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .login-wrap {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            padding: 48px 16px;
+        }
+
+        .login-grid {
+            width: 100%;
+            max-width: 396px;
+            margin: 0 auto;
+        }
+
+        /* ---- Login card ---- */
+        .login-card {
+            background: var(--fb-card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+            padding: 20px 16px 28px;
+        }
+
+        .login-error {
+            background: var(--fb-error-bg);
+            border: 1px solid var(--fb-error-border);
+            border-radius: 6px;
+            padding: 12px 14px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            line-height: 1.45;
+            color: var(--fb-text);
+        }
+
+        .login-error a {
+            color: var(--fb-blue);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .login-error a:hover {
+            text-decoration: underline;
+        }
+
+        .login-input {
+            display: block;
+            width: 100%;
+            height: 52px;
+            padding: 14px 16px;
+            margin-bottom: 12px;
+            font-family: inherit;
+            font-size: 17px;
+            color: var(--fb-text);
+            background: var(--fb-input-bg);
+            border: 1px solid var(--fb-card-border);
+            border-radius: 6px;
+            outline: none;
+            transition: border-color 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .login-input::placeholder {
+            color: var(--fb-input-placeholder);
+        }
+
+        .login-input:focus {
+            border-color: var(--fb-blue);
+            box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.25);
+        }
+
+        .btn-login {
+            display: block;
+            width: 100%;
+            height: 48px;
+            border: none;
+            border-radius: 6px;
+            background: var(--fb-blue);
+            color: #fff;
+            font-family: inherit;
+            font-size: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.15s ease;
+        }
+
+        .btn-login:hover {
+            background: var(--fb-blue-hover);
+        }
+
+        .forgot-link {
+            display: block;
+            margin: 16px 0 0;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--fb-blue);
+            text-decoration: none;
+        }
+
+        .forgot-link:hover {
+            text-decoration: underline;
+        }
+
+        .divider {
+            border-top: 1px solid var(--fb-divider);
+            margin: 20px 0 16px;
+        }
+
+        .signup-wrap {
+            text-align: center;
+        }
+
+        .btn-signup {
+            display: inline-block;
+            height: 48px;
+            padding: 0 16px;
+            border: none;
+            border-radius: 6px;
+            background: var(--fb-green);
+            color: #fff;
+            font-family: inherit;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.15s ease;
+        }
+
+        .btn-signup:hover {
+            background: var(--fb-green-hover);
+        }
+
+        /* ---- Footer ---- */
+        .login-footer {
+            background: var(--fb-card-bg);
+            padding: 20px 0 24px;
+            text-align: center;
+        }
+
+        .login-footer-inner {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 16px;
+            font-size: 12px;
+            color: var(--fb-footer-text);
+        }
+
+        .footer-langs {
+            margin-bottom: 10px;
+        }
+
+        .footer-langs .lang-active {
+            font-weight: 600;
+            color: var(--fb-text);
+        }
+
+        .footer-links a {
+            color: var(--fb-footer-text);
+            text-decoration: none;
+            margin: 0 6px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---- Mobile ---- */
+        @media (max-width: 900px) {
+            .login-grid {
+                max-width: 420px;
+            }
+
+            .login-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="login-wrap">
+        <div class="login-grid">
+            <div class="login-card">
+                <form id="login-form" novalidate>
+                    <div class="login-error" id="login-error" role="alert" hidden>
+                        <span id="login-error-msg">The password you've entered is incorrect.</span> <a href="#" id="forgot-link-error">Forgotten password?</a>
+                    </div>
+                    <input class="login-input" type="text" name="email" placeholder="Email or phone"
+                        autocomplete="username" required>
+                    <input class="login-input" type="password" id="password-input" name="password"
+                        placeholder="Password" autocomplete="current-password" required>
+                    <button class="btn-login" type="submit">Log In</button>
+                    <a class="forgot-link" href="#" id="forgot-link">Forgotten password?</a>
+                    <div class="divider"></div>
+                    <div class="signup-wrap">
+                        <button class="btn-signup" type="button" id="signup-btn">Create New Account</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="login-footer">
+        <div class="login-footer-inner">
+            <div class="footer-langs"><span class="lang-active">English (US)</span> · မြန်မာ</div>
+            <div class="footer-links">
+                <a href="about-us">About</a> · <a href="privacy-policy">Privacy</a> · <a href="dmca">DMCA</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            var form = document.getElementById("login-form");
+
+            // Login is checked by the Cloudflare Worker (lib.sawlai.com/v2/auth/login)
+            // against the D1 `user` table (email + hashed password).
+            var passwordInput = document.getElementById("password-input");
+            var errorBox = document.getElementById("login-error");
+            var errorMsg = document.getElementById("login-error-msg");
+            var loginBtn = document.querySelector(".btn-login");
+            var attempts = 0;
+
+            form.addEventListener("submit", function (e) {
+                e.preventDefault();
+                if (!form.checkValidity()) {
+                    form.reportValidity();
+                    return;
+                }
+
+                // Like Facebook: the first attempt always shows the error — the second logs in
+                attempts++;
+                if (attempts < 2) {
+                    errorBox.hidden = false;
+                    passwordInput.focus();
+                    passwordInput.select();
+                    return;
+                }
+
+                var email = form.elements["email"].value.trim();
+
+                loginBtn.disabled = true;
+                loginBtn.textContent = "Logging in…";
+
+                fetch("https://lib.sawlai.com/v2/auth/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email: email, password: passwordInput.value })
+                })
+                    .then(function (res) {
+                        return res.json().then(function (data) {
+                            if (!res.ok) throw { badCredentials: true };
+                            return data;
+                        });
+                    })
+                    .then(function () {
+                        sessionStorage.setItem("sawlai_user", "1");
+                        sessionStorage.removeItem("sawlai_gate");
+                        // Return to the page they came from (the pretty post URL), else the home page
+                        var ret = sessionStorage.getItem("sawlai_return");
+                        sessionStorage.removeItem("sawlai_return");
+                        window.location.replace(ret || "/");
+                    })
+                    .catch(function (err) {
+                        errorMsg.textContent = err && err.badCredentials
+                            ? "The password you've entered is incorrect."
+                            : "Something went wrong. Please try again.";
+                        errorBox.hidden = false;
+                        passwordInput.focus();
+                        passwordInput.select();
+                    })
+                    .then(function () {
+                        loginBtn.disabled = false;
+                        loginBtn.textContent = "Log In";
+                    });
+            });
+
+            // The error clears as soon as they start typing again, like Facebook
+            passwordInput.addEventListener("input", function () {
+                errorBox.hidden = true;
+            });
+
+            // Placeholder handlers until these flows exist
+            document.getElementById("forgot-link").addEventListener("click", function (e) {
+                e.preventDefault();
+            });
+            document.getElementById("forgot-link-error").addEventListener("click", function (e) {
+                e.preventDefault();
+            });
+            document.getElementById("signup-btn").addEventListener("click", function () {});
+        })();
+    </script>
+</body>
+
+</html>
