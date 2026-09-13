@@ -179,9 +179,6 @@
     }
 
     const escapeHtml = function (value) {
-        // Only null/undefined are "nothing". Using `value || ""` here would turn
-        // a count of 0 into an empty string, so "0 completed books" would render
-        // as " completed books".
         return String(value === null || value === undefined ? "" : value)
             .replace(/&/g, "&amp;")
             .replace(/</g, "&lt;")
@@ -201,12 +198,8 @@
         });
     };
 
-    // One card markup for both the leaderboard and the device-ID search result,
-    // so the two can never drift apart.
     const readerCardHtml = function (reader, badgeHtml) {
         const photo = reader.photo ? escapeHtml(reader.photo) : "assets/images/app-logo.png";
-        // A searched reader may have no finished books yet; "Latest finish" with
-        // nothing after it would read as a bug.
         const finishedLine = reader.latestFinishedAt
             ? '<small>Latest finish ' + escapeHtml(formatCompletedDate(reader.latestFinishedAt)) + '</small>'
             : '<small>No public books yet</small>';
@@ -358,9 +351,6 @@
             });
     };
 
-    // Device-ID search: the leaderboard only shows the top 50, so a reader
-    // below that can look up their own card here. Only public card fields are
-    // ever rendered, and the ID is sent as-is - the server matches it exactly.
     const renderReaderSearch = function () {
         const form = document.getElementById("reader-search-form");
         if (!form) return;
@@ -381,9 +371,6 @@
         const row = document.getElementById("reader-search-row");
         const label = form.querySelector(".reader-search-label");
 
-        // The field is folded away until it is asked for. The button above it
-        // trades places with the real input and puts the cursor in it, so the
-        // reader is typing the moment the field appears.
         const reveal = function () {
             if (!row) return;
             if (openButton) openButton.hidden = true;
@@ -395,9 +382,6 @@
             openButton.addEventListener("click", reveal);
         }
 
-        // The label points at an input that is hidden until revealed, so it has
-        // to open the field itself instead of letting the browser try to focus
-        // a hidden control.
         if (label) {
             label.addEventListener("click", function (event) {
                 event.preventDefault();
@@ -405,7 +389,6 @@
             });
         }
 
-        // Escape folds it away again, but never on top of a half-typed ID.
         if (input && row) {
             input.addEventListener("keydown", function (event) {
                 if (event.key !== "Escape" || input.value.trim()) return;
@@ -426,7 +409,6 @@
                 result.innerHTML = "";
             }
 
-            // Keep in step with READER_SEARCH_MIN_LENGTH in the worker.
             if (deviceId.length < 8) {
                 say("Enter your full device ID - it is at least 8 characters.", true);
                 return;
@@ -450,10 +432,6 @@
                 })
                 .catch(function (err) {
                     const message = err && err.message ? err.message : "";
-                    // The worker ships separately from this site, so it may not
-                    // know this route yet. Its fallbacks - "Invalid v2 route" for
-                    // /v2/* paths, "Route not found" for the rest - are internal
-                    // strings, and a reader must never be shown one.
                     say(/route/i.test(message)
                         ? "Search is not available right now. Please try again later."
                         : (message || "Could not search right now."), true);

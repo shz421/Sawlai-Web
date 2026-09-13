@@ -128,7 +128,6 @@
 
             let html = text;
 
-            // Strip SpannableText-style tags BEFORE HTML escaping
             html = html.replace(/<m>\s*/g, '');
             html = html.replace(/\s*<m>/g, '');
             html = html.replace(/<s>\s*/g, '');
@@ -145,7 +144,6 @@
 
             html = html.replace(/_\*([^*]+)\*_/g, '<em>$1</em>');
 
-            // Full email link [text](email=addr&subject=...&body=...) MUST run before simple [email@domain]
             html = html.replace(
                 /\[([^\]]+)\]\(email=([^&)]+)(?:&subject=([^&)]*))?(?:&body=([^)]*))?\)/g,
                 function(match, display, email, subject, body) {
@@ -156,7 +154,6 @@
                 }
             );
 
-            // Simple [email@domain.com] without subject/body
             html = html.replace(
                 /\[([^\]]*@[^\]]+\.\w+)\]/g,
                 function(m, email) { return '<a href="mailto:' + encodeURIComponent(email.trim()) + '">' + email.trim() + '</a>'; }
@@ -228,7 +225,6 @@
             if (typeof AOS !== 'undefined') AOS.refresh();
         }
 
-        // Inline fallback content (same as server JSON, used when KV fetch fails)
         var _fallbackBody = "Last Updated: [15 May 2025]\n\n"
             + "Developer: Sawlai (shz)\nApp Name: **Sawlai Library : Books & Audio**\nContact Email: [sawlai.library@gmail.com]\n\n"
             + "This Privacy Policy explains how Sawlai (shz) collects, uses, and protects your information when you use Sawlai Library the app. By using this app, you agree to the terms outlined in this policy.\n\n"

@@ -203,7 +203,6 @@
 
                 let html = text;
 
-                // Strip SpannableText-style tags BEFORE HTML escaping
                 html = html.replace(/<m>\s*/g, '');
                 html = html.replace(/\s*<m>/g, '');
                 html = html.replace(/<s>\s*/g, '');
@@ -220,7 +219,6 @@
 
                 html = html.replace(/_\*([^*]+)\*_/g, '<em>$1</em>');
 
-                // Full email link [text](email=addr&subject=...&body=...) MUST run before simple [email@domain]
                 html = html.replace(
                     /\[([^\]]+)\]\(email=([^&)]+)(?:&subject=([^&)]*))?(?:&body=([^)]*))?\)/g,
                     function (match, display, email, subject, body) {
@@ -231,7 +229,6 @@
                     }
                 );
 
-                // Simple [email@domain.com] without subject/body
                 html = html.replace(
                     /\[([^\]]*@[^\]]+\.\w+)\]/g,
                     function(m, email) { return '<a href="mailto:' + encodeURIComponent(email.trim()) + '">' + email.trim() + '</a>'; }

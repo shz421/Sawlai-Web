@@ -523,7 +523,6 @@ main > section {
     box-shadow: 0 12px 35px rgba(41, 182, 246, 0.22);
 }
 
-/* Keep device-support card corners identical to other feature cards */
 .feature-card-device {
     border-radius: 18px;
     overflow: hidden;
@@ -635,7 +634,6 @@ main > section {
 
 .reader-toolbar {
     display: grid;
-    /* Total readers reads as a short stat; the search needs room to breathe. */
     grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
     gap: 18px;
     margin-bottom: 26px;
@@ -662,8 +660,6 @@ main > section {
     color: #fff;
 }
 
-/* Sits in the toolbar grid, so it carries the stat card's surface exactly -
-   same padding, radius and border - and adds no margin of its own. */
 .reader-search {
     padding: 18px 20px;
     border-radius: 20px;
@@ -678,9 +674,6 @@ main > section {
     color: #fff;
 }
 
-/* The field starts folded away behind this button. It is drawn as a ghost of
-   the input it becomes - same box, same padding, text in the same place - so
-   revealing the input swaps one for the other without the card jumping. */
 .reader-search-open {
     display: block;
     width: 100%;
@@ -706,8 +699,6 @@ main > section {
     outline-offset: 2px;
 }
 
-/* Both carry a display from their own class, which would beat the hidden
-   attribute's UA display:none - so hide them explicitly. */
 .reader-search-open[hidden],
 .reader-search-row[hidden] {
     display: none;
@@ -1204,8 +1195,6 @@ main > section {
         grid-template-columns: 1fr;
     }
 
-    /* The search row wraps on narrow screens; a full-width button on its own
-       line is a far easier tap target than a natural-width one. */
     .reader-search-btn {
         width: 100%;
     }
