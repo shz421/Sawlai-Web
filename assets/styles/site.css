@@ -633,21 +633,16 @@ main > section {
     line-height: 1.7;
 }
 
-/* A search bar with a quiet count under it. Deliberately not a card: the
-   reader cards below are the cards on this page, and a boxed search panel
-   competed with them for the same weight. */
 .reader-toolbar {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    display: grid;
+    /* Total readers reads as a short stat; the search needs room to breathe. */
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: 18px;
     margin-bottom: 26px;
+    align-items: start;
 }
 
-/* The reader profile page's "Completed books" card. It is the only thing in
-   its row there, so it shrink-wraps its content instead of stretching. */
 .reader-stat {
-    display: inline-block;
-    margin-bottom: 26px;
     padding: 18px 20px;
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.05);
@@ -667,59 +662,53 @@ main > section {
     color: #fff;
 }
 
+/* Sits in the toolbar grid, so it carries the stat card's surface exactly -
+   same padding, radius and border - and adds no margin of its own. */
 .reader-search {
+    padding: 18px 20px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.reader-search-label {
+    display: block;
+    margin-bottom: 12px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.reader-search-row {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 12px;
 }
 
-/* One control, not a field with a button adrift beside it: the icon, the input
-   and the button share a single surface, so there is one thing to aim at. */
-.reader-search-field {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 6px 6px 6px 18px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* The whole bar lights up on focus, not just the input inside it. */
-.reader-search-field:focus-within {
-    border-color: rgba(87, 199, 255, 0.55);
-    box-shadow: 0 0 0 4px rgba(87, 199, 255, 0.13);
-}
-
-.reader-search-icon {
-    flex: 0 0 auto;
-    color: rgba(255, 255, 255, 0.5);
-}
-
 .reader-search-input {
-    flex: 1 1 auto;
+    flex: 1 1 240px;
     min-width: 0;
-    padding: 13px 0;
-    border: none;
-    background: none;
+    padding: 14px 18px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.14);
     color: #fff;
     font-family: inherit;
     font-size: 1rem;
-}
-
-/* The bar itself carries the focus ring, so the input must not add a second. */
-.reader-search-input:focus {
-    outline: none;
 }
 
 .reader-search-input::placeholder {
     color: rgba(255, 255, 255, 0.45);
 }
 
+.reader-search-input:focus {
+    outline: none;
+    border-color: rgba(87, 199, 255, 0.6);
+    box-shadow: 0 0 0 3px rgba(87, 199, 255, 0.16);
+}
+
 .reader-search-btn {
     flex: 0 0 auto;
-    padding: 13px 30px;
+    padding: 14px 30px;
     border: none;
     border-radius: 999px;
     background: linear-gradient(120deg, #57c7ff, #3a9fe0);
@@ -741,29 +730,14 @@ main > section {
     cursor: progress;
 }
 
-/* Hangs under the bar, left-aligned with the text inside it. */
 .reader-search-note {
-    margin: 0;
-    padding-left: 4px;
-    font-size: 0.95rem;
+    margin: 14px 0 0;
     line-height: 1.6;
     color: #bfe8ff;
 }
 
 .reader-search-note.is-error {
     color: #ffb3b3;
-}
-
-.reader-count {
-    margin: 0;
-    padding-left: 4px;
-    font-size: 0.9rem;
-    color: var(--saw-muted);
-}
-
-.reader-count strong {
-    color: #fff;
-    font-weight: 600;
 }
 
 .reader-search-result {
@@ -1188,24 +1162,16 @@ main > section {
     }
 
     .community-panel,
+    .reader-toolbar,
     .reader-profile-head,
     .reader-grid,
     .completed-book-grid {
         grid-template-columns: 1fr;
     }
 
-    /* The bar stacks on narrow screens: icon and input on the first line, the
-       button full width on the next - a far easier tap target than one
-       squeezed in beside the text. */
-    .reader-search-field {
-        flex-wrap: wrap;
-        gap: 8px;
-        padding: 12px 14px;
-        border-radius: 22px;
-    }
-
+    /* The search row wraps on narrow screens; a full-width button on its own
+       line is a far easier tap target than a natural-width one. */
     .reader-search-btn {
-        flex-basis: 100%;
         width: 100%;
     }
 
