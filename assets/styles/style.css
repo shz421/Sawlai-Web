@@ -1,162 +1,98 @@
-/*-----------------------------------------------------------------------------------
-
-[Table of contents]
-
-1. Font
-2. Css Variable for colors
-3. Common CSS
-4. Preloader CSS
-5. Header - Main Navigation ( section )
-6. Hero Slider ( section )
-7. Trusted Logo Slider ( section )
-8. Features ( section )
-9. About us ( section )
-10. Modern UI ( section )
-11. How it works ( section )
-12. Testimonials ( section )
-13. Pricing ( section )
-14. Faq ( section )
-15. Interface ( section )
-16. Download app ( section )
-17. Latest story ( section )
-18. Newsletter ( section )
-19. Footer ( section )
-20. Animation CSS ( section )
-
-
------------------------------------------------------------------------------------*/
-
-/* --------Font--------------- */
-
-/* poppins-300 - latin */
-
 @font-face {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 300;
     src: url('../fonts/poppins-v20-latin-300.eot');
-    /* IE9 Compat Modes */
-    src: local(''), url('../fonts/poppins-v20-latin-300d41d.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url('../fonts/poppins-v20-latin-300.woff2') format('woff2'), /* Super Modern Browsers */
-    url('../fonts/poppins-v20-latin-300.woff') format('woff'), /* Modern Browsers */
-    url('../fonts/poppins-v20-latin-300.ttf') format('truetype'), /* Safari, Android, iOS */
+    src: local(''), url('../fonts/poppins-v20-latin-300d41d.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/poppins-v20-latin-300.woff2') format('woff2'),
+    url('../fonts/poppins-v20-latin-300.woff') format('woff'),
+    url('../fonts/poppins-v20-latin-300.ttf') format('truetype'),
     url('../fonts/poppins-v20-latin-300.svg#Poppins') format('svg');
-    /* Legacy iOS */
 }
-
-/* poppins-regular - latin */
 
 @font-face {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
     src: url('../fonts/poppins-v20-latin-regular.eot');
-    /* IE9 Compat Modes */
-    src: local(''), url('../fonts/poppins-v20-latin-regulard41d.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url('../fonts/poppins-v20-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
-    url('../fonts/poppins-v20-latin-regular.woff') format('woff'), /* Modern Browsers */
-    url('../fonts/poppins-v20-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    src: local(''), url('../fonts/poppins-v20-latin-regulard41d.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/poppins-v20-latin-regular.woff2') format('woff2'),
+    url('../fonts/poppins-v20-latin-regular.woff') format('woff'),
+    url('../fonts/poppins-v20-latin-regular.ttf') format('truetype'),
     url('../fonts/poppins-v20-latin-regular.svg#Poppins') format('svg');
-    /* Legacy iOS */
 }
-
-/* poppins-italic - latin */
 
 @font-face {
     font-family: 'Poppins';
     font-style: italic;
     font-weight: 400;
     src: url('../fonts/poppins-v20-latin-italic.eot');
-    /* IE9 Compat Modes */
-    src: local(''), url('../fonts/poppins-v20-latin-italicd41d.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url('../fonts/poppins-v20-latin-italic.woff2') format('woff2'), /* Super Modern Browsers */
-    url('../fonts/poppins-v20-latin-italic.woff') format('woff'), /* Modern Browsers */
-    url('../fonts/poppins-v20-latin-italic.ttf') format('truetype'), /* Safari, Android, iOS */
+    src: local(''), url('../fonts/poppins-v20-latin-italicd41d.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/poppins-v20-latin-italic.woff2') format('woff2'),
+    url('../fonts/poppins-v20-latin-italic.woff') format('woff'),
+    url('../fonts/poppins-v20-latin-italic.ttf') format('truetype'),
     url('../fonts/poppins-v20-latin-italic.svg#Poppins') format('svg');
-    /* Legacy iOS */
 }
-
-/* poppins-500 - latin */
 
 @font-face {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
     src: url('../fonts/poppins-v20-latin-500.eot');
-    /* IE9 Compat Modes */
-    src: local(''), url('../fonts/poppins-v20-latin-500d41d.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url('../fonts/poppins-v20-latin-500.woff2') format('woff2'), /* Super Modern Browsers */
-    url('../fonts/poppins-v20-latin-500.woff') format('woff'), /* Modern Browsers */
-    url('../fonts/poppins-v20-latin-500.ttf') format('truetype'), /* Safari, Android, iOS */
+    src: local(''), url('../fonts/poppins-v20-latin-500d41d.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/poppins-v20-latin-500.woff2') format('woff2'),
+    url('../fonts/poppins-v20-latin-500.woff') format('woff'),
+    url('../fonts/poppins-v20-latin-500.ttf') format('truetype'),
     url('../fonts/poppins-v20-latin-500.svg#Poppins') format('svg');
-    /* Legacy iOS */
 }
-
-/* poppins-500italic - latin */
 
 @font-face {
     font-family: 'Poppins';
     font-style: italic;
     font-weight: 500;
     src: url('../fonts/poppins-v20-latin-500italic.eot');
-    /* IE9 Compat Modes */
-    src: local(''), url('../fonts/poppins-v20-latin-500italicd41d.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url('../fonts/poppins-v20-latin-500italic.woff2') format('woff2'), /* Super Modern Browsers */
-    url('../fonts/poppins-v20-latin-500italic.woff') format('woff'), /* Modern Browsers */
-    url('../fonts/poppins-v20-latin-500italic.ttf') format('truetype'), /* Safari, Android, iOS */
+    src: local(''), url('../fonts/poppins-v20-latin-500italicd41d.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/poppins-v20-latin-500italic.woff2') format('woff2'),
+    url('../fonts/poppins-v20-latin-500italic.woff') format('woff'),
+    url('../fonts/poppins-v20-latin-500italic.ttf') format('truetype'),
     url('../fonts/poppins-v20-latin-500italic.svg#Poppins') format('svg');
-    /* Legacy iOS */
 }
-
-/* poppins-600 - latin */
 
 @font-face {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
     src: url('../fonts/poppins-v20-latin-600.eot');
-    /* IE9 Compat Modes */
-    src: local(''), url('../fonts/poppins-v20-latin-600d41d.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url('../fonts/poppins-v20-latin-600.woff2') format('woff2'), /* Super Modern Browsers */
-    url('../fonts/poppins-v20-latin-600.woff') format('woff'), /* Modern Browsers */
-    url('../fonts/poppins-v20-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
+    src: local(''), url('../fonts/poppins-v20-latin-600d41d.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/poppins-v20-latin-600.woff2') format('woff2'),
+    url('../fonts/poppins-v20-latin-600.woff') format('woff'),
+    url('../fonts/poppins-v20-latin-600.ttf') format('truetype'),
     url('../fonts/poppins-v20-latin-600.svg#Poppins') format('svg');
-    /* Legacy iOS */
 }
-
-/* poppins-700 - latin */
 
 @font-face {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 700;
     src: url('../fonts/poppins-v20-latin-700.eot');
-    /* IE9 Compat Modes */
-    src: local(''), url('../fonts/poppins-v20-latin-700d41d.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url('../fonts/poppins-v20-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
-    url('../fonts/poppins-v20-latin-700.woff') format('woff'), /* Modern Browsers */
-    url('../fonts/poppins-v20-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
+    src: local(''), url('../fonts/poppins-v20-latin-700d41d.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/poppins-v20-latin-700.woff2') format('woff2'),
+    url('../fonts/poppins-v20-latin-700.woff') format('woff'),
+    url('../fonts/poppins-v20-latin-700.ttf') format('truetype'),
     url('../fonts/poppins-v20-latin-700.svg#Poppins') format('svg');
-    /* Legacy iOS */
 }
-
-/* poppins-800 - latin */
 
 @font-face {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 800;
     src: url('../fonts/poppins-v20-latin-800.eot');
-    /* IE9 Compat Modes */
-    src: local(''), url('../fonts/poppins-v20-latin-800d41d.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url('../fonts/poppins-v20-latin-800.woff2') format('woff2'), /* Super Modern Browsers */
-    url('../fonts/poppins-v20-latin-800.woff') format('woff'), /* Modern Browsers */
-    url('../fonts/poppins-v20-latin-800.ttf') format('truetype'), /* Safari, Android, iOS */
+    src: local(''), url('../fonts/poppins-v20-latin-800d41d.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/poppins-v20-latin-800.woff2') format('woff2'),
+    url('../fonts/poppins-v20-latin-800.woff') format('woff'),
+    url('../fonts/poppins-v20-latin-800.ttf') format('truetype'),
     url('../fonts/poppins-v20-latin-800.svg#Poppins') format('svg');
-    /* Legacy iOS */
 }
-
-/* -----------Css-variable------ */
 
 :root {
     --light-purple: #F6F4FE;
@@ -169,8 +105,6 @@
     --slider-dots-color: #D4D2DD;
     --light-bg: #DFDAF3;
 }
-
-/* ------Common-Css------------- */
 
 html {
     scroll-behavior: smooth
@@ -226,8 +160,6 @@ button:focus,
     text-align: center;
 }
 
-/* section heading h2 */
-
 .section_title h2 {
     font-size: 40px;
     font-weight: 700;
@@ -241,8 +173,6 @@ button:focus,
 .row_am {
     padding: 50px 0;
 }
-
-/* purple button */
 
 .puprple_btn {
     background-color: var(--purple);
@@ -275,8 +205,6 @@ button:focus,
 .puprple_btn:hover {
     color: var(--purple);
 }
-
-/* white button */
 
 .white_btn {
     padding: 10px 45px;
@@ -316,8 +244,6 @@ button:focus,
     border-color: var(--bg-white);
 }
 
-/* slider controls */
-
 .owl-carousel .owl-dots {
     display: flex;
     align-items: center;
@@ -338,10 +264,6 @@ button:focus,
 .owl-carousel .owl-dots button.active {
     background-color: var(--purple);
 }
-
-/* -------------Preloader-Css-Start-------------- */
-
-/* Preloader */
 
 #preloader {
     position: fixed;
@@ -422,10 +344,6 @@ button:focus,
     }
 }
 
-/* -----------Header-Css-Start------------------- */
-
-/* header wraper */
-
 header {
     position: relative;
     width: 100%;
@@ -453,8 +371,6 @@ header.fixed {
 header.fixed .navbar {
     padding: 0;
 }
-
-/* navigation bar */
 
 .navbar {
     padding-left: 0;
@@ -510,8 +426,6 @@ header.fixed .navbar {
 .navbar-brand img {
     width: 150px;
 }
-
-/* navigation bar dropdown */
 
 .navbar-expand-lg .navbar-nav .has_dropdown {
     display: flex;
@@ -595,13 +509,10 @@ header.fixed .navbar {
     margin-top: -1px;
 }
 
-/* navigation toggle menu */
-
 .toggle-wrap {
     padding: 10px;
     position: relative;
     cursor: pointer;
-    /*disable selection*/
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -674,10 +585,6 @@ header.fixed .navbar {
     transform: rotate(-45deg);
 }
 
-/* ---------Hero-Slider-Css-Start------------------ */
-
-/* hero slider wraper */
-
 .banner_section {
     margin-top: 70px;
     position: relative;
@@ -687,31 +594,16 @@ header.fixed .navbar {
     position: relative;
 }
 
-/* wave backgound after banner */
-
 .banner_section::after {
-    /* content: "";
-    display: block;
-    background-image: url(../images/banner-shape.svg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 200px;
-    background-position: center;
-    margin-top: -50px; */
 }
 
 .banner_section .row {
     align-items: center;
 }
 
-/* hero slider text */
-
 .banner_section .banner_text {
     margin-top: -50px;
 }
-
-/* hero slider heading h1 */
 
 .banner_section .banner_text h1 {
     font-size: 55px;
@@ -724,14 +616,10 @@ header.fixed .navbar {
     color: var(--purple);
 }
 
-/* hero slider button */
-
 .banner_section .app_btn {
     display: flex;
     align-items: center;
 }
-
-/* hero slider list */
 
 .banner_section .app_btn li a {
     display: block;
@@ -770,8 +658,6 @@ header.fixed .navbar {
     opacity: 1;
 }
 
-/* hero slider users */
-
 .banner_section .used_app {
     display: flex;
     align-items: center;
@@ -794,8 +680,6 @@ header.fixed .navbar {
     margin-bottom: 0;
 }
 
-/* hero slider images */
-
 .banner_section .banner_slider {
     display: flex;
     position: relative;
@@ -814,8 +698,6 @@ header.fixed .navbar {
     top: 70px;
 }
 
-/* hero slider mobile frame */
-
 .banner_section .banner_slider .slider_frame {
     position: absolute;
     left: 50%;
@@ -825,34 +707,15 @@ header.fixed .navbar {
 }
 
 .banner_section .banner_slider #frmae_slider::before {
-    /* content: "";
-    position: absolute;
-    left: 5px;
-    top: 5px;
-    background-color: #fff;
-    width: calc(100% - 10px);
-    height: 92%; */
 }
 
 .banner_section .banner_slider::before {
-    /* content: "";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 475px;
-    height: 475px;
-    border-radius: 100%;
-    background-color: var(--purple);
-    z-index: -5; */
 }
 
 .banner_section .banner_slider #frmae_slider {
     width: 305px;
     margin: 0 auto;
 }
-
-/* hero slider control dots */
 
 .banner_section .owl-dots {
     margin-top: 40px;
@@ -862,10 +725,6 @@ header.fixed .navbar {
     max-width: 100%;
     width: auto;
 }
-
-/* ------------Trusted-Section-Css-Start----------- */
-
-/* trusted logos wraper */
 
 .trusted_section {
     margin-top: 40px;
@@ -885,10 +744,6 @@ header.fixed .navbar {
     filter: grayscale(0);
 }
 
-/* ----------Feature-Detail-Section-start------ */
-
-/* features section wraper */
-
 .features_section .feature_detail {
     background-color: var(--bg-white);
     border-radius: 30px;
@@ -901,8 +756,6 @@ header.fixed .navbar {
     box-shadow: 0px 4px 30px #EDE9FE;
 }
 
-/* features section image */
-
 .features_section .feature_detail .feature_img {
     position: absolute;
     left: 50%;
@@ -913,8 +766,6 @@ header.fixed .navbar {
 .features_section .feature_detail .feature_img img {
     max-width: 100%;
 }
-
-/* features section box */
 
 .features_section .feature_detail .feature_box {
     max-width: 410px;
@@ -951,17 +802,11 @@ header.fixed .navbar {
     max-width: 1370px;
 }
 
-/* -----------------About-App-Section-Css-Start------------------ */
-
-/* about us section wraper */
-
 .about_app_section .about_img {
     display: flex;
     align-items: center;
     position: relative;
 }
-
-/* about us section images*/
 
 .about_app_section .about_img img {
     max-width: 100%;
@@ -992,8 +837,6 @@ header.fixed .navbar {
 .about_app_section .about_text .section_title h2 {
     margin-bottom: 15px;
 }
-
-/* about us section  statastics nomber */
 
 .about_app_section .about_text .app_statstic {
     display: flex;
@@ -1031,10 +874,6 @@ header.fixed .navbar {
     margin-bottom: 3px;
 }
 
-/* -------------Modern-Ui-Section-Css-Start---------------- */
-
-/* modern ui section wraper */
-
 .modern_ui_section .row {
     align-items: center;
 }
@@ -1043,8 +882,6 @@ header.fixed .navbar {
     margin-top: 45px;
 }
 
-/* modern ui text */
-
 .modern_ui_section .section_title {
     text-align: left;
 }
@@ -1052,8 +889,6 @@ header.fixed .navbar {
 .modern_ui_section .ui_text {
     padding-right: 75px;
 }
-
-/* modern ui list */
 
 .modern_ui_section .design_block li {
     padding-left: 40px;
@@ -1084,8 +919,6 @@ header.fixed .navbar {
 .modern_ui_section .design_block li p {
     margin-bottom: 0;
 }
-
-/* modern ui images */
 
 .modern_ui_section .ui_images {
     display: flex;
@@ -1122,10 +955,6 @@ header.fixed .navbar {
     margin-left: -15px;
 }
 
-/* -------------How_It_Works-Section-Css-Start------------------ */
-
-/* how it works wraper */
-
 .how_it_works .container {
     max-width: 1370px;
 }
@@ -1137,8 +966,6 @@ header.fixed .navbar {
     border-radius: 30px;
     box-shadow: 0px 4px 30px #EDE9FE;
 }
-
-/* how it works list */
 
 .how_it_works .step_block ul {
     max-width: 1080px;
@@ -1192,13 +1019,9 @@ header.fixed .navbar {
     text-align: right;
 }
 
-/* how it works image */
-
 .how_it_works .step_block ul li .step_img img {
     max-width: 100%;
 }
-
-/* how it works heading h4 */
 
 .how_it_works .step_block ul li .step_text h4 {
     font-size: 20px;
@@ -1244,8 +1067,6 @@ header.fixed .navbar {
     text-align: left;
 }
 
-/* how it works numbers */
-
 .how_it_works .step_block ul li .step_number {
     background-image: url(../images/icon_bg.png);
     background-size: cover;
@@ -1259,14 +1080,10 @@ header.fixed .navbar {
     position: relative;
 }
 
-/* how it works numbers heading h3 */
-
 .how_it_works .step_block ul li .step_number h3 {
     font-size: 30px;
     font-weight: 600;
 }
-
-/* how it works video  */
 
 .how_it_works .yt_video {
     max-width: 1170px;
@@ -1275,8 +1092,6 @@ header.fixed .navbar {
     position: relative;
     overflow: hidden;
 }
-
-/* how it works video animation line  */
 
 .how_it_works .yt_video .anim_line {
     z-index: 999;
@@ -1326,8 +1141,6 @@ header.fixed .navbar {
     position: relative;
     z-index: 999;
 }
-
-/* how it works video model   */
 
 .modal {
     z-index: 999999;
@@ -1387,10 +1200,6 @@ iframe#youtubevideo {
     font-size: 30px;
 }
 
-/* ------------Testimonial-Slider-Css-Start------------- */
-
-/* testimonials wraper  */
-
 #testimonial_slider {
     max-width: 550px;
     margin: 0 auto;
@@ -1411,8 +1220,6 @@ iframe#youtubevideo {
     margin: 0 auto;
 }
 
-/* testimonials rating  */
-
 .testimonial_section .testimonial_block .rating span {
     color: #FC9400;
     font-size: 18px;
@@ -1423,13 +1230,9 @@ iframe#youtubevideo {
     margin-bottom: 30px;
 }
 
-/* testimonials image  */
-
 .testimonial_section .testimonial_block .testimonial_slide_box .testimonial_img img {
     margin: 0 auto;
 }
-
-/* testimonials heading h3 */
 
 .testimonial_section .testimonial_block .testimonial_slide_box h3 {
     font-size: 20px;
@@ -1442,8 +1245,6 @@ iframe#youtubevideo {
     font-size: 15px;
 }
 
-/* testimonials total review */
-
 .testimonial_section .total_review {
     text-align: center;
     margin-top: 60px;
@@ -1455,16 +1256,12 @@ iframe#youtubevideo {
     justify-content: center;
 }
 
-/* testimonials paragraph */
-
 .testimonial_section .total_review .rating p {
     margin-bottom: 0;
     font-weight: 600;
     margin-left: 5px;
     color: var(--dark-purple);
 }
-
-/* testimonials heading */
 
 .testimonial_section .total_review h3 {
     font-size: 50px;
@@ -1491,17 +1288,11 @@ iframe#youtubevideo {
     max-width: 100%;
 }
 
-/* -------------------Pricing-Section---------------------- */
-
-/* pricing wraper  */
-
 .pricing_section .toggle_block {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
-/* pricing toggle button */
 
 .pricing_section .toggle_block span {
     color: var(--dark-purple);
@@ -1555,8 +1346,6 @@ iframe#youtubevideo {
     color: var(--purple);
 }
 
-/* pricing pannel */
-
 .pricing_section .pricing_pannel {
     margin-top: 50px;
     display: none;
@@ -1591,13 +1380,9 @@ iframe#youtubevideo {
     margin-bottom: 35px;
 }
 
-/* pricing box image */
-
 .pricing_section .pricing_pannel .pricing_block .icon img {
     width: 120px;
 }
-
-/* pricing box heading h3 */
 
 .pricing_section .pricing_pannel .pricing_block .pkg_name h3 {
     font-size: 20px;
@@ -1618,8 +1403,6 @@ iframe#youtubevideo {
     font-weight: 600;
 }
 
-/* pricing box list */
-
 .pricing_section .pricing_pannel .pricing_block .benifits {
     margin-bottom: 40px;
 }
@@ -1638,15 +1421,9 @@ iframe#youtubevideo {
     text-decoration: underline;
 }
 
-/* -------------FAQ-Section-Css-Start----------------- */
-
-/* faq wraper */
-
 .faq_section .faq_panel {
     margin-top: 40px;
 }
-
-/* faq box */
 
 .faq_section .faq_panel .card {
     border: none;
@@ -1690,28 +1467,18 @@ iframe#youtubevideo {
     color: #839BC0;
 }
 
-/* faq heading h2 */
-
 .faq_section .faq_panel .card-header h2 {
     line-height: 1;
 }
-
-/* faq paragraph */
 
 .faq_section .faq_panel .card-body {
     padding-bottom: 0;
 }
 
-/* -----------Interface_Section-Css-Start----------------- */
-
-/* interface wraper */
-
 .interface_section .screen_slider {
     margin-top: 35px;
     min-height: 720px;
 }
-
-/* interface images */
 
 .interface_section .owl-item .screen_frame_img img {
     transform: scale(.9);
@@ -1725,10 +1492,6 @@ iframe#youtubevideo {
     transform: scale(1);
     border: 3px solid #000;
 }
-
-/* -----------Download_App_Section-Start------------------ */
-
-/* download app wraper */
 
 .free_app_section {
     padding-top: 70px;
@@ -1748,8 +1511,6 @@ iframe#youtubevideo {
     z-index: 999999;
 }
 
-/* download app dark background */
-
 .free_app_section .container .free_app_inner .dark_bg {
     overflow: hidden;
 }
@@ -1765,8 +1526,6 @@ iframe#youtubevideo {
 .free_app_section .container .free_app_inner .free_text .section_title {
     text-align: left;
 }
-
-/* download app heading h2 */
 
 .free_app_section .container .free_app_inner .free_text .section_title h2 {
     margin-bottom: 20px;
@@ -1826,15 +1585,9 @@ iframe#youtubevideo {
     pointer-events: none;
 }
 
-/* ---------------Latest_Story-Css-Start------------- */
-
-/* latest story wraper */
-
 .latest_story {
     margin-bottom: 80px;
 }
-
-/* latest story box */
 
 .latest_story .story_box {
     background-color: var(--bg-white);
@@ -1842,8 +1595,6 @@ iframe#youtubevideo {
     border-radius: 10px;
     box-shadow: 0px 4px 30px #EDE9FE;
 }
-
-/* latest story image */
 
 .latest_story .story_box .story_img {
     position: relative;
@@ -1862,13 +1613,9 @@ iframe#youtubevideo {
     color: var(--text-white);
 }
 
-/* latest story pargraph */
-
 .latest_story .story_box .story_text {
     padding: 20px 30px;
 }
-
-/* latest story heading h3 */
 
 .latest_story .story_box .story_text h3 {
     color: var(--dark-purple);
@@ -1876,8 +1623,6 @@ iframe#youtubevideo {
     margin-bottom: 15px;
     font-weight: 600;
 }
-
-/* latest story link text */
 
 .latest_story .story_box .story_text a {
     color: var(--purple);
@@ -1891,10 +1636,6 @@ iframe#youtubevideo {
 .latest_story .story_box .story_text a:hover {
     text-decoration: underline;
 }
-
-/* -------------Newsletter-Section-Css-Start------------- */
-
-/* newsletter  wraper */
 
 .newsletter_box {
     background-color: var(--bg-purple);
@@ -1917,8 +1658,6 @@ iframe#youtubevideo {
     width: 60%;
 }
 
-/* newsletter heading h2 */
-
 .newsletter_box .section_title h2 {
     margin-bottom: 5px;
     letter-spacing: -1px;
@@ -1930,13 +1669,9 @@ iframe#youtubevideo {
     text-align: left;
 }
 
-/* newsletter paragraph */
-
 .newsletter_box .section_title p {
     margin-bottom: 0;
 }
-
-/* newsletter input  */
 
 .newsletter_box form {
     display: flex;
@@ -1956,8 +1691,6 @@ iframe#youtubevideo {
 .newsletter_box form .form-group .form-control::placeholder {
     color: var(--dark-purple);
 }
-
-/* newsletter button */
 
 .newsletter_box form .form-group .btn {
     height: 55px;
@@ -1994,10 +1727,6 @@ iframe#youtubevideo {
     color: var(--text-white);
 }
 
-/* ------Footer-Css-Start-------------- */
-
-/* footer wraper */
-
 footer {
     position: relative;
 }
@@ -2016,8 +1745,6 @@ footer .top_footer.has_bg {
     background-position: center;
 }
 
-/* footer logo */
-
 footer .top_footer .logo {
     margin-bottom: 40px;
 }
@@ -2030,14 +1757,10 @@ footer .top_footer .abt_side li {
     padding: 0 0 10px 0;
 }
 
-/* footer social media icon */
-
 footer .top_footer .social_media {
     display: flex;
     margin-top: 20px;
 }
-
-/* footer link list */
 
 footer .top_footer .social_media li a {
     display: block;
@@ -2087,8 +1810,6 @@ footer .bottom_footer {
     background-color: var(--bg-purple);
 }
 
-/* footer heading and text colors variable */
-
 footer h2,
 footer h3,
 footer p,
@@ -2099,8 +1820,6 @@ footer a {
 footer a:hover {
     color: var(--text-white);
 }
-
-/* footer heading h3 */
 
 footer h3 {
     font-size: 20px;
@@ -2113,8 +1832,6 @@ footer .links ul li a {
     display: block;
     margin-bottom: 10px;
 }
-
-/* footer last */
 
 footer .bottom_footer {
     padding: 20px 0;
@@ -2133,8 +1850,6 @@ footer .bottom_footer .developer_text a {
     text-decoration: underline;
 }
 
-/* footer go top button */
-
 .go_top {
     position: fixed;
     right: 30px;
@@ -2147,10 +1862,6 @@ footer .bottom_footer .developer_text a {
 .go_top:hover {
     bottom: 80px;
 }
-
-/* -----------Animation-Css-Start-------------- */
-
-/* animation line wraper */
 
 .anim_line {
     width: 100%;
@@ -2221,14 +1932,6 @@ footer .bottom_footer .developer_text a {
     animation-delay: 5s;
 }
 
-/* footer .top_footer .anim_line span:first-child {
-    left: 5%;
-}
-
-footer .top_footer .anim_line span:nth-child(2) {
-    left: 13%;
-} */
-
 @keyframes star_down_one {
     0% {
         opacity: 0;
@@ -2245,8 +1948,6 @@ footer .top_footer .anim_line span:nth-child(2) {
         opacity: 0;
     }
 }
-
-/* --------Object-Moving-Animation-Css-Start----- */
 
 .moving_animation {
     animation: moving_object 6s infinite linear;
@@ -2297,8 +1998,6 @@ footer .top_footer .anim_line span:nth-child(2) {
         transform: translateY(0);
     }
 }
-
-/* ------------Waves-Animation---------------- */
 
 .waves-block {
     position: absolute;
@@ -2359,8 +2058,6 @@ footer .top_footer .anim_line span:nth-child(2) {
     }
 }
 
-/*------Header Btn Animation------*/
-
 @keyframes pulse-blue-small-sm {
     0% {
         box-shadow: 0 0 0 0 rgba(107, 73, 242, 0.7);
@@ -2381,8 +2078,6 @@ footer .top_footer .anim_line span:nth-child(2) {
     }
 }
 
-/*------WhiteHeader Btn Animation------*/
-
 @keyframes pulse-white-small-sm {
     0% {
         box-shadow: 0 0 0 0 rgba(253, 253, 253, 0.7);
@@ -2402,8 +2097,6 @@ footer .top_footer .anim_line span:nth-child(2) {
         box-shadow: 0 0 0 20px transparent
     }
 }
-
-/* Inner Page banner shape animation */
 
 .bred_crumb .banner_shape1,
 .banner_shape2,
@@ -2428,8 +2121,6 @@ footer .top_footer .anim_line span:nth-child(2) {
     right: 20%;
     animation: mymove 3s infinite;
 }
-
-/* CTA section Shape animation */
 
 .query_section .banner_shape1,
 .banner_shape2,
@@ -2461,10 +2152,6 @@ footer .top_footer .anim_line span:nth-child(2) {
     }
 }
 
-/* ----------Other-Page-Css-Start---------- */
-
-/* White Header Css Satart */
-
 .white_header .navbar-expand-lg .navbar-nav .nav-link,
 .white_header .navbar-expand-lg .navbar-nav .has_dropdown .drp_btn {
     color: var(--text-white);
@@ -2491,13 +2178,8 @@ header.fix_style.white_header {
     background-color: #664bece0;
 }
 
-/* About Us Page Css Start */
-
-/* Bredcrumb Css Start */
-
 .bred_crumb {
     background-image: url(../images/bread_crumb_bg.png);
-    /*background: var(--purple);*/
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -2612,8 +2294,6 @@ header.fix_style.white_header {
     background-color: var(--dark-purple);
 }
 
-/* ----About App Soluction Section--- */
-
 .app_solution_section .row {
     align-items: center;
 }
@@ -2697,8 +2377,6 @@ header.fix_style.white_header {
     z-index: -1;
 }
 
-/* ------Why Section CSS Start------ */
-
 .why_we_section {
     display: flex;
     justify-content: center;
@@ -2736,13 +2414,9 @@ header.fix_style.white_header {
     margin-bottom: 0;
 }
 
-/* About-Page-Sectino */
-
 .about_page_sectino img {
     max-width: 100%;
 }
-
-/* -----------experts_team_sectio---------- */
 
 .experts_team_section .experts_box {
     position: relative;
@@ -2805,8 +2479,6 @@ header.fix_style.white_header {
     color: var(--purple);
 }
 
-/* ---------Query-Section-Css-Start-------- */
-
 .query_section {
     display: flex;
     justify-content: center;
@@ -2815,7 +2487,6 @@ header.fix_style.white_header {
 .query_inner {
     width: 1370px;
     margin: 0 15px;
-    /*background-image: url(../images/query_bg.png);*/
     background: var(--purple);
     background-size: cover;
     background-repeat: no-repeat;
@@ -2848,8 +2519,6 @@ header.fix_style.white_header {
 .about_trust_section {
     margin-bottom: 40px;
 }
-
-/* Blog List Css Start */
 
 .blog_list_story {
     margin-bottom: 50px;
@@ -2917,8 +2586,6 @@ header.fix_style.white_header {
     text-align: left;
 }
 
-/* Pagination Css Start */
-
 .pagination_block ul {
     display: flex;
     justify-content: center;
@@ -2962,8 +2629,6 @@ header.fix_style.white_header {
 .pagination_block ul li:last-child a:hover {
     color: var(--purple);
 }
-
-/* Blog Detail Css Start */
 
 .blog_detail_section {
     margin-bottom: 40px;
@@ -3127,8 +2792,6 @@ header.fix_style.white_header {
     display: flex;
 }
 
-/* Social Media link list */
-
 .blog_detail_section .blog_inner_pannel .blog_authore .social_media ul li a {
     display: block;
     width: 37px;
@@ -3168,8 +2831,6 @@ header.fix_style.white_header {
     color: var(--purple);
     font-weight: 500;
 }
-
-/* comment section Css Start */
 
 .comment_section ul {
     margin-top: 30px;
@@ -3224,8 +2885,6 @@ header.fix_style.white_header {
     margin-bottom: 0;
 }
 
-/* comment-form-section */
-
 .comment_form_section form {
     margin-top: 30px;
 }
@@ -3250,10 +2909,7 @@ header.fix_style.white_header {
     resize: none;
 }
 
-/* Sign Up Css Start */
-
 .full_bg {
-    /*background-image: url(../images/form_bg.png);*/
     background-size: cover;
     background: var(--purple);
     width: 100%;
@@ -3379,8 +3035,6 @@ header.fix_style.white_header {
     color: var(--dark-purple);
 }
 
-/* Review List Section Css Start */
-
 .review_list_section .review_box {
     padding: 40px 30px;
     background-color: #fff;
@@ -3425,8 +3079,6 @@ header.fix_style.white_header {
     margin-bottom: 0;
 }
 
-/* review-freeapp */
-
 .review_freeapp {
     margin: 60px 0;
 }
@@ -3436,8 +3088,6 @@ header.fix_style.white_header {
     background-size: cover;
     background-position: 90%;
 }
-
-/* Contact Page Css Start */
 
 .contact_page_section .contact_inner {
     display: flex;

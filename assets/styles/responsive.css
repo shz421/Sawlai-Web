@@ -10,8 +10,6 @@
     --light-bg: #DFDAF3;
 }
 
-/* ------Media-Query-Start--------- */
-
 @media screen and (max-width:1600px) {
     footer .top_footer.has_bg {
         background-repeat: repeat-y;
@@ -26,7 +24,6 @@
 }
 
 @media screen and (max-width:1300px) {
-    /* features section */
     .features_section .feature_detail .feature_box {
         width: 350px;
     }
@@ -42,7 +39,6 @@
     .row_am {
         padding: 50px 0;
     }
-    /* navigation bar section */
     .navbar-expand-lg .navbar-nav .nav-link {
         padding: 5px 8px;
     }
@@ -55,7 +51,6 @@
     .banner_section .banner_slider .right_icon {
         right: -30px;
     }
-    /* features section */
     .features_section .feature_detail .feature_box {
         width: 300px;
     }
@@ -65,7 +60,6 @@
     .features_section .feature_detail .right_data {
         padding-right: 15px;
     }
-    /* about app section */
     .about_app_section .about_text .app_statstic li {
         width: 210px;
         padding-left: 20px;
@@ -73,7 +67,6 @@
     .about_app_section .about_text .app_statstic li p:first-child {
         font-size: 30px;
     }
-    /* modern ui section */
     .modern_ui_section .ui_images::before {
         width: 475px;
         height: 475px;
@@ -84,7 +77,6 @@
     .modern_ui_section .ui_images .right_img img:nth-child(2) {
         margin-left: -140px;
     }
-    /* download app section */
     .free_app_section .container .free_app_inner .free_img img {
         transform: scale(.8);
     }
@@ -94,7 +86,6 @@
     .free_app_section .container .free_app_inner .free_img {
         margin-top: -180px;
     }
-    /* newsletter section */
     .newsletter_box .section_title {
         width: 60%;
     }
@@ -157,7 +148,6 @@
 }
 
 @media screen and (max-width:992px) {
-    /* navigation section */
     .navbar-toggler-icon {
         display: flex;
         align-items: center;
@@ -194,7 +184,6 @@
     .banner_section .used_app {
         justify-content: center;
     }
-    /* navigation section */
     .navbar-expand-lg .navbar-nav {
         align-items: flex-start;
     }
@@ -255,7 +244,6 @@
     .navbar-expand-lg .navbar-nav .has_dropdown:hover .sub_menu {
         margin-top: 0;
     }
-    /* banner section */
     .banner_section .banner_text h1 {
         font-size: 40px;
     }
@@ -268,7 +256,6 @@
     .banner_section .banner_slider .right_icon {
         right: 0;
     }
-    /* features section */
     .features_section .feature_detail .feature_img {
         width: 275px;
     }
@@ -278,7 +265,6 @@
     .features_section .feature_detail .feature_box {
         width: 200px;
     }
-    /* about app section */
     .about_app_section .row {
         flex-direction: column-reverse;
     }
@@ -303,7 +289,6 @@
     .about_app_section .about_img::before {
         left: 35%;
     }
-    /* modern ui section */
     .modern_ui_section .ui_images {
         margin-top: 30px;
     }
@@ -315,7 +300,6 @@
         flex-direction: column;
         align-items: center;
     }
-    /* how it work section */
     .how_it_works .step_block ul li .step_text,
     .how_it_works .step_block ul li .step_img {
         width: 280px;
@@ -326,11 +310,9 @@
     .how_it_works .yt_video .thumbnil a span {
         font-size: 20px;
     }
-    /* testimonial section */
     #testimonial_slider {
         max-width: 500px;
     }
-    /* pricing section */
     .pricing_section .pricing_pannel .pricing_block {
         padding-left: 15px;
         padding-right: 15px;
@@ -343,11 +325,9 @@
     .pricing_section .pricing_pannel .pricing_block .benifits li p {
         font-size: 14px;
     }
-    /* interface section */
     .interface_section .screen_slider {
         min-height: 550px;
     }
-    /* download app section */
     .free_app_section .container .free_app_inner {
         padding: 20px 15px;
     }
@@ -360,14 +340,12 @@
     .free_app_section .container .free_app_inner .free_text .app_btn li a {
         padding: 10px 20px;
     }
-    /* latest story section */
     .latest_story {
         margin-bottom: 40px;
     }
     .latest_story .story_box .story_text {
         padding: 15px;
     }
-    /* newsletter section */
     .newsletter_box {
         flex-direction: column;
         padding: 30px 20px;
@@ -385,7 +363,6 @@
     .newsletter_box .section_title p {
         text-align: center;
     }
-    /* footer section */
     footer .top_footer .logo,
     footer h3 {
         margin-bottom: 20px;
@@ -402,7 +379,6 @@
     footer .top_footer.has_bg {
         background-position: center;
     }
-    /* Bred Crumb */
     .bred_crumb {
         min-height: 350px;
     }
@@ -507,7 +483,6 @@
     .section_title h2 {
         font-size: 24px;
     }
-    /* navbar section */
     .navbar {
         padding-top: 15px;
     }
@@ -516,7 +491,6 @@
         line-height: 1.5;
         font-size: 14px;
     }
-    /* banner section */
     .banner_section {
         margin-top: 60px;
     }
@@ -550,14 +524,12 @@
         width: 350px;
         height: 350px;
     }
-    /* trusted logo section */
     .trusted_section .company_logos {
         padding-top: 0;
     }
     .trusted_section .company_logos img {
         max-width: 70%;
     }
-    /* features section */
     .features_section .feature_detail {
         flex-direction: column-reverse;
         padding-top: 30px;
@@ -586,7 +558,6 @@
         margin-bottom: 0;
         margin-top: 30px;
     }
-    /* about app section */
     .about_app_section .about_text,
     .about_app_section .about_text .section_title {
         text-align: center;
@@ -611,7 +582,6 @@
         width: 350px;
         height: 350px;
     }
-    /* modern ui section */
     .modern_ui_section .ui_images {
         margin-top: 10px;
     }
@@ -648,7 +618,6 @@
     .modern_ui_section .ui_images .right_img img:nth-child(3) {
         margin-top: 0;
     }
-    /* how it work section */
     .how_it_works .how_it_inner {
         padding: 50px 15px;
     }
@@ -729,7 +698,6 @@
     .how_it_works .yt_video .thumbnil a .play_btn img {
         height: auto;
     }
-    /* testimonial section */
     .testimonial_section .testimonial_block {
         margin: 0;
     }
@@ -739,7 +707,6 @@
     .testimonial_section .testimonial_block .testimonial_slide_box {
         width: 100%;
     }
-    /* pricing section */
     .pricing_section .pricing_pannel .pricing_block {
         min-height: auto;
         padding: 30px 15px;
@@ -750,7 +717,6 @@
     .pricing_section .contact_text {
         margin-top: -20px;
     }
-    /* faq section */
     .faq_section .faq_panel .card-header h2 {
         text-align: left;
     }
@@ -762,14 +728,11 @@
     .faq_section .faq_panel .card-body p {
         text-align: left;
     }
-    /* interface section */
     .interface_section .screen_slider {
-        /*min-height: 720px;*/
     }
     .interface_section .owl-item .screen_frame_img img {
         transform: scale(1);
     }
-    /* download section */
     .free_app_section .container .free_app_inner {
         padding: 50px 15px;
         padding-bottom: 0;
@@ -796,11 +759,9 @@
         margin-left: 0;
         margin-top: 15px;
     }
-    /* latest story section */
     .latest_story .story_box {
         margin-bottom: 30px;
     }
-    /* newsletter section */
     .newsletter_box form {
         flex-direction: column;
         align-items: center;
@@ -815,7 +776,6 @@
     .newsletter_box .section_title p {
         font-size: 13px;
     }
-    /* footer section */
     footer .links,
     footer .abt_side {
         margin-bottom: 30px;
@@ -842,16 +802,13 @@
     footer .top_footer .col-md-6 {
         margin-bottom: 0px;
     }
-    /* animation line section */
     .anim_line,
     .anim_line.dark_bg {
         width: 140%;
     }
-    /* latest story section */
     .latest_story .story_box .story_img img {
         width: 100%;
     }
-    /* go top button section */
     .go_top {
         bottom: 30px;
         z-index: 999;
@@ -859,7 +816,6 @@
     .purple_backdrop {
         display: none;
     }
-    /* Bread-Crumb */
     .bred_crumb {
         min-height: 330px;
     }
@@ -1067,7 +1023,6 @@
 }
 
 @media screen and (max-width:479px) {
-    /* about app section */
     .about_app_section .about_img::before {
         left: 49%;
     }
