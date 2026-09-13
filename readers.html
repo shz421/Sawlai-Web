@@ -65,6 +65,22 @@
                         </div>
                     </div>
 
+                    <form class="reader-search" id="reader-search-form" data-aos="fade-up" data-aos-delay="90" role="search">
+                        <label class="reader-search-label" for="reader-search-input">
+                            Find your profile
+                            <span>Below the top 50? Enter your device ID to see your own reader card.</span>
+                        </label>
+                        <div class="reader-search-row">
+                            <input class="reader-search-input" id="reader-search-input" name="device_id" type="text"
+                                placeholder="Your device ID" autocomplete="off" autocapitalize="off" spellcheck="false"
+                                maxlength="128" aria-describedby="reader-search-note">
+                            <button class="reader-search-btn" type="submit">Search</button>
+                        </div>
+                        <p class="reader-search-note" id="reader-search-note" role="status" aria-live="polite" hidden></p>
+                    </form>
+
+                    <div id="reader-search-result" class="reader-grid reader-search-result" hidden></div>
+
                     <div id="readers-loading" class="reader-empty" data-aos="fade-up">Loading readers...</div>
                     <div id="readers-error" class="reader-empty" hidden></div>
                     <div id="readers-list" class="reader-grid" hidden></div>
