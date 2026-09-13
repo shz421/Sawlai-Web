@@ -198,6 +198,21 @@
         });
     };
 
+    // One card markup for both the leaderboard and the device-ID search result,
+    // so the two can never drift apart.
+    const readerCardHtml = function (reader, badgeHtml) {
+        const photo = reader.photo ? escapeHtml(reader.photo) : "assets/images/app-logo.png";
+        return '<a class="reader-card" href="reader?id=' + encodeURIComponent(String(reader.id || "")) + '">' +
+            badgeHtml +
+            '<img class="reader-avatar" src="' + photo + '" alt="' + escapeHtml(reader.username) + '">' +
+            '<div class="reader-card-copy">' +
+            '<h3>' + escapeHtml(reader.username) + '</h3>' +
+            '<p>' + escapeHtml(reader.completedCount) + ' completed books</p>' +
+            '<small>Latest finish ' + escapeHtml(formatCompletedDate(reader.latestFinishedAt)) + '</small>' +
+            '</div>' +
+            '</a>';
+    };
+
     const renderReadersPage = function () {
         const list = document.getElementById("readers-list");
         if (!list) return;
@@ -223,16 +238,8 @@
 
                 list.innerHTML = readers.map(function (reader) {
                     const rankClass = reader.rank <= 3 ? " reader-rank-top" : "";
-                    const photo = reader.photo ? escapeHtml(reader.photo) : "assets/images/app-logo.png";
-                    return '<a class="reader-card" href="reader?id=' + encodeURIComponent(String(reader.id || "")) + '">' +
-                        '<span class="reader-rank' + rankClass + '">#' + escapeHtml(reader.rank) + '</span>' +
-                        '<img class="reader-avatar" src="' + photo + '" alt="' + escapeHtml(reader.username) + '">' +
-                        '<div class="reader-card-copy">' +
-                        '<h3>' + escapeHtml(reader.username) + '</h3>' +
-                        '<p>' + escapeHtml(reader.completedCount) + ' completed books</p>' +
-                        '<small>Latest finish ' + escapeHtml(formatCompletedDate(reader.latestFinishedAt)) + '</small>' +
-                        '</div>' +
-                        '</a>';
+                    return readerCardHtml(reader,
+                        '<span class="reader-rank' + rankClass + '">#' + escapeHtml(reader.rank) + '</span>');
                 }).join("");
                 list.hidden = false;
             })
@@ -343,7 +350,74 @@
             });
     };
 
+    // Device-ID search: the leaderboard only shows the top 50, so a reader
+    // below that can look up their own card here. Only public card fields are
+    // ever rendered, and the ID is sent as-is - the server matches it exactly.
+    const renderReaderSearch = function () {
+        const form = document.getElementById("reader-search-form");
+        if (!form) return;
+
+        const input = document.getElementById("reader-search-input");
+        const note = document.getElementById("reader-search-note");
+        const result = document.getElementById("reader-search-result");
+        const button = form.querySelector("button[type=submit]");
+
+        const say = function (message, isError) {
+            if (!note) return;
+            note.hidden = !message;
+            note.textContent = message || "";
+            note.classList.toggle("is-error", !!isError);
+        };
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            const deviceId = (input && input.value ? input.value : "").trim();
+
+            if (result) {
+                result.hidden = true;
+                result.innerHTML = "";
+            }
+
+            // Keep in step with READER_SEARCH_MIN_LENGTH in the worker.
+            if (deviceId.length < 8) {
+                say("Enter your full device ID - it is at least 8 characters.", true);
+                return;
+            }
+
+            say("Searching...");
+            if (button) button.disabled = true;
+
+            fetchJsonStrict(API_BASE + "/v2/public/readers/search?device_id=" + encodeURIComponent(deviceId))
+                .then(function (data) {
+                    const reader = data && data.reader;
+                    if (!reader) {
+                        say("No public reader profile found for that device ID.", true);
+                        return;
+                    }
+                    say("");
+                    if (result) {
+                        result.innerHTML = readerCardHtml(reader, '<span class="reader-rank reader-rank-top">You</span>');
+                        result.hidden = false;
+                    }
+                })
+                .catch(function (err) {
+                    const message = err && err.message ? err.message : "";
+                    // The worker ships separately from this site, so it may not
+                    // know this route yet. Its fallbacks - "Invalid v2 route" for
+                    // /v2/* paths, "Route not found" for the rest - are internal
+                    // strings, and a reader must never be shown one.
+                    say(/route/i.test(message)
+                        ? "Search is not available right now. Please try again later."
+                        : (message || "Could not search right now."), true);
+                })
+                .finally(function () {
+                    if (button) button.disabled = false;
+                });
+        });
+    };
+
     renderReadersPage();
     renderReaderProfilePage();
+    renderReaderSearch();
 });
 
