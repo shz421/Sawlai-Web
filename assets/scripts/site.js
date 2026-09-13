@@ -179,7 +179,10 @@
     }
 
     const escapeHtml = function (value) {
-        return String(value || "")
+        // Only null/undefined are "nothing". Using `value || ""` here would turn
+        // a count of 0 into an empty string, so "0 completed books" would render
+        // as " completed books".
+        return String(value === null || value === undefined ? "" : value)
             .replace(/&/g, "&amp;")
             .replace(/</g, "&lt;")
             .replace(/>/g, "&gt;")
@@ -202,13 +205,18 @@
     // so the two can never drift apart.
     const readerCardHtml = function (reader, badgeHtml) {
         const photo = reader.photo ? escapeHtml(reader.photo) : "assets/images/app-logo.png";
+        // A searched reader may have no finished books yet; "Latest finish" with
+        // nothing after it would read as a bug.
+        const finishedLine = reader.latestFinishedAt
+            ? '<small>Latest finish ' + escapeHtml(formatCompletedDate(reader.latestFinishedAt)) + '</small>'
+            : '<small>No public books yet</small>';
         return '<a class="reader-card" href="reader?id=' + encodeURIComponent(String(reader.id || "")) + '">' +
             badgeHtml +
             '<img class="reader-avatar" src="' + photo + '" alt="' + escapeHtml(reader.username) + '">' +
             '<div class="reader-card-copy">' +
             '<h3>' + escapeHtml(reader.username) + '</h3>' +
             '<p>' + escapeHtml(reader.completedCount) + ' completed books</p>' +
-            '<small>Latest finish ' + escapeHtml(formatCompletedDate(reader.latestFinishedAt)) + '</small>' +
+            finishedLine +
             '</div>' +
             '</a>';
     };
