@@ -377,6 +377,46 @@
             note.classList.toggle("is-error", !!isError);
         };
 
+        const openButton = document.getElementById("reader-search-open");
+        const row = document.getElementById("reader-search-row");
+        const label = form.querySelector(".reader-search-label");
+
+        // The field is folded away until it is asked for. The button above it
+        // trades places with the real input and puts the cursor in it, so the
+        // reader is typing the moment the field appears.
+        const reveal = function () {
+            if (!row) return;
+            if (openButton) openButton.hidden = true;
+            row.hidden = false;
+            if (input) input.focus();
+        };
+
+        if (openButton) {
+            openButton.addEventListener("click", reveal);
+        }
+
+        // The label points at an input that is hidden until revealed, so it has
+        // to open the field itself instead of letting the browser try to focus
+        // a hidden control.
+        if (label) {
+            label.addEventListener("click", function (event) {
+                event.preventDefault();
+                reveal();
+            });
+        }
+
+        // Escape folds it away again, but never on top of a half-typed ID.
+        if (input && row) {
+            input.addEventListener("keydown", function (event) {
+                if (event.key !== "Escape" || input.value.trim()) return;
+                row.hidden = true;
+                if (openButton) {
+                    openButton.hidden = false;
+                    openButton.focus();
+                }
+            });
+        }
+
         form.addEventListener("submit", function (event) {
             event.preventDefault();
             const deviceId = (input && input.value ? input.value : "").trim();
