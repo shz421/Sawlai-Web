@@ -635,9 +635,11 @@ main > section {
 
 .reader-toolbar {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    /* Total readers reads as a short stat; the search needs room to breathe. */
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
     gap: 18px;
     margin-bottom: 26px;
+    align-items: start;
 }
 
 .reader-stat {
@@ -660,28 +662,20 @@ main > section {
     color: #fff;
 }
 
+/* Sits in the toolbar grid, so it carries the stat card's surface exactly -
+   same padding, radius and border - and adds no margin of its own. */
 .reader-search {
-    margin-bottom: 26px;
-    padding: 22px 24px;
-    border-radius: 24px;
+    padding: 18px 20px;
+    border-radius: 20px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .reader-search-label {
     display: block;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
     font-weight: 700;
     color: #fff;
-}
-
-.reader-search-label span {
-    display: block;
-    margin-top: 6px;
-    font-size: 0.95rem;
-    font-weight: 400;
-    line-height: 1.6;
-    color: var(--saw-muted);
 }
 
 .reader-search-row {
@@ -1173,6 +1167,12 @@ main > section {
     .reader-grid,
     .completed-book-grid {
         grid-template-columns: 1fr;
+    }
+
+    /* The search row wraps on narrow screens; a full-width button on its own
+       line is a far easier tap target than a natural-width one. */
+    .reader-search-btn {
+        width: 100%;
     }
 
     .hero-copy h1 {
