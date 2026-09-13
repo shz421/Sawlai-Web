@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="assets/styles/aos.css">
     <link rel="stylesheet" href="assets/styles/style.css">
     <link rel="stylesheet" href="assets/styles/responsive.css">
-    <link rel="stylesheet" href="assets/styles/site.css?v=4">
+    <link rel="stylesheet" href="assets/styles/site.css?v=5">
 </head>
 
 <body>
@@ -61,7 +61,8 @@
                         </div>
                         <form class="reader-search" id="reader-search-form" role="search">
                             <label class="reader-search-label" for="reader-search-input">Find your profile</label>
-                            <div class="reader-search-row">
+                            <button class="reader-search-open" id="reader-search-open" type="button">Search your profile ID</button>
+                            <div class="reader-search-row" id="reader-search-row" hidden>
                                 <input class="reader-search-input" id="reader-search-input" name="device_id" type="text"
                                     placeholder="Search your profile ID" autocomplete="off" autocapitalize="off" spellcheck="false"
                                     maxlength="128" aria-describedby="reader-search-note">
@@ -102,7 +103,7 @@
     <script src="assets/scripts/jquery.js"></script>
     <script src="assets/scripts/bootstrap.min.js"></script>
     <script src="assets/scripts/aos.js"></script>
-    <script src="assets/scripts/site.js?v=4"></script>
+    <script src="assets/scripts/site.js?v=5"></script>
 </body>
 
 </html>

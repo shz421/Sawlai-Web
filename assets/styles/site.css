@@ -678,6 +678,41 @@ main > section {
     color: #fff;
 }
 
+/* The field starts folded away behind this button. It is drawn as a ghost of
+   the input it becomes - same box, same padding, text in the same place - so
+   revealing the input swaps one for the other without the card jumping. */
+.reader-search-open {
+    display: block;
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px dashed rgba(255, 255, 255, 0.24);
+    color: rgba(255, 255, 255, 0.5);
+    font-family: inherit;
+    font-size: 1rem;
+    text-align: left;
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.reader-search-open:hover {
+    border-color: rgba(87, 199, 255, 0.6);
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.reader-search-open:focus-visible {
+    outline: 2px solid #57c7ff;
+    outline-offset: 2px;
+}
+
+/* Both carry a display from their own class, which would beat the hidden
+   attribute's UA display:none - so hide them explicitly. */
+.reader-search-open[hidden],
+.reader-search-row[hidden] {
+    display: none;
+}
+
 .reader-search-row {
     display: flex;
     flex-wrap: wrap;
