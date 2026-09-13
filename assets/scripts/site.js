@@ -234,7 +234,9 @@
                 const readers = Array.isArray(data.readers) ? data.readers : [];
                 if (loading) loading.hidden = true;
                 if (error) error.hidden = true;
-                if (total) total.textContent = String(data.total || readers.length || 0);
+                // Number() first so a four-digit count reads as "1,284"; the
+                // fallback chain is unchanged, NaN falling through to it.
+                if (total) total.textContent = (Number(data.total) || readers.length || 0).toLocaleString();
 
                 if (!readers.length) {
                     if (error) {
