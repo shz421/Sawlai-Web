@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="About Sawlai Library - our mission, values, and commitment to readers.">
-    <title>Sawlai Library အကြောင်း</title>
+    <title>About Us - Sawlai Library</title>
     <link rel="icon" type="image/png" href="assets/images/app-logo.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,17 +20,287 @@
     <link rel="stylesheet" href="assets/styles/responsive.css">
     <link rel="stylesheet" href="assets/styles/site.css?v=7">
     <style>
-        .hero-sub {
-            font-size: 1.08rem;
-            line-height: 1.95;
-        }
-
         .dmca-inline-link {
-            color: inherit;
+            color: var(--saw-accent-2);
             text-decoration: underline;
             text-decoration-thickness: 2px;
             text-underline-offset: 3px;
             font-weight: 700;
+        }
+
+        .about-hero {
+            min-height: auto;
+            padding-bottom: 26px;
+        }
+
+        .about-hero::after {
+            display: none;
+        }
+
+        .about-hero .hero-bg {
+            background:
+                radial-gradient(circle at 18% 18%, rgba(41, 182, 246, 0.22), transparent 38%),
+                radial-gradient(circle at 84% 10%, rgba(87, 199, 255, 0.16), transparent 36%),
+                linear-gradient(155deg, rgba(7, 8, 22, 0.92), rgba(7, 8, 22, 0.99));
+        }
+
+        .about-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-hero h1 {
+            color: #fff;
+            font-weight: 800;
+            font-size: clamp(1.95rem, 4.4vw, 3.15rem);
+            line-height: 1.2;
+            margin: 14px auto 20px;
+            max-width: 900px;
+        }
+
+        .about-lead {
+            color: var(--saw-muted);
+            font-size: 1.04rem;
+            line-height: 1.98;
+            max-width: 880px;
+            margin: 0 auto;
+        }
+
+        .about-hero .hero-buttons {
+            justify-content: center;
+            margin-top: 32px;
+        }
+
+        .about-section {
+            padding: 76px 0;
+            position: relative;
+        }
+
+        .about-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .about-glow-a::before {
+            background: radial-gradient(circle at 20% 0%, rgba(41, 182, 246, 0.11), transparent 40%);
+        }
+
+        .about-glow-b::before {
+            background: radial-gradient(circle at 84% 12%, rgba(87, 199, 255, 0.1), transparent 40%);
+        }
+
+        .about-section .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-head {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 42px;
+        }
+
+        .about-head h2 {
+            color: #fff;
+            font-weight: 700;
+            font-size: clamp(1.55rem, 3vw, 2.35rem);
+            margin: 12px 0 12px;
+        }
+
+        .about-head p {
+            color: var(--saw-muted);
+            margin: 0;
+            line-height: 1.85;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .about-card {
+            padding: 28px 24px;
+            border-radius: 20px;
+            background: var(--saw-glass);
+            border: 1px solid var(--saw-border);
+            backdrop-filter: blur(10px);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(41, 182, 246, 0.45);
+            box-shadow: 0 18px 40px rgba(41, 182, 246, 0.18);
+        }
+
+        .about-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            margin-bottom: 16px;
+            color: var(--saw-accent-2);
+            background: rgba(41, 182, 246, 0.14);
+            border: 1px solid rgba(41, 182, 246, 0.28);
+        }
+
+        .about-icon svg {
+            width: 24px;
+            height: 24px;
+            display: block;
+        }
+
+        .about-mail svg,
+        .about-contact-card .social-pill svg {
+            display: block;
+            flex-shrink: 0;
+        }
+
+        .about-card h3 {
+            color: #fff;
+            font-size: 1.12rem;
+            margin-bottom: 8px;
+        }
+
+        .about-card p {
+            color: var(--saw-muted);
+            margin: 0;
+            line-height: 1.8;
+        }
+
+        .about-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .about-stat {
+            padding: 26px 20px;
+            text-align: center;
+            border-radius: 20px;
+            background: linear-gradient(160deg, rgba(41, 182, 246, 0.15), rgba(255, 255, 255, 0.03));
+            border: 1px solid var(--saw-border);
+            backdrop-filter: blur(10px);
+        }
+
+        .about-stat strong {
+            display: block;
+            font-size: clamp(1.5rem, 2.8vw, 2.15rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 9px;
+            background: linear-gradient(120deg, var(--saw-accent), var(--saw-accent-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: var(--saw-accent-2);
+        }
+
+        .about-stat span {
+            color: var(--saw-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .about-contact-grid {
+            display: grid;
+            grid-template-columns: 1.12fr 1fr;
+            gap: 20px;
+            align-items: stretch;
+        }
+
+        .about-contact-card {
+            display: flex;
+            flex-direction: column;
+            padding: 28px 26px;
+            border-radius: 20px;
+            background: var(--saw-glass);
+            border: 1px solid var(--saw-border);
+            backdrop-filter: blur(10px);
+        }
+
+        .about-contact-card h3 {
+            color: #fff;
+            font-size: 1.05rem;
+            margin: 0 0 8px;
+        }
+
+        .about-contact-card > p {
+            color: var(--saw-muted);
+            margin: 0 0 20px;
+            line-height: 1.78;
+        }
+
+        .about-mail {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            align-self: flex-start;
+            gap: 10px;
+            min-height: 46px;
+            padding: 0 24px;
+            margin-top: auto;
+            border-radius: 999px;
+            background: linear-gradient(120deg, var(--saw-accent), var(--saw-accent-2));
+            color: #fff !important;
+            font-weight: 700;
+            overflow-wrap: anywhere;
+            box-shadow: 0 0 26px rgba(41, 182, 246, 0.34);
+            transition: transform 0.24s ease, box-shadow 0.24s ease;
+        }
+
+        .about-mail:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 32px rgba(41, 182, 246, 0.42);
+        }
+
+        .about-contact-card .contact-socials {
+            margin-top: auto;
+        }
+
+        @media (max-width: 991px) {
+            .about-grid,
+            .about-stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .about-contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .about-section {
+                padding: 56px 0;
+            }
+
+            .about-hero {
+                padding-top: 96px;
+            }
+
+            .about-lead {
+                font-size: 1rem;
+                line-height: 1.9;
+            }
+
+            .about-grid,
+            .about-stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-hero .hero-buttons .btn-premium,
+            .about-hero .hero-buttons .btn-ghost {
+                width: 100%;
+            }
+
+            .about-mail {
+                align-self: stretch;
+            }
         }
     </style>
 </head>
@@ -70,83 +340,100 @@
         </header>
 
         <main>
-            <section class="hero-section section-pad" aria-labelledby="about-title">
+            <section class="hero-section about-hero" aria-labelledby="about-title">
                 <div class="hero-bg" aria-hidden="true"></div>
                 <div class="particle-layer" aria-hidden="true"></div>
                 <div class="container">
                     <div class="section-head" data-aos="fade-up">
                         <p class="eyebrow">About Us</p>
                         <h1 id="about-title">A Digital Library for Young Readers</h1>
-                        <p class="hero-sub mx-auto" style="max-width: 820px;">
-                            Sawlai Library သည် လူငယ်လူရွယ်တို့ စာဖတ်အား မြှင့်တင်ပေးနိင်ရန် နှင့် စာအုပ်ပေါင်းစုံများကို တစ်နေရာတည်း ကြည့်ရှု၊ တိုက်ရိုက်ဖတ်နိင်အောင် တည်ဆောက်ထားသော စာကြည့်တိုက်ဖြစ်ပါသည်။
+                        <p class="about-lead">
+                            Sawlai Library သည် လူငယ်လူရွယ်တို့ စာဖတ်အား မြှင့်တင်ပေးနိုင်ရန် နှင့် စာအုပ်ပေါင်းစုံများကို တစ်နေရာတည်း ကြည့်ရှု၊ တိုက်ရိုက်ဖတ်နိုင်အောင် တည်ဆောက်ထားသော စာကြည့်တိုက်ဖြစ်ပါသည်။
                             <br><br>
-                            အက်ပလီ‌ကေးရှင်းအတွင်း ဘဝတိုးတက်ရေး၊ စီးပွားရေးစာအုပ်ကောင်းများ၊ အသက်မွေးဝမ်းကြောင်း နှင့် ကျွမ်းကျင်မှုဆိုင်ရာ စာအုပ်များ၊ အသိဉာဏ်ရည်တုဆိုင်ရာ နည်းပညာပညာရပ်များအပြင် မြန်မာနိင်ငံတွင်း မှီတင်းနေထိုင်ကြသော တိုင်းရင်းသားညီအစ်ကိုများ၏ စာအုပ်စာပေများလည်း လေ့လာနိင်ရန် နှင့် နိင်ငံတကာတွင် အောင်မြင်ကျော်ကြားသောစာအုပ်ကောင်းများ၊ ဆောင်းပါးများကို တစ်နေရာတည်း အွန်လိုင်းဖြင့်တိုက်ရိုက် ရွေးချယ်ဖတ်ရှုနိင်ပြီး အွန်လိုင်းပလက်‌ဖောင်းများတွင် ပျံကြဲ့ စုဆောင်းထားသောစာအုပ်များလည်း <a class="dmca-inline-link" href="dmca">မှုပိုင်ခွင့်များလုပ်ဆောင်နိင်ပါသည်။</a>
+                            အက်ပလီ‌ကေးရှင်းအတွင်း ဘဝတိုးတက်ရေး၊ စီးပွားရေးစာအုပ်ကောင်းများ၊ အသက်မွေးဝမ်းကြောင်း နှင့် ကျွမ်းကျင်မှုဆိုင်ရာ စာအုပ်များ၊ အသိဉာဏ်ရည်တုဆိုင်ရာ နည်းပညာပညာရပ်များအပြင် မြန်မာနိုင်ငံတွင်း မှီတင်းနေထိုင်ကြသော တိုင်းရင်းသားညီအစ်ကိုများ၏ စာအုပ်စာပေများလည်း လေ့လာနိုင်ရန် နှင့် နိုင်ငံတကာတွင် အောင်မြင်ကျော်ကြားသောစာအုပ်ကောင်းများ၊ ဆောင်းပါးများကို တစ်နေရာတည်း အွန်လိုင်းဖြင့်တိုက်ရိုက် ရွေးချယ်ဖတ်ရှုနိုင်ပြီး အွန်လိုင်းပလက်‌ဖောင်းများတွင် ပျံကြဲ့ စုဆောင်းထားသောစာအုပ်များလည်း <a class="dmca-inline-link" href="dmca">မူပိုင်ခွင့်များ လုပ်ဆောင်နိုင်ပါသည်။</a>
                         </p>
+                        <div class="hero-buttons" data-aos="fade-up" data-aos-delay="90">
+                            <a class="btn-premium" href="https://play.google.com/store/apps/details?id=digital.online.books" target="_blank" rel="noopener">အခုပဲ ဒေါင်းလုဒ်လုပ်ပါ</a>
+                            <a class="btn-ghost" href="readers">စာအုပ်များ ကြည့်ရှုပါ</a>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <section class="features-section section-pad" aria-labelledby="mission-title">
+            <section class="about-section about-glow-a" aria-labelledby="mission-title">
                 <div class="container">
-                    <div class="section-head" data-aos="fade-up">
+                    <div class="about-head" data-aos="fade-up">
                         <p class="eyebrow">Our Mission</p>
                         <h2 id="mission-title">What we are building</h2>
+                        <p>ကျွန်ုပ်တို့၏ ကတိကဝတ် သုံးချက်ကို အခြေခံထားပါသည်။</p>
                     </div>
-                    <div class="feature-grid">
-                        <article class="feature-card" data-aos="fade-up">
-                            <i class="icofont-book"></i>
+                    <div class="about-grid">
+                        <article class="about-card" data-aos="fade-up">
+                            <span class="about-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" /></svg></span>
                             <h3>Easy Reading Access</h3>
-                            <p>Bring useful books into one clean platform for daily learning and reading.</p>
+                            <p>အသုံးဝင်သော စာအုပ်များကို နေ့စဉ် လေ့လာဖတ်ရှုနိုင်ရန် တစ်နေရာတည်းတွင် စုစည်းပေးထားပါသည်။</p>
                         </article>
-                        <article class="feature-card" data-aos="fade-up" data-aos-delay="70">
-                            <i class="icofont-users-alt-2"></i>
+                        <article class="about-card" data-aos="fade-up" data-aos-delay="70">
+                            <span class="about-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg></span>
                             <h3>Reader Community</h3>
-                            <p>Support writers and readers with shared knowledge, discovery, and recommendations.</p>
+                            <p>ဗဟုသုတ မျှဝေခြင်း၊ ရှာဖွေတွေ့ရှိခြင်းနှင့် အကြံပြုချက်များဖြင့် စာရေးသူများနှင့် စာဖတ်သူများကို ပံ့ပိုးပေးပါသည်။</p>
                         </article>
-                        <article class="feature-card" data-aos="fade-up" data-aos-delay="140">
-                            <i class="icofont-refresh"></i>
+                        <article class="about-card" data-aos="fade-up" data-aos-delay="140">
+                            <span class="about-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 4v6h-6" /><path d="M1 20v-6h6" /><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10" /><path d="M1 14l4.64 4.36A9 9 0 0 0 20.49 15" /></svg></span>
                             <h3>Continuous Improvement</h3>
-                            <p>Improve the app and web experience with stable updates and user feedback.</p>
+                            <p>တည်ငြိမ်သော အပ်ဒိတ်များနှင့် အသုံးပြုသူများ၏ အကြံပြုချက်များဖြင့် အက်ပ်နှင့် ဝဘ်ဆိုက် အတွေ့အကြုံကို မြှင့်တင်ပေးပါသည်။</p>
                         </article>
                     </div>
                 </div>
             </section>
 
-            <section class="stats-section section-pad" aria-label="Why readers choose Sawlai">
+            <section class="about-section about-glow-b" aria-label="Why readers choose Sawlai">
                 <div class="container">
-                    <div class="section-head" data-aos="fade-up">
+                    <div class="about-head" data-aos="fade-up">
                         <p class="eyebrow">Why Sawlai</p>
                         <h2>Built for practical reading</h2>
+                        <p>စာအုပ်တစ်အုပ်ကို ဒေါင်းလုဒ်လုပ်ပြီးပါက အင်တာနက် မလိုဘဲ ဖတ်ရှုနိုင်ပါသည်။</p>
                     </div>
-                    <div class="stats-grid">
-                        <article class="stat-card" data-aos="fade-up"><h3>26000+</h3><p>Books and content</p></article>
-                        <article class="stat-card" data-aos="fade-up" data-aos-delay="70"><h3>Offline</h3><p>Download and read</p></article>
-                        <article class="stat-card" data-aos="fade-up" data-aos-delay="140"><h3>Audio</h3><p>Learning on the go</p></article>
-                        <article class="stat-card" data-aos="fade-up" data-aos-delay="210"><h3>Multi Device</h3><p>Phone and desktop support</p></article>
+                    <div class="about-stats-grid">
+                        <article class="about-stat" data-aos="fade-up">
+                            <strong>26000+</strong>
+                            <span>စာအုပ်နှင့် အကြောင်းအရာများ</span>
+                        </article>
+                        <article class="about-stat" data-aos="fade-up" data-aos-delay="70">
+                            <strong>Offline</strong>
+                            <span>ဒေါင်းလုဒ်လုပ်ပြီး ဖတ်ပါ</span>
+                        </article>
+                        <article class="about-stat" data-aos="fade-up" data-aos-delay="140">
+                            <strong>Audio</strong>
+                            <span>အပြင်ဘက်တွင် လေ့လာပါ</span>
+                        </article>
+                        <article class="about-stat" data-aos="fade-up" data-aos-delay="210">
+                            <strong>Multi Device</strong>
+                            <span>ဖုန်းနှင့် ကွန်ပျူတာ နှစ်မျိုးလုံး</span>
+                        </article>
                     </div>
                 </div>
             </section>
 
-            <section class="faq-section section-pad" aria-labelledby="contact-title">
+            <section class="about-section about-glow-a" aria-labelledby="contact-title">
                 <div class="container">
-                    <div class="section-head" data-aos="fade-up">
+                    <div class="about-head" data-aos="fade-up">
                         <p class="eyebrow">Contact</p>
                         <h2 id="contact-title">Need support or want to contribute?</h2>
+                        <p>ပေးပို့သမျှ အီးမေးလ်အားလုံးကို ဖတ်ရှုပြီး များသောအားဖြင့် နှစ်ရက်အတွင်း ပြန်လည် ဖြေကြားပေးပါသည်။</p>
                     </div>
-                    <div class="faq-list" data-aos="fade-up" data-aos-delay="100">
-                        <article class="faq-item active">
-                            <button class="faq-toggle" aria-expanded="true">Support Email<span>+</span></button>
-                            <div class="faq-content">
-                                <p>sawlai.library@gmail.com</p>
-                            </div>
+                    <div class="about-contact-grid">
+                        <article class="about-contact-card" data-aos="fade-up">
+                            <h3>Support Email</h3>
+                            <p>မေးခွန်းများ၊ ပြင်ဆင်စရာများ၊ စာအုပ် တောင်းဆိုချက်များ သို့မဟုတ် မူပိုင်ခွင့် ဖယ်ရှားရေး အကြောင်းကြားချက်များကို ဤနေရာတွင် ပေးပို့ပါ။</p>
+                            <a class="about-mail" href="mailto:sawlai.library@gmail.com?subject=Sawlai%20Library%20-%20Support"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m22 6-10 7L2 6" /></svg>sawlai.library@gmail.com</a>
                         </article>
-                        <article class="faq-item">
-                            <button class="faq-toggle" aria-expanded="false">Community Channel<span>+</span></button>
-                            <div class="faq-content">
-                                <div class="contact-socials">
-                                    <a class="social-pill social-pill-telegram" href="https://t.me/shz421" target="_blank" rel="noopener" aria-label="Open Sawlai Library Telegram channel"><i class="icofont-telegram"></i>Telegram Channel</a>
-                                    <a class="social-pill social-pill-facebook" href="https://www.facebook.com/profile.php?id=61590780832470" target="_blank" rel="noopener" aria-label="Open Sawlai Library Facebook page"><i class="icofont-facebook"></i>Facebook Page</a>
-                                </div>
+                        <article class="about-contact-card" data-aos="fade-up" data-aos-delay="90">
+                            <h3>Community Channels</h3>
+                            <p>စာအုပ်အသစ်များ၊ ဖတ်ရှုရန် အကြံပြုချက်များနှင့် ကြေညာချက်များအတွက် လိုက်ကြည့်ပါ။</p>
+                            <div class="contact-socials">
+                                <a class="social-pill social-pill-telegram" href="https://t.me/shz421" target="_blank" rel="noopener" aria-label="Open Sawlai Library Telegram channel"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.9 19c-.2 1-.8 1.2-1.7.8l-4.6-3.4-2.2 2.1c-.25.25-.45.45-.9.45l.32-4.6L18.3 6.6c.36-.32-.08-.5-.56-.18L7.06 13.2l-4.5-1.4c-1-.3-1-1 .2-1.5L20.3 3c.8-.3 1.5.2 1.6 1.3z" /></svg>Telegram Channel</a>
+                                <a class="social-pill social-pill-facebook" href="https://www.facebook.com/profile.php?id=61590780832470" target="_blank" rel="noopener" aria-label="Open Sawlai Library Facebook page"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.25-1.5 1.55-1.5h1.65V4.6A22 22 0 0 0 14.3 4.5c-2.4 0-4 1.45-4 4.1v2.3H7.6V14h2.7v8h3.2z" /></svg>Facebook Page</a>
                             </div>
                         </article>
                     </div>
@@ -179,4 +466,3 @@
 </body>
 
 </html>
-
