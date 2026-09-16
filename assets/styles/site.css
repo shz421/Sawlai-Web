@@ -504,11 +504,12 @@ main > section {
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.feature-card i {
+.feature-card .feature-icon {
+    width: 1.8rem;
+    height: 1.8rem;
     color: var(--saw-accent);
-    font-size: 1.8rem;
     margin-bottom: 10px;
-    display: inline-block;
+    display: block;
 }
 
 .feature-card h3 {
