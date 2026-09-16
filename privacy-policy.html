@@ -123,6 +123,13 @@
         const API_URL = 'https://lib.sawlai.com/json/Others/Privacy-Policy.json';
         const container = document.getElementById('privacy-content');
 
+        function safeUrl(value) {
+            var url = String(value == null ? '' : value).replace(/[\u0000-\u0020\u007f]+/g, '');
+            if (!url) return '';
+            if (/^[a-z][a-z0-9+.-]*:/i.test(url)) return /^(https?|mailto):/i.test(url) ? url : '';
+            return url;
+        }
+
         function renderMarkdown(text) {
             if (!text) return '<p>No content available.</p>';
 
@@ -138,7 +145,9 @@
             html = html
                 .replace(/&/g, '&amp;')
                 .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;');
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
 
             html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
 
@@ -161,7 +170,9 @@
 
             html = html.replace(
             /\[([^\]]+)\]\(link=([^)]+)\)/g,
-                '<a href="$2" target="_blank" rel="noopener">$1</a>'
+                function(match, display, url) {
+                    return '<a href="' + safeUrl(url) + '" target="_blank" rel="noopener">' + display.trim() + '</a>';
+                }
             );
 
             html = html.replace(
@@ -185,7 +196,7 @@
                 function(match, url, w, h) {
                     var width = w ? Math.min(parseInt(w), 300) : 300;
                     var height = h ? Math.min(parseInt(h), 300) : 300;
-                    return '<img src="' + url.trim() + '" alt="image" style="max-width:' + width + 'px;max-height:' + height + 'px;border-radius:8px;vertical-align:middle;" loading="lazy">';
+                    return '<img src="' + safeUrl(url) + '" alt="image" style="max-width:' + width + 'px;max-height:' + height + 'px;border-radius:8px;vertical-align:middle;" loading="lazy">';
                 }
             );
 
