@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="assets/styles/aos.css">
     <link rel="stylesheet" href="assets/styles/style.css">
     <link rel="stylesheet" href="assets/styles/responsive.css">
-    <link rel="stylesheet" href="assets/styles/site.css?v=8">
+    <link rel="stylesheet" href="assets/styles/site.css?v=9">
 </head>
 
 <body>
@@ -198,73 +198,148 @@
                         <a class="download-card"
                             href="https://play.google.com/store/apps/details?id=digital.online.books"
                             data-aos="fade-up">
-                            <span>Google Play</span><small>Android အတွက် ဒေါင်းလုပ်ရယူပါ</small>
+                            <span class="download-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814 13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893 2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198 2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.2 12l2.498-2.491zM5.864 2.658 16.802 8.99l-2.302 2.302-8.636-8.634z" /></svg></span>
+                            <span class="download-name">Google Play</span>
+                            <small>Android အတွက် ဒေါင်းလုပ်ရယူပါ</small>
                         </a>
-                        <a class="download-card" href="#" data-aos="fade-up" data-aos-delay="80">
-                            <span>Apple Store</span><small>iOS အတွက် ဒေါင်းလုပ်ရယူပါ</small>
+                        <a class="download-card" href="https://apps.apple.com/"
+                            data-aos="fade-up" data-aos-delay="100">
+                            <span class="download-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.54c-.02-2.2 1.8-3.26 1.88-3.31-1.02-1.5-2.61-1.7-3.18-1.72-1.35-.14-2.64.79-3.33.79-.69 0-1.75-.77-2.87-.75-1.48.02-2.84.86-3.6 2.18-1.53 2.66-.39 6.6 1.1 8.76.73 1.06 1.6 2.25 2.75 2.2 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.7.71 2.87.69 1.18-.02 1.93-1.08 2.65-2.14.83-1.22 1.18-2.4 1.2-2.46-.03-.01-2.3-.88-2.32-3.53z" /><path d="M15.5 5.6c.6-.73 1.01-1.75.9-2.76-.87.04-1.92.58-2.55 1.31-.56.64-1.05 1.68-.92 2.67.97.08 1.96-.49 2.57-1.22z" /></svg></span>
+                            <span class="download-name">Apple Store</span>
+                            <small>iOS အတွက် ဒေါင်းလုပ်ရယူပါ</small>
                         </a>
-                        <a class="download-card" href="https://t.me/shz421/92" data-aos="fade-up" data-aos-delay="160">
-                            <span>Windows App</span><small>ကွန်ပျူတာအတွက် ဒေါင်းလုပ်ရယူပါ</small>
-                        </a>
-                        <a class="download-card" href="https://www.facebook.com/share/v/1C2oXJ9LbC/"
-                            target="_blank" rel="noopener" data-aos="fade-up" data-aos-delay="240">
-                            <span>Watch Demo</span><small>အသုံးပြုပုံကို ကြည့်ရှုပါ</small>
+                        <a class="download-card" href="https://t.me/shz421/92"
+                            data-aos="fade-up" data-aos-delay="200">
+                            <span class="download-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 4.6l7.4-1v7.9H3V4.6zm8.4-1.1L21 2.2v9.3h-9.6V3.5zM3 12.5h7.4v7.9L3 19.4v-6.9zm8.4 0H21v9.3l-9.6-1.3v-8z" /></svg></span>
+                            <span class="download-name">Windows App</span>
+                            <small>ကွန်ပျူတာအတွက် ဒေါင်းလုပ်ရယူပါ</small>
                         </a>
                     </div>
+
+                    <a class="download-demo" href="https://www.facebook.com/share/v/1C2oXJ9LbC/"
+                        target="_blank" rel="noopener" data-aos="fade-up" data-aos-delay="300">
+                        <span class="download-demo-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6L19 12z" /></svg></span>
+                        <span class="download-demo-copy">
+                            <span class="download-demo-title">Watch Demo</span>
+                            <small>အသုံးပြုပုံကို ကြည့်ရှုပါ</small>
+                        </span>
+                        <svg class="download-demo-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+                    </a>
                 </div>
             </section>
 
-            <section class="community-section section-pad" aria-labelledby="community-title">
+            <section class="community-section section-pad" id="community" aria-labelledby="community-title">
                 <div class="container">
                     <div class="community-panel" data-aos="fade-up">
                         <div class="community-copy">
                             <p class="eyebrow">Reading Community</p>
                             <h2 id="community-title">Reader Leaderboard</h2>
-                            <p>စာဖတ်ချိန် သတ်မှတ်ချက် ပြည့်မီသော စာဖတ်သူများကို ဝက်ဆိုဒ်စာမျက်နာများတွင် စာဖတ်သူနာမည် နှင့် စာအုပ်စာရင်းများအား ဒီနေရာတွင် မြင်တွေ့နိင်အောင် လုပ်ဆောင်ပေးထားပါပြီး မီမီပရိုဖိုင်များအား မျှဝေနိင်ပါသည်။</p>
+                            <p class="community-lead">စာဖတ်ချိန် သတ်မှတ်ချက် ပြည့်မီသော စာဖတ်သူများကို ဝက်ဆိုဒ်စာမျက်နာများတွင် စာဖတ်သူနာမည် နှင့် စာအုပ်စာရင်းများအား ဒီနေရာတွင် မြင်တွေ့နိင်အောင် လုပ်ဆောင်ပေးထားပါပြီး မီမီပရိုဖိုင်များအား မျှဝေနိင်ပါသည်။</p>
+                            <div class="community-actions">
+                                <a class="community-cta" href="readers">
+                                    <span>See Readers</span>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+                                </a>
+                            </div>
                         </div>
-                        <a class="community-link" href="readers">See Readers</a>
+
+                        <div class="community-visual" aria-hidden="true">
+                            <span class="community-glow"></span>
+                            <div class="podium">
+                                <div class="podium-col">
+                                    <span class="podium-medal podium-medal-2">2</span>
+                                    <span class="podium-bar podium-bar-2"></span>
+                                </div>
+                                <div class="podium-col">
+                                    <svg class="podium-trophy" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10v5a5 5 0 0 1-10 0z" /><path d="M7 5H4.5A1.5 1.5 0 0 0 3 6.5C3 9 5 10.5 7 10.5" /><path d="M17 5h2.5A1.5 1.5 0 0 1 21 6.5c0 2.5-2 4-4 4" /><path d="M12 14v3" /><path d="M8.5 21h7l-.7-4h-5.6z" /></svg>
+                                    <span class="podium-medal podium-medal-1">1</span>
+                                    <span class="podium-bar podium-bar-1"></span>
+                                </div>
+                                <div class="podium-col">
+                                    <span class="podium-medal podium-medal-3">3</span>
+                                    <span class="podium-bar podium-bar-3"></span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <section class="faq-section section-pad" id="faq" aria-labelledby="faq-title">
                 <div class="container">
-                    <div class="section-head" data-aos="fade-up">
-                        <p class="eyebrow">FAQ</p>
-                        <h2 id="faq-title">Frequently asked questions</h2>
-                    </div>
+                    <div class="faq-layout">
+                        <div class="faq-rail" data-aos="fade-up">
+                            <p class="eyebrow">FAQ</p>
+                            <h2 id="faq-title">Frequently asked questions</h2>
+                            <p class="faq-rail-lead">အမေးများသော မေးခွန်းများနှင့် ၎င်းတို့၏ အဖြေများကို ဤနေရာတွင် စုစည်းပေးထားပါသည်။ ရှာဖွေမတွေ့ရှိသေးပါက ကျွန်ုပ်တို့ထံ တိုက်ရိုက် ဆက်သွယ်မေးမြန်းနိုင်ပါသည်။</p>
+                            <a class="faq-rail-cta" href="https://t.me/shz421" target="_blank" rel="noopener">
+                                <span>ဆက်သွယ်ရန်</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+                            </a>
+                        </div>
 
-                    <div class="faq-list" data-aos="fade-up" data-aos-delay="100">
-                        <article class="faq-item">
-                            <button class="faq-toggle" aria-expanded="false">စာအုပ်များ တိုက်ရိုက်ထည့်သွင်းလို့ ရပါသလား။<span>+</span></button>
-                            <div class="faq-content">
-                                <p>အက်ပ်တွင် မပါဝင်သေးသော စာအုပ်ကောင်းများကို သုံးစွဲသူများမှ တိုက်ရိုက်တင်ပြနိုင်ရန် စီစဉ်ပေးထားပါသည်။</p>
-                            </div>
-                        </article>
-                        <article class="faq-item">
-                            <button class="faq-toggle" aria-expanded="false">ဝက်ဘ်ဆိုဒ်စာမျက်နှာတွင် ဖော်ပြခံရရန် မည်သို့ စာဖတ်ရမည်နည်း။<span>+</span></button>
-                            <div class="faq-content">
-                                <p>စာအုပ်များကို မှန်မှန်ကန်ကန် ဖတ်ရှုခြင်းဖြင့် သင်၏ စာဖတ်မှတ်တမ်းများကို အလိုအလျောက် မှတ်တမ်းတင်ပေးမည်ဖြစ်ပြီး ဝက်ဘ်ဆိုဒ်ပေါ်တွင်လည်း ဖော်ပြပေးသွားမည်ဖြစ်ပါသည်။</p>
-                            </div>
-                        </article>
-                        <article class="faq-item">
-                            <button class="faq-toggle" aria-expanded="false">မူပိုင်ခွင့်ရှိသော စာအုပ်များကို မည်သို့ ပယ်ရှားနိုင်ပါသလဲ။<span>+</span></button>
-                            <div class="faq-content">
-                                <p>မူပိုင်ခွင့်ပိုင်ရှင်များအနေဖြင့် လိုအပ်သော အချက်အလက်များ ပေးပို့၍ ပယ်ရှားရန် တောင်းဆိုနိုင်ပါသည်။ စိစစ်ပြီးနောက် ၂၄ နာရီအတွင်း ဆောင်ရွက်ပေးပါမည်။</p>
-                            </div>
-                        </article>
-                        <article class="faq-item">
-                            <button class="faq-toggle" aria-expanded="false">ပရီမီယံဝန်ဆောင်မှုကို ဝယ်ယူအသုံးပြုနိုင်ပါသလား။<span>+</span></button>
-                            <div class="faq-content">
-                                <p>ပရီမီယံဝန်ဆောင်မှုကို ရယူခြင်းဖြင့် ကွန်ပြူတာနှင့် ဖုန်းနှစ်မျိုးတွင် အသုံးပြုနိုင်ပြီး ကြော်ငြာများ မြင်တွေ့ခြင်းမရှိတော့ပါ။ သို့သော် အက်ပ်အတွင်းရှိ စာအုပ်များအားလုံးကို အခမဲ့ ဖတ်ရှုနိုင်ပါသည်။</p>
-                            </div>
-                        </article>
-                        <article class="faq-item">
-                            <button class="faq-toggle" aria-expanded="false">မည်သို့သော လုပ်ဆောင်ချက်များကြောင့် အကောင့်ပိတ်ခံရနိုင်ပါသလဲ။<span>+</span></button>
-                            <div class="faq-content">
-                                <p>မှားယွင်းသော သတင်းပို့မှုများ၊ မသင့်လျော်သော အသုံးအနှုန်းများ သို့မဟုတ် အခြားသူများကို ထိခိုက်စေသော အပြုအမူများ ပြုလုပ်ပါက အကောင့်အသုံးပြုခွင့်ကို ကန့်သတ်ခြင်း သို့မဟုတ် ပိတ်သိမ်းခြင်းများ ဆောင်ရွက်နိုင်ပါသည်။</p>
-                            </div>
-                        </article>
+                        <div class="faq-list" data-aos="fade-up" data-aos-delay="100">
+                            <article class="faq-item">
+                                <button class="faq-toggle" id="faq-q1" aria-expanded="false" aria-controls="faq-a1">
+                                    <span class="faq-num" aria-hidden="true">01</span>
+                                    <span class="faq-text">စာအုပ်များ တိုက်ရိုက်ထည့်သွင်းလို့ ရပါသလား။</span>
+                                    <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14" /><path class="faq-icon-v" d="M12 5v14" /></svg></span>
+                                </button>
+                                <div class="faq-content" id="faq-a1" role="region" aria-labelledby="faq-q1">
+                                    <div class="faq-content-inner">
+                                        <p>အက်ပ်တွင် မပါဝင်သေးသော စာအုပ်ကောင်းများကို သုံးစွဲသူများမှ တိုက်ရိုက်တင်ပြနိုင်ရန် စီစဉ်ပေးထားပါသည်။</p>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="faq-item">
+                                <button class="faq-toggle" id="faq-q2" aria-expanded="false" aria-controls="faq-a2">
+                                    <span class="faq-num" aria-hidden="true">02</span>
+                                    <span class="faq-text">ဝက်ဘ်ဆိုဒ်စာမျက်နှာတွင် ဖော်ပြခံရရန် မည်သို့ စာဖတ်ရမည်နည်း။</span>
+                                    <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14" /><path class="faq-icon-v" d="M12 5v14" /></svg></span>
+                                </button>
+                                <div class="faq-content" id="faq-a2" role="region" aria-labelledby="faq-q2">
+                                    <div class="faq-content-inner">
+                                        <p>စာအုပ်များကို မှန်မှန်ကန်ကန် ဖတ်ရှုခြင်းဖြင့် သင်၏ စာဖတ်မှတ်တမ်းများကို အလိုအလျောက် မှတ်တမ်းတင်ပေးမည်ဖြစ်ပြီး ဝက်ဘ်ဆိုဒ်ပေါ်တွင်လည်း ဖော်ပြပေးသွားမည်ဖြစ်ပါသည်။</p>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="faq-item">
+                                <button class="faq-toggle" id="faq-q3" aria-expanded="false" aria-controls="faq-a3">
+                                    <span class="faq-num" aria-hidden="true">03</span>
+                                    <span class="faq-text">မူပိုင်ခွင့်ရှိသော စာအုပ်များကို မည်သို့ ပယ်ရှားနိုင်ပါသလဲ။</span>
+                                    <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14" /><path class="faq-icon-v" d="M12 5v14" /></svg></span>
+                                </button>
+                                <div class="faq-content" id="faq-a3" role="region" aria-labelledby="faq-q3">
+                                    <div class="faq-content-inner">
+                                        <p>မူပိုင်ခွင့်ပိုင်ရှင်များအနေဖြင့် လိုအပ်သော အချက်အလက်များ ပေးပို့၍ ပယ်ရှားရန် တောင်းဆိုနိုင်ပါသည်။ စိစစ်ပြီးနောက် ၂၄ နာရီအတွင်း ဆောင်ရွက်ပေးပါမည်။</p>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="faq-item">
+                                <button class="faq-toggle" id="faq-q4" aria-expanded="false" aria-controls="faq-a4">
+                                    <span class="faq-num" aria-hidden="true">04</span>
+                                    <span class="faq-text">ပရီမီယံဝန်ဆောင်မှုကို ဝယ်ယူအသုံးပြုနိုင်ပါသလား။</span>
+                                    <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14" /><path class="faq-icon-v" d="M12 5v14" /></svg></span>
+                                </button>
+                                <div class="faq-content" id="faq-a4" role="region" aria-labelledby="faq-q4">
+                                    <div class="faq-content-inner">
+                                        <p>ပရီမီယံဝန်ဆောင်မှုကို ရယူခြင်းဖြင့် ကွန်ပြူတာနှင့် ဖုန်းနှစ်မျိုးတွင် အသုံးပြုနိုင်ပြီး ကြော်ငြာများ မြင်တွေ့ခြင်းမရှိတော့ပါ။ သို့သော် အက်ပ်အတွင်းရှိ စာအုပ်များအားလုံးကို အခမဲ့ ဖတ်ရှုနိုင်ပါသည်။</p>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="faq-item">
+                                <button class="faq-toggle" id="faq-q5" aria-expanded="false" aria-controls="faq-a5">
+                                    <span class="faq-num" aria-hidden="true">05</span>
+                                    <span class="faq-text">မည်သို့သော လုပ်ဆောင်ချက်များကြောင့် အကောင့်ပိတ်ခံရနိုင်ပါသလဲ။</span>
+                                    <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14" /><path class="faq-icon-v" d="M12 5v14" /></svg></span>
+                                </button>
+                                <div class="faq-content" id="faq-a5" role="region" aria-labelledby="faq-q5">
+                                    <div class="faq-content-inner">
+                                        <p>မှားယွင်းသော သတင်းပို့မှုများ၊ မသင့်လျော်သော အသုံးအနှုန်းများ သို့မဟုတ် အခြားသူများကို ထိခိုက်စေသော အပြုအမူများ ပြုလုပ်ပါက အကောင့်အသုံးပြုခွင့်ကို ကန့်သတ်ခြင်း သို့မဟုတ် ပိတ်သိမ်းခြင်းများ ဆောင်ရွက်နိုင်ပါသည်။</p>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
                     </div>
                 </div>
             </section>
