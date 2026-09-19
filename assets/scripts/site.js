@@ -60,7 +60,7 @@
         img.dataset.fallbackApplied = "1";
 
         const name = img.getAttribute("alt") || "";
-        if (name && img.classList.contains("reader-avatar")) {
+        if (name) {
             img.replaceWith(initialsTile(name, img.className));
             return;
         }
@@ -371,8 +371,13 @@
 
                 title.textContent = reader.username || "Reader";
                 booksTotal.textContent = String(data.total || books.length || 0);
-                avatar.src = reader.photo || "assets/images/app-logo.png";
-                avatar.alt = reader.username || "Reader";
+                const avatarName = reader.username || "Reader";
+                if (reader.photo) {
+                    avatar.src = String(reader.photo);
+                    avatar.alt = avatarName;
+                } else {
+                    avatar.replaceWith(initialsTile(avatarName, avatar.className));
+                }
                 if (shareBtn) {
                     const shareUrl = window.location.href;
                     shareBtn.hidden = false;
