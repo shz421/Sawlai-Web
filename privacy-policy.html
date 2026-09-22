@@ -19,25 +19,385 @@
     <link rel="stylesheet" href="assets/styles/responsive.css">
     <link rel="stylesheet" href="assets/styles/site.css?v=10">
     <style>
-        .legal-wrap { max-width: 920px; margin: 0 auto; }
-        .legal-card {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            border-radius: 18px;
-            padding: 28px 22px;
-            color: #e2e8f0;
-            line-height: 1.8;
-            text-align: left;
+        html {
+            scroll-behavior: smooth;
         }
-        .legal-card h2 { color: #fff; font-size: 1.2rem; margin-top: 22px; }
-        .legal-card strong { color: #fff; }
-        .legal-card ul { padding-left: 20px; margin: 8px 0; }
-        .legal-card li { margin-bottom: 4px; }
-        .legal-card a { color: #57c7ff; font-weight: 600; }
-        .loading-spinner { text-align: center; padding: 40px 0; }
-        .loading-spinner .spinner { width: 40px; height: 40px; border: 3px solid rgba(255,255,255,0.1); border-top-color: #57c7ff; border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 12px; }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        .error-msg { color: #ff6b6b; text-align: center; padding: 20px; }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+        }
+
+        .policy-hero {
+            min-height: auto;
+            padding-bottom: 26px;
+        }
+
+        .policy-hero::after {
+            display: none;
+        }
+
+        .policy-hero .hero-bg {
+            background:
+                radial-gradient(circle at 18% 18%, rgba(41, 182, 246, 0.22), transparent 38%),
+                radial-gradient(circle at 84% 10%, rgba(87, 199, 255, 0.16), transparent 36%),
+                linear-gradient(155deg, rgba(7, 8, 22, 0.92), rgba(7, 8, 22, 0.99));
+        }
+
+        .policy-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .policy-hero h1 {
+            color: #fff;
+            font-weight: 800;
+            font-size: clamp(1.95rem, 4.4vw, 3.15rem);
+            line-height: 1.2;
+            margin: 14px auto 20px;
+            max-width: 900px;
+        }
+
+        .policy-lead {
+            color: var(--saw-muted);
+            font-size: 1.04rem;
+            line-height: 1.98;
+            max-width: 820px;
+            margin: 0 auto;
+        }
+
+        .policy-body {
+            padding: 44px 0 88px;
+        }
+
+        .policy-grid {
+            display: grid;
+            grid-template-columns: 280px minmax(0, 1fr);
+            gap: 26px;
+            align-items: start;
+        }
+
+        .policy-aside {
+            position: sticky;
+            top: 96px;
+            display: grid;
+            gap: 16px;
+        }
+
+        .policy-meta,
+        .policy-toc {
+            background: var(--saw-glass);
+            border: 1px solid var(--saw-border);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .policy-meta {
+            padding: 20px;
+        }
+
+        .policy-meta dl {
+            margin: 0;
+        }
+
+        .policy-meta dt {
+            color: var(--saw-accent-2);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .policy-meta dd {
+            color: #fff;
+            font-weight: 600;
+            line-height: 1.6;
+            margin: 5px 0 15px;
+            overflow-wrap: anywhere;
+        }
+
+        .policy-meta dd:last-child {
+            margin-bottom: 0;
+        }
+
+        .policy-meta a {
+            color: var(--saw-accent-2);
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 3px;
+        }
+
+        .policy-toc {
+            padding: 18px;
+        }
+
+        .policy-toc h2 {
+            color: #fff;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin: 0 0 12px;
+        }
+
+        .policy-toc-list {
+            display: grid;
+            gap: 4px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .policy-toc-list a {
+            display: flex;
+            gap: 10px;
+            padding: 9px 11px;
+            border: 1px solid transparent;
+            border-radius: 12px;
+            color: var(--saw-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+
+        .policy-toc-list a:hover {
+            color: #fff;
+            background: rgba(41, 182, 246, 0.1);
+        }
+
+        .policy-toc-list a[aria-current="true"] {
+            color: #fff;
+            background: rgba(41, 182, 246, 0.15);
+            border-color: rgba(41, 182, 246, 0.36);
+        }
+
+        .policy-toc-num {
+            flex: 0 0 auto;
+            width: 18px;
+            color: var(--saw-accent-2);
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .policy-content {
+            color: #e2e8f0;
+            line-height: 1.9;
+            background: var(--saw-glass);
+            border: 1px solid var(--saw-border);
+            border-radius: 22px;
+            padding: 30px 28px 34px;
+            backdrop-filter: blur(10px);
+        }
+
+        .policy-sec + .policy-sec {
+            margin-top: 34px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.09);
+        }
+
+        .policy-sec h2 {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            color: #fff;
+            font-size: clamp(1.12rem, 2.1vw, 1.32rem);
+            font-weight: 700;
+            line-height: 1.45;
+            margin: 0 0 14px;
+            scroll-margin-top: 96px;
+        }
+
+        .policy-num {
+            flex: 0 0 auto;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 10px;
+            color: var(--saw-accent-2);
+            font-size: 0.85rem;
+            font-weight: 800;
+            background: rgba(41, 182, 246, 0.14);
+            border: 1px solid rgba(41, 182, 246, 0.3);
+            transform: translateY(4px);
+        }
+
+        .policy-content p {
+            margin: 0 0 13px;
+        }
+
+        .policy-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .policy-content strong {
+            color: #fff;
+        }
+
+        .policy-content ul {
+            list-style: none;
+            margin: 0 0 14px;
+            padding: 0;
+        }
+
+        .policy-content li {
+            position: relative;
+            margin-bottom: 7px;
+            padding-left: 22px;
+        }
+
+        .policy-content li:last-child {
+            margin-bottom: 0;
+        }
+
+        .policy-content li::before {
+            content: "";
+            position: absolute;
+            left: 4px;
+            top: 0.72em;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: linear-gradient(140deg, var(--saw-accent-2), var(--saw-accent));
+        }
+
+        .policy-content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .policy-content a {
+            color: var(--saw-accent-2);
+            font-weight: 600;
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 3px;
+        }
+
+        .loading-spinner {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .loading-spinner .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top-color: #57c7ff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 12px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .error-msg {
+            color: #ff6b6b;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .policy-top {
+            position: fixed;
+            right: 20px;
+            bottom: 24px;
+            z-index: 1200;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border: 0;
+            border-radius: 50%;
+            color: #fff;
+            background: linear-gradient(120deg, var(--saw-accent), var(--saw-accent-2));
+            box-shadow: 0 12px 30px rgba(41, 182, 246, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+        }
+
+        .policy-top.is-visible {
+            opacity: 1;
+            visibility: visible;
+            transform: none;
+        }
+
+        .policy-top svg {
+            display: block;
+            width: 20px;
+            height: 20px;
+        }
+
+        @media (max-width: 991px) {
+            .policy-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .policy-aside {
+                position: static;
+            }
+
+            .policy-toc-list {
+                display: flex;
+                gap: 8px;
+                overflow-x: auto;
+                padding-bottom: 6px;
+                scrollbar-width: thin;
+            }
+
+            .policy-toc-list li {
+                flex: 0 0 auto;
+            }
+
+            .policy-toc-list a {
+                border-color: var(--saw-border);
+                border-radius: 999px;
+                padding: 8px 14px;
+                white-space: nowrap;
+            }
+
+            .policy-toc-num {
+                width: auto;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .policy-hero {
+                padding-top: 96px;
+            }
+
+            .policy-lead {
+                font-size: 1rem;
+                line-height: 1.9;
+            }
+
+            .policy-body {
+                padding: 30px 0 68px;
+            }
+
+            .policy-content {
+                border-radius: 18px;
+                padding: 24px 18px 28px;
+            }
+
+            .policy-meta,
+            .policy-toc {
+                padding: 16px;
+            }
+
+            .policy-top {
+                right: 14px;
+                bottom: 16px;
+            }
+        }
     </style>
 </head>
 
@@ -76,22 +436,36 @@
         </header>
 
         <main>
-            <section class="hero-section section-pad" aria-labelledby="privacy-title">
+            <section class="hero-section policy-hero" aria-labelledby="policy-title">
                 <div class="hero-bg" aria-hidden="true"></div>
                 <div class="particle-layer" aria-hidden="true"></div>
-                <div class="container legal-wrap">
+                <div class="container">
                     <div class="section-head" data-aos="fade-up">
                         <p class="eyebrow">Policy</p>
-                        <h1 id="privacy-title">Privacy Policy</h1>
-                        <p class="hero-sub mx-auto" id="privacy-sub">Loading...</p>
+                        <h1 id="policy-title">Privacy Policy</h1>
+                        <p class="policy-lead" id="policy-lead">Loading&hellip;</p>
                     </div>
+                </div>
+            </section>
 
-                    <article class="legal-card" id="privacy-content" data-aos="fade-up" data-aos-delay="80">
-                        <div class="loading-spinner">
-                            <div class="spinner"></div>
-                            <p>Loading content...</p>
-                        </div>
-                    </article>
+            <section class="policy-body" aria-label="Privacy policy document">
+                <div class="container">
+                    <div class="policy-grid">
+                        <aside class="policy-aside" data-aos="fade-up">
+                            <div class="policy-meta" id="policy-meta" hidden></div>
+                            <nav class="policy-toc" aria-labelledby="policy-toc-title">
+                                <h2 id="policy-toc-title">Contents</h2>
+                                <ul class="policy-toc-list" id="policy-toc-list"></ul>
+                            </nav>
+                        </aside>
+
+                        <article class="policy-content" id="policy-content" data-aos="fade-up" data-aos-delay="80">
+                            <div class="loading-spinner">
+                                <div class="spinner"></div>
+                                <p>Loading content&hellip;</p>
+                            </div>
+                        </article>
+                    </div>
                 </div>
             </section>
         </main>
@@ -112,6 +486,10 @@
                 <p class="copyright">Copyright 2024 - 2026 Sawlai Library. All rights reserved.</p>
             </div>
         </footer>
+
+        <button class="policy-top" id="policy-top" type="button" aria-label="Back to top">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5" /><path d="m5 12 7-7 7 7" /></svg>
+        </button>
     </div>
 
     <script src="assets/scripts/jquery.js"></script>
@@ -120,34 +498,51 @@
     <script src="assets/scripts/site.js?v=7"></script>
     <script>
     (function() {
-        const API_URL = 'https://lib.sawlai.com/json/Others/Privacy-Policy.json';
-        const container = document.getElementById('privacy-content');
+        var API_URL = 'https://lib.sawlai.com/json/Others/Privacy-Policy.json';
+        var contentEl = document.getElementById('policy-content');
+        var tocEl = document.getElementById('policy-toc-list');
+        var metaEl = document.getElementById('policy-meta');
+        var leadEl = document.getElementById('policy-lead');
+
+        var META_RE = /^\s*(Last Updated|Developer|App Name|Contact Email)\s*:\s*(.+?)\s*$/;
+        var HEAD_RE = /^\s*(\d{1,2})\.\s*(?:[-–—]\s*)?\*\*(.+?)\*\*\s*(.*)$/;
 
         function safeUrl(value) {
-            var url = String(value == null ? '' : value).replace(/[\u0000-\u0020\u007f]+/g, '');
+            var url = String(value == null ? '' : value).replace(/[\u0000- \u007f]+/g, '');
             if (!url) return '';
             if (/^[a-z][a-z0-9+.-]*:/i.test(url)) return /^(https?|mailto):/i.test(url) ? url : '';
             return url;
         }
 
-        function renderMarkdown(text) {
-            if (!text) return '<p>No content available.</p>';
-
-            let html = text;
-
-            html = html.replace(/<m>\s*/g, '');
-            html = html.replace(/\s*<m>/g, '');
-            html = html.replace(/<s>\s*/g, '');
-            html = html.replace(/\s*<s>/g, '');
-            html = html.replace(/<\/?h>/g, '');
-            html = html.replace(/<\/?b>/g, '');
-
-            html = html
+        function escapeHtml(text) {
+            return String(text == null ? '' : text)
                 .replace(/&/g, '&amp;')
                 .replace(/</g, '&lt;')
                 .replace(/>/g, '&gt;')
                 .replace(/"/g, '&quot;')
                 .replace(/'/g, '&#39;');
+        }
+
+        function normalize(text) {
+            return String(text == null ? '' : text)
+                .replace(/\u0000/g, '')
+                .replace(/<m>[ \t]*/g, '')
+                .replace(/[ \t]*<m>/g, '')
+                .replace(/<s>[ \t]*/g, '')
+                .replace(/[ \t]*<s>/g, '')
+                .replace(/<\/?h>/g, '')
+                .replace(/<\/?b>/g, '');
+        }
+
+        function inline(text) {
+            var held = [];
+
+            function hold(html) {
+                held.push(html);
+                return '\u0000' + (held.length - 1) + '\u0000';
+            }
+
+            var html = text;
 
             html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
 
@@ -156,22 +551,24 @@
             html = html.replace(
                 /\[([^\]]+)\]\(email=([^&)]+)(?:&subject=([^&)]*))?(?:&body=([^)]*))?\)/g,
                 function(match, display, email, subject, body) {
-                    let href = 'mailto:' + encodeURIComponent(email.trim());
+                    var href = 'mailto:' + encodeURIComponent(email.trim());
                     if (subject) href += '?subject=' + encodeURIComponent(subject.trim());
                     if (body) href += (subject ? '&' : '?') + 'body=' + encodeURIComponent(body.trim());
-                    return '<a href="' + href + '">' + display.trim() + '</a>';
+                    return hold('<a href="' + href + '">' + display.trim() + '</a>');
                 }
             );
 
             html = html.replace(
                 /\[([^\]]*@[^\]]+\.\w+)\]/g,
-                function(m, email) { return '<a href="mailto:' + encodeURIComponent(email.trim()) + '">' + email.trim() + '</a>'; }
+                function(match, email) {
+                    return hold('<a href="mailto:' + encodeURIComponent(email.trim()) + '">' + email.trim() + '</a>');
+                }
             );
 
             html = html.replace(
-            /\[([^\]]+)\]\(link=([^)]+)\)/g,
+                /\[([^\]]+)\]\(link=([^)]+)\)/g,
                 function(match, display, url) {
-                    return '<a href="' + safeUrl(url) + '" target="_blank" rel="noopener">' + display.trim() + '</a>';
+                    return hold('<a href="' + safeUrl(url) + '" target="_blank" rel="noopener">' + display.trim() + '</a>');
                 }
             );
 
@@ -179,60 +576,208 @@
                 /\[([^\]]+)\]\(activity=([^)]+)\)/g,
                 function(match, display, activity) {
                     var a = activity.trim().toLowerCase();
-                    if (a === 'dmca' || a === 'copyright') return '<a href="dmca">' + display.trim() + '</a>';
-                    if (a === 'about') return '<a href="about-us">' + display.trim() + '</a>';
-                    if (a === 'home') return '<a href="/">' + display.trim() + '</a>';
-                    return '<a href="/">' + display.trim() + '</a>';
+                    if (a === 'dmca' || a === 'copyright') return hold('<a href="dmca">' + display.trim() + '</a>');
+                    if (a === 'about') return hold('<a href="about-us">' + display.trim() + '</a>');
+                    return hold('<a href="/">' + display.trim() + '</a>');
                 }
             );
 
             html = html.replace(
                 /\[([^\]]+)\]\(fetch=([^)]+)\)/g,
-                '<a href="/">$1</a>'
+                function(match, display) {
+                    return hold('<a href="/">' + display.trim() + '</a>');
+                }
             );
 
             html = html.replace(
                 /\[image\]\(([^)|]+)(?:\|(\d+))?(?:\|(\d+))?\)/g,
                 function(match, url, w, h) {
-                    var width = w ? Math.min(parseInt(w), 300) : 300;
-                    var height = h ? Math.min(parseInt(h), 300) : 300;
-                    return '<img src="' + safeUrl(url) + '" alt="image" style="max-width:' + width + 'px;max-height:' + height + 'px;border-radius:8px;vertical-align:middle;" loading="lazy">';
+                    var width = w ? Math.min(parseInt(w, 10), 300) : 300;
+                    var height = h ? Math.min(parseInt(h, 10), 300) : 300;
+                    return hold('<img src="' + safeUrl(url) + '" alt="image" style="max-width:' + width + 'px;max-height:' + height + 'px;border-radius:8px;vertical-align:middle;" loading="lazy">');
                 }
             );
 
             html = html.replace(
                 /(https?:\/\/[^\s<]+)/g,
-                '<a href="$1" target="_blank" rel="noopener">$1</a>'
+                function(match, url) {
+                    return hold('<a href="' + url + '" target="_blank" rel="noopener">' + url + '</a>');
+                }
             );
 
-            var lines = html.split('\n');
-            var result = '';
-            var inList = false;
+            return html.replace(/\u0000(\d+)\u0000/g, function(match, index) {
+                return held[Number(index)];
+            });
+        }
+
+        function buildDocument(body) {
+            var lines = normalize(body).split('\n');
+            var meta = [];
+            var lead = '';
+            var sections = [];
+            var current = null;
+            var inHead = true;
+
             for (var i = 0; i < lines.length; i++) {
-                var line = lines[i];
-                var trimmed = line.trim();
-                if (trimmed.startsWith('- ')) {
-                    if (!inList) { result += '<ul>'; inList = true; }
-                    result += '<li>' + trimmed.substring(2) + '</li>';
-                } else {
-                    if (inList) { result += '</ul>'; inList = false; }
-                    if (trimmed === '') continue;
-                    result += '<p>' + line + '</p>';
+                var line = lines[i].trim();
+
+                if (inHead) {
+                    var metaMatch = META_RE.exec(line);
+                    if (metaMatch) {
+                        meta.push({ label: metaMatch[1], value: metaMatch[2] });
+                        continue;
+                    }
+                    if (line === '') continue;
+                    inHead = false;
+                }
+
+                var headMatch = HEAD_RE.exec(line);
+                if (headMatch) {
+                    current = { num: headMatch[1], title: headMatch[2].replace(/^[-–—]\s*/, ''), body: [] };
+                    if (headMatch[3]) current.body.push(headMatch[3]);
+                    sections.push(current);
+                    continue;
+                }
+
+                if (current) {
+                    current.body.push(line);
+                } else if (line !== '') {
+                    lead = lead ? lead + ' ' + line : line;
                 }
             }
-            if (inList) result += '</ul>';
-            result = result.replace(/<p>\s*<br>\s*<\/p>/g, '');
-            result = result.replace(/(<br>\s*){2,}/g, '<br>');
-            return result || '<p>No content available.</p>';
+
+            return { meta: meta, lead: lead, sections: sections };
+        }
+
+        function renderBlocks(lines) {
+            var out = '';
+            var inList = false;
+
+            for (var i = 0; i < lines.length; i++) {
+                var line = lines[i];
+
+                if (line === '') continue;
+
+                if (/^[-•]\s+/.test(line)) {
+                    if (!inList) { out += '<ul>'; inList = true; }
+                    out += '<li>' + inline(escapeHtml(line.replace(/^[-•]\s+/, ''))) + '</li>';
+                    continue;
+                }
+
+                if (inList) { out += '</ul>'; inList = false; }
+                out += '<p>' + inline(escapeHtml(line)) + '</p>';
+            }
+
+            if (inList) out += '</ul>';
+            return out;
+        }
+
+        function renderSections(sections) {
+            var out = '';
+
+            for (var i = 0; i < sections.length; i++) {
+                var section = sections[i];
+                var id = 'policy-' + section.num;
+                out += '<section class="policy-sec" aria-labelledby="' + id + '">';
+                out += '<h2 id="' + id + '"><span class="policy-num" aria-hidden="true">' + escapeHtml(section.num) + '</span>' + inline(escapeHtml(section.title)) + '</h2>';
+                out += renderBlocks(section.body);
+                out += '</section>';
+            }
+
+            return out || '<p>No content available.</p>';
+        }
+
+        function renderToc(sections) {
+            var out = '';
+
+            for (var i = 0; i < sections.length; i++) {
+                out += '<li><a href="#policy-' + escapeHtml(sections[i].num) + '">'
+                    + '<span class="policy-toc-num">' + escapeHtml(sections[i].num) + '</span>'
+                    + '<span>' + escapeHtml(sections[i].title) + '</span></a></li>';
+            }
+
+            tocEl.innerHTML = out;
+        }
+
+        function renderMeta(meta) {
+            if (!meta.length) {
+                metaEl.hidden = true;
+                return;
+            }
+
+            var out = '<dl>';
+
+            for (var i = 0; i < meta.length; i++) {
+                var value = meta[i].value.replace(/^\[(.*)\]$/, '$1');
+                out += '<dt>' + escapeHtml(meta[i].label) + '</dt>';
+                out += '<dd>' + inline(escapeHtml(value)) + '</dd>';
+            }
+
+            out += '</dl>';
+            metaEl.innerHTML = out;
+            metaEl.hidden = false;
+        }
+
+        function watchSections() {
+            var links = {};
+            var anchors = tocEl.querySelectorAll('a[href^="#policy-"]');
+
+            for (var i = 0; i < anchors.length; i++) {
+                links[anchors[i].getAttribute('href').slice(1)] = anchors[i];
+            }
+
+            function setActive(id) {
+                for (var key in links) {
+                    if (key === id) links[key].setAttribute('aria-current', 'true');
+                    else links[key].removeAttribute('aria-current');
+                }
+            }
+
+            if (!('IntersectionObserver' in window)) return;
+
+            var sections = contentEl.querySelectorAll('.policy-sec');
+            var visible = {};
+
+            var observer = new IntersectionObserver(function(entries) {
+                for (var e = 0; e < entries.length; e++) {
+                    visible[entries[e].target.id] = entries[e].isIntersecting;
+                }
+
+                for (var s = 0; s < sections.length; s++) {
+                    if (visible[sections[s].id]) {
+                        setActive(sections[s].id);
+                        return;
+                    }
+                }
+
+                setActive(null);
+            }, { rootMargin: '-96px 0px -55% 0px', threshold: 0 });
+
+            for (var k = 0; k < sections.length; k++) observer.observe(sections[k]);
         }
 
         function renderContent(data) {
             if (!data || !data.length) return;
             var item = data[0];
-            var title = item.Title || 'Privacy Policy';
-            var body = item.Body || '';
-            document.getElementById('privacy-title').textContent = title;
-            container.innerHTML = renderMarkdown(body);
+            var doc = buildDocument(item.Body || '');
+
+            if (item.Title) {
+                document.getElementById('policy-title').textContent = item.Title;
+                document.title = item.Title + ' - Sawlai Library';
+            }
+
+            if (doc.lead) {
+                leadEl.innerHTML = inline(escapeHtml(doc.lead));
+                leadEl.hidden = false;
+            } else {
+                leadEl.hidden = true;
+            }
+
+            renderMeta(doc.meta);
+            renderToc(doc.sections);
+            contentEl.innerHTML = renderSections(doc.sections);
+            watchSections();
+
             if (typeof AOS !== 'undefined') AOS.refresh();
         }
 
@@ -252,6 +797,17 @@
             + "7. - <m> **Changes to This Policy**<m>\nWe may update this policy periodically. Check this page for changes. Continued app use means you accept the updated policy.\n\n"
             + "8. - <m> **Copyright & User-Uploaded Content**<m>\nUsers may upload books, but we do not claim ownership of copyrighted material. If you believe your rights were violated, contact the original author/publisher or email us for removal.\n\n"
             + "9. <m>**- Contact Us**<m>\nFor privacy-related questions, contact: [sawlai.library@gmail.com]";
+
+        var topButton = document.getElementById('policy-top');
+
+        topButton.addEventListener('click', function() {
+            var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+        });
+
+        window.addEventListener('scroll', function() {
+            topButton.classList.toggle('is-visible', window.scrollY > 600);
+        }, { passive: true });
 
         fetch(API_URL)
             .then(function(r) {
