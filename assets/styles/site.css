@@ -2266,6 +2266,16 @@ main > section {
     .copyright {
         text-align: center;
     }
+
+    .feature-card .feature-icon {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .download-card {
+        align-items: center;
+        text-align: center;
+    }
 }
 
 @media (max-width: 480px) {
