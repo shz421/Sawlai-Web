@@ -183,6 +183,8 @@
         .policy-content {
             color: #e2e8f0;
             line-height: 1.9;
+            text-align: left;
+            overflow-wrap: break-word;
             background: var(--saw-glass);
             border: 1px solid var(--saw-border);
             border-radius: 22px;
@@ -338,19 +340,27 @@
 
         @media (max-width: 991px) {
             .policy-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: minmax(0, 1fr);
             }
 
             .policy-aside {
                 position: static;
             }
 
+            .policy-aside,
+            .policy-meta,
+            .policy-toc {
+                min-width: 0;
+            }
+
             .policy-toc-list {
                 display: flex;
                 gap: 8px;
+                min-width: 0;
                 overflow-x: auto;
                 padding-bottom: 6px;
                 scrollbar-width: thin;
+                -webkit-overflow-scrolling: touch;
             }
 
             .policy-toc-list li {
