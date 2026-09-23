@@ -111,7 +111,6 @@ html {
     top: 0;
     z-index: 1100;
     transition: background-color 0.3s ease, border-color 0.3s ease;
-    backdrop-filter: blur(0px);
 }
 
 .saw-header.scrolled {
@@ -123,6 +122,13 @@ html {
 
 .saw-nav {
     padding: 14px 0;
+}
+
+.saw-menu {
+    display: flex;
+    flex-grow: 1;
+    flex-basis: auto;
+    align-items: center;
 }
 
 .saw-brand {
@@ -2007,18 +2013,105 @@ main > section {
         display: none;
     }
 
-    .saw-links {
-        background: rgba(7, 8, 22, 0.9);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        border-radius: 14px;
-        padding: 14px;
-        margin-top: 10px;
+    .saw-toggler {
+        position: relative;
+        z-index: 1300;
     }
 
-    .saw-links .nav-link,
-    .saw-links .nav-link:hover {
-        margin-left: 0;
+    .saw-toggler span {
+        transition: transform 0.28s ease, opacity 0.2s ease;
+    }
+
+    .saw-toggler.is-open span:nth-child(1) {
+        transform: translateY(12px) rotate(45deg);
+    }
+
+    .saw-toggler.is-open span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .saw-toggler.is-open span:nth-child(3) {
+        transform: translateY(-12px) rotate(-45deg);
+    }
+
+    .saw-menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1200;
+        width: min(320px, 82vw);
+        flex-grow: 0;
+        flex-basis: auto;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 88px 18px 28px;
+        margin: 0;
+        background: linear-gradient(180deg, #0c1226, #070816 62%);
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: -24px 0 60px rgba(0, 0, 0, 0.55);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        visibility: hidden;
+        transform: translateX(101%);
+        transition: transform 0.34s cubic-bezier(0.22, 0.61, 0.36, 1), visibility 0s linear 0.34s;
+        will-change: transform;
+    }
+
+    .saw-menu.is-open {
+        visibility: visible;
+        transform: translateX(0);
+        transition: transform 0.34s cubic-bezier(0.22, 0.61, 0.36, 1), visibility 0s;
+    }
+
+    .saw-menu-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 1190;
+        background: rgba(4, 6, 15, 0.72);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.34s ease, visibility 0s linear 0.34s;
+    }
+
+    .saw-menu-backdrop.is-open {
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.34s ease, visibility 0s;
+    }
+
+    body.saw-menu-open {
+        overflow: hidden;
+    }
+
+    .saw-menu .saw-links {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background: none;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .saw-menu .saw-links .nav-link,
+    .saw-menu .saw-links .nav-link:hover {
+        margin: 0;
+        padding: 15px 8px !important;
+        border-radius: 12px;
+        font-size: 1.02rem;
         transform: none;
+    }
+
+    .saw-menu .saw-links .nav-link::after {
+        display: none;
+    }
+
+    .saw-menu .saw-links .nav-link.nav-active {
+        color: #fff !important;
+        background: rgba(41, 182, 246, 0.14);
     }
 
     .saw-header.scrolled {
