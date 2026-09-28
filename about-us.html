@@ -19,14 +19,6 @@
     <link rel="stylesheet" href="assets/styles/responsive.css">
     <link rel="stylesheet" href="assets/styles/site.css?v=12">
     <style>
-        .dmca-inline-link {
-            color: var(--saw-accent-2);
-            text-decoration: underline;
-            text-decoration-thickness: 2px;
-            text-underline-offset: 3px;
-            font-weight: 700;
-        }
-
         .about-hero {
             min-height: auto;
             padding-bottom: 26px;
@@ -90,6 +82,10 @@
             background: radial-gradient(circle at 84% 12%, rgba(87, 199, 255, 0.1), transparent 40%);
         }
 
+        .about-glow-c::before {
+            background: radial-gradient(circle at 50% 0%, rgba(41, 182, 246, 0.09), transparent 42%);
+        }
+
         .about-section .container {
             position: relative;
             z-index: 2;
@@ -112,27 +108,6 @@
             color: var(--saw-muted);
             margin: 0;
             line-height: 1.85;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .about-card {
-            padding: 28px 24px;
-            border-radius: 20px;
-            background: var(--saw-glass);
-            border: 1px solid var(--saw-border);
-            backdrop-filter: blur(10px);
-            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-        }
-
-        .about-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(41, 182, 246, 0.45);
-            box-shadow: 0 18px 40px rgba(41, 182, 246, 0.18);
         }
 
         .about-icon {
@@ -158,18 +133,6 @@
         .about-contact-card .social-pill svg {
             display: block;
             flex-shrink: 0;
-        }
-
-        .about-card h3 {
-            color: #fff;
-            font-size: 1.12rem;
-            margin-bottom: 8px;
-        }
-
-        .about-card p {
-            color: var(--saw-muted);
-            margin: 0;
-            line-height: 1.8;
         }
 
         .about-stats-grid {
@@ -206,9 +169,54 @@
             line-height: 1.6;
         }
 
+        .about-goals {
+            counter-reset: about-goal;
+            list-style: none;
+            display: grid;
+            gap: 16px;
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        .about-goals li {
+            position: relative;
+            counter-increment: about-goal;
+            padding: 24px 26px 24px 86px;
+            border-radius: 20px;
+            background: var(--saw-glass);
+            border: 1px solid var(--saw-border);
+            color: var(--saw-muted);
+            line-height: 1.95;
+            text-align: left;
+            overflow-wrap: break-word;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .about-goals li:hover {
+            border-color: rgba(41, 182, 246, 0.45);
+            box-shadow: 0 18px 40px rgba(41, 182, 246, 0.14);
+        }
+
+        .about-goals li::before {
+            content: counter(about-goal, decimal-leading-zero);
+            position: absolute;
+            left: 26px;
+            top: 24px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            line-height: 1.5;
+            background: linear-gradient(120deg, var(--saw-accent), var(--saw-accent-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: var(--saw-accent-2);
+        }
+
         .about-contact-grid {
             display: grid;
-            grid-template-columns: 1.12fr 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 20px;
             align-items: stretch;
         }
@@ -223,27 +231,31 @@
             backdrop-filter: blur(10px);
         }
 
-        .about-contact-card h3 {
-            color: #fff;
-            font-size: 1.05rem;
-            margin: 0 0 8px;
+        .about-contact-head {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 22px;
         }
 
-        .about-contact-card > p {
-            color: var(--saw-muted);
-            margin: 0 0 20px;
-            line-height: 1.78;
+        .about-contact-head .about-icon {
+            margin-bottom: 0;
+        }
+
+        .about-contact-card h3 {
+            color: #fff;
+            font-size: 1.08rem;
+            margin: 0;
         }
 
         .about-mail {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            align-self: flex-start;
+            align-self: stretch;
             gap: 10px;
             min-height: 46px;
             padding: 0 24px;
-            margin-top: auto;
             border-radius: 999px;
             background: linear-gradient(120deg, var(--saw-accent), var(--saw-accent-2));
             color: #fff !important;
@@ -258,18 +270,258 @@
             box-shadow: 0 14px 32px rgba(41, 182, 246, 0.42);
         }
 
-        .about-contact-card .contact-socials {
-            margin-top: auto;
+        .about-prose {
+            max-width: 880px;
+            margin: 0 auto;
+            color: var(--saw-muted);
+            line-height: 1.95;
+            text-align: left;
+            overflow-wrap: break-word;
+        }
+
+        .about-note {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 28px 30px;
+            border-radius: 22px;
+            background: var(--saw-glass);
+            border: 1px solid var(--saw-border);
+        }
+
+        .about-note-icon {
+            flex: 0 0 auto;
+            display: grid;
+            place-items: center;
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            color: var(--saw-accent-2);
+            background: rgba(41, 182, 246, 0.12);
+            border: 1px solid rgba(41, 182, 246, 0.28);
+        }
+
+        .about-note-icon svg {
+            width: 26px;
+            height: 26px;
+        }
+
+        .about-note .about-prose {
+            max-width: none;
+            margin: 0;
+        }
+
+        .about-sources {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+            max-width: 880px;
+            margin: 26px auto 0;
+        }
+
+        .about-source {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 18px;
+            border-radius: 18px;
+            background: var(--saw-glass);
+            border: 1px solid var(--saw-border);
+            text-align: left;
+            text-decoration: none;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        a.about-source:hover {
+            transform: translateY(-3px);
+            border-color: rgba(41, 182, 246, 0.45);
+            box-shadow: 0 18px 40px rgba(41, 182, 246, 0.16);
+            text-decoration: none;
+        }
+
+        .about-source-logo {
+            flex: 0 0 auto;
+            display: grid;
+            place-items: center;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid var(--saw-border);
+        }
+
+        .about-source-logo img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-source-text {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            min-width: 0;
+        }
+
+        .about-source-text strong {
+            color: #fff;
+            font-size: 0.98rem;
+            font-weight: 700;
+            overflow-wrap: anywhere;
+        }
+
+        .about-source-text em {
+            font-style: normal;
+            font-size: 0.8rem;
+            color: var(--saw-muted);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .about-source-arrow {
+            flex: 0 0 auto;
+            margin-left: auto;
+            color: var(--saw-accent-2);
+            opacity: 0.65;
+            transition: transform 0.25s ease, opacity 0.25s ease;
+        }
+
+        a.about-source:hover .about-source-arrow {
+            transform: translate(2px, -2px);
+            opacity: 1;
+        }
+
+        .about-source-static {
+            opacity: 0.7;
+        }
+
+        .about-prose a {
+            color: var(--saw-accent-2);
+            font-weight: 700;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .about-prose a:hover {
+            color: #fff;
+        }
+
+        .about-callout {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 28px 30px;
+            border-radius: 22px;
+            background: var(--saw-glass);
+            border: 1px solid var(--saw-border);
+            border-left: 3px solid var(--saw-accent-2);
+        }
+
+        .about-callout .about-prose {
+            max-width: none;
+            margin: 0;
+        }
+
+        .about-steps {
+            counter-reset: about-step;
+            list-style: none;
+            display: grid;
+            gap: 14px;
+            max-width: 880px;
+            margin: 26px auto 0;
+            padding: 0;
+        }
+
+        .about-steps li {
+            position: relative;
+            counter-increment: about-step;
+            padding: 22px 26px 22px 76px;
+            border-radius: 20px;
+            background: var(--saw-glass);
+            border: 1px solid var(--saw-border);
+            text-align: left;
+            overflow-wrap: break-word;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .about-steps li:hover {
+            border-color: rgba(41, 182, 246, 0.45);
+            box-shadow: 0 18px 40px rgba(41, 182, 246, 0.14);
+        }
+
+        .about-steps li::before {
+            content: counter(about-step);
+            position: absolute;
+            left: 24px;
+            top: 22px;
+            display: grid;
+            place-items: center;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: #fff;
+            background: linear-gradient(120deg, var(--saw-accent), var(--saw-accent-2));
+            box-shadow: 0 0 18px rgba(41, 182, 246, 0.32);
+        }
+
+        .about-steps h3 {
+            color: #fff;
+            font-size: 1.02rem;
+            margin: 0 0 6px;
+        }
+
+        .about-steps p {
+            color: var(--saw-muted);
+            margin: 0;
+            line-height: 1.85;
+        }
+
+        .about-notes {
+            list-style: none;
+            display: grid;
+            gap: 10px;
+            max-width: 880px;
+            margin: 22px auto 0;
+            padding: 0;
+            text-align: left;
+        }
+
+        .about-notes li {
+            position: relative;
+            padding-left: 22px;
+            color: var(--saw-muted);
+            line-height: 1.85;
+            overflow-wrap: break-word;
+        }
+
+        .about-notes li::before {
+            content: "";
+            position: absolute;
+            left: 4px;
+            top: 0.72em;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--saw-accent-2);
         }
 
         @media (max-width: 991px) {
-            .about-grid,
             .about-stats-grid {
                 grid-template-columns: 1fr 1fr;
             }
 
             .about-contact-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .about-mail {
+                align-self: flex-start;
             }
         }
 
@@ -287,7 +539,6 @@
                 line-height: 1.9;
             }
 
-            .about-grid,
             .about-stats-grid {
                 grid-template-columns: 1fr;
             }
@@ -299,6 +550,55 @@
 
             .about-mail {
                 align-self: stretch;
+            }
+
+            .about-goals li {
+                padding: 20px 20px 20px 66px;
+                line-height: 1.9;
+            }
+
+            .about-goals li::before {
+                left: 20px;
+                top: 20px;
+                font-size: 1.05rem;
+            }
+
+            .about-prose {
+                line-height: 1.9;
+            }
+
+            .about-note {
+                flex-direction: column;
+                gap: 16px;
+                padding: 22px 20px;
+            }
+
+            .about-sources {
+                grid-template-columns: 1fr;
+            }
+
+            .about-contact-head {
+                justify-content: center;
+            }
+
+            .about-contact-card .contact-socials {
+                justify-content: center;
+            }
+
+            .about-callout {
+                padding: 22px 20px;
+            }
+
+            .about-steps li {
+                padding: 20px 20px 20px 68px;
+            }
+
+            .about-steps li::before {
+                left: 18px;
+                top: 20px;
+                width: 32px;
+                height: 32px;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -345,44 +645,24 @@
                 <div class="container">
                     <div class="section-head" data-aos="fade-up">
                         <p class="eyebrow">About Us</p>
-                        <h1 id="about-title">A Digital Library for Young Readers</h1>
+                        <h1 id="about-title">Your Digital Library</h1>
                         <p class="about-lead">
                             Sawlai Library သည် လူငယ်လူရွယ်တို့ စာဖတ်အား မြှင့်တင်ပေးနိုင်ရန် နှင့် စာအုပ်ပေါင်းစုံများကို တစ်နေရာတည်း ကြည့်ရှု၊ တိုက်ရိုက်ဖတ်နိုင်အောင် တည်ဆောက်ထားသော စာကြည့်တိုက်ဖြစ်ပါသည်။
-                            <br><br>
-                            အက်ပလီ‌ကေးရှင်းအတွင်း ဘဝတိုးတက်ရေး၊ စီးပွားရေးစာအုပ်ကောင်းများ၊ အသက်မွေးဝမ်းကြောင်း နှင့် ကျွမ်းကျင်မှုဆိုင်ရာ စာအုပ်များ၊ အသိဉာဏ်ရည်တုဆိုင်ရာ နည်းပညာပညာရပ်များအပြင် မြန်မာနိုင်ငံတွင်း မှီတင်းနေထိုင်ကြသော တိုင်းရင်းသားညီအစ်ကိုများ၏ စာအုပ်စာပေများလည်း လေ့လာနိုင်ရန် နှင့် နိုင်ငံတကာတွင် အောင်မြင်ကျော်ကြားသောစာအုပ်ကောင်းများ၊ ဆောင်းပါးများကို တစ်နေရာတည်း အွန်လိုင်းဖြင့်တိုက်ရိုက် ရွေးချယ်ဖတ်ရှုနိုင်ပြီး အွန်လိုင်းပလက်‌ဖောင်းများတွင် ပျံ့ကြဲ စုဆောင်းထားသောစာအုပ်များလည်း <a class="dmca-inline-link" href="dmca">မူပိုင်ခွင့်များ လုပ်ဆောင်နိုင်ပါသည်။</a>
                         </p>
                         <div class="hero-buttons" data-aos="fade-up" data-aos-delay="90">
-                            <a class="btn-premium" href="https://play.google.com/store/apps/details?id=digital.online.books" target="_blank" rel="noopener">အခုပဲ ဒေါင်းလုဒ်လုပ်ပါ</a>
-                            <a class="btn-ghost" href="readers">စာအုပ်များ ကြည့်ရှုပါ</a>
+                            <a class="btn-ghost" href="dmca">DMCA &amp; Copyright</a>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section class="about-section about-glow-a" aria-labelledby="mission-title">
+            <section class="about-section about-glow-c" aria-labelledby="goals-title">
                 <div class="container">
                     <div class="about-head" data-aos="fade-up">
-                        <p class="eyebrow">Our Mission</p>
-                        <h2 id="mission-title">What we are building</h2>
-                        <p>ကျွန်ုပ်တို့၏ ကတိကဝတ် သုံးချက်ကို အခြေခံထားပါသည်။</p>
+                        <p class="eyebrow">Our Goals</p>
+                        <h2 id="goals-title">Our Common Goals</h2>
                     </div>
-                    <div class="about-grid">
-                        <article class="about-card" data-aos="fade-up">
-                            <span class="about-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" /></svg></span>
-                            <h3>Easy Reading Access</h3>
-                            <p>အသုံးဝင်သော စာအုပ်များကို နေ့စဉ် လေ့လာဖတ်ရှုနိုင်ရန် တစ်နေရာတည်းတွင် စုစည်းပေးထားပါသည်။</p>
-                        </article>
-                        <article class="about-card" data-aos="fade-up" data-aos-delay="70">
-                            <span class="about-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg></span>
-                            <h3>Reader Community</h3>
-                            <p>ဗဟုသုတ မျှဝေခြင်း၊ ရှာဖွေတွေ့ရှိခြင်းနှင့် အကြံပြုချက်များဖြင့် စာရေးသူများနှင့် စာဖတ်သူများကို ပံ့ပိုးပေးပါသည်။</p>
-                        </article>
-                        <article class="about-card" data-aos="fade-up" data-aos-delay="140">
-                            <span class="about-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 4v6h-6" /><path d="M1 20v-6h6" /><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10" /><path d="M1 14l4.64 4.36A9 9 0 0 0 20.49 15" /></svg></span>
-                            <h3>Continuous Improvement</h3>
-                            <p>တည်ငြိမ်သော အပ်ဒိတ်များနှင့် အသုံးပြုသူများ၏ အကြံပြုချက်များဖြင့် အက်ပ်နှင့် ဝဘ်ဆိုက် အတွေ့အကြုံကို မြှင့်တင်ပေးပါသည်။</p>
-                        </article>
-                    </div>
+                    <ol class="about-goals" id="about-goals" data-aos="fade-up" data-aos-delay="70"></ol>
                 </div>
             </section>
 
@@ -391,7 +671,6 @@
                     <div class="about-head" data-aos="fade-up">
                         <p class="eyebrow">Why Sawlai</p>
                         <h2>Built for practical reading</h2>
-                        <p>စာအုပ်တစ်အုပ်ကို ဒေါင်းလုဒ်လုပ်ပြီးပါက အင်တာနက် မလိုဘဲ ဖတ်ရှုနိုင်ပါသည်။</p>
                     </div>
                     <div class="about-stats-grid">
                         <article class="about-stat" data-aos="fade-up">
@@ -414,22 +693,113 @@
                 </div>
             </section>
 
+            <section class="about-section about-glow-c" aria-labelledby="reading-title">
+                <div class="container">
+                    <div class="about-head" data-aos="fade-up">
+                        <p class="eyebrow">For Readers</p>
+                        <h2 id="reading-title">How to get your book on the website</h2>
+                    </div>
+                    <p class="about-prose" data-aos="fade-up" data-aos-delay="60">အက်ပ်တွင် ဖတ်ရှုပြီးသော စာအုပ်များကို ဝဘ်ဆိုက်ပေါ်တွင် ပေါ်လာစေရန် အောက်ပါအဆင့်များအတိုင်း လိုက်နာ ဖတ်ရှုပါက ဝက်ဆိုဒ်တွင် ဖော်ပြပါမည်။</p>
+                    <ol class="about-steps" data-aos="fade-up" data-aos-delay="90">
+                        <li>
+                            <h3>အက်ပ်၏ စာဖတ်စနစ်ဖြင့်သာ ဖတ်ပါ</h3>
+                            <p>စာအုပ်ကို အက်ပ်အတွင်းရှိ စာဖတ်စနစ်ဖြင့် ပုံမှန်အတိုင်းဖတ်ပါ။</p>
+                        </li>
+                        <li>
+                            <h3>စာမျက်နှာများကို မကျော်ပါနှင့်</h3>
+                            <p>စာမျက်နှာတစ်ခုလျှင် 7 မှ 12 စက္ကန့်အထိ ဖတ်ရန် လိုအပ်ပါသည်၊ အချို့ စာမျက်နာများအား ကျော်ချနိင်သော်လည်း လျင်မြန်စွာ ဆွဲဖတ်ခြင်းကို ဖတ်ရှုမှုအဖြစ် မရေတွက်ပါ။</p>
+                        </li>
+                        <li>
+                            <h3>စာအုပ်အဆုံးထိ ဖတ်ပါ</h3>
+                            <p>နောက်ဆုံးစာမျက်နှာအထိ ရောက်ရန် လိုအပ်ပါသည်။ အဖုံးနှင့် နိဒါန်း စာမျက်နာများအား ကျော်ချနိင်ပြီး ဖြည်းဖြည်းမှန်မှန် ဖတ်ပါ။</p>
+                        </li>
+                        <li>
+                            <h3>အပြီးသတ်ဖတ်ပြီးမှ ဆာဗာတင်မည်</h3>
+                            <p>စာအုပ်အား အပြီးသတ်ဖတ်ပြီးပါက ထိုစာအုပ်အား အချိန်၊ အမြန်နှုန်း၊ စာမျက်နာများအား တိုက်စစ်၍ ဝက်ဆိုဒ်သို့တင်ရန် စစ်ဆေးပါမည်။</p>
+                        </li>
+                    </ol>
+                    <div class="about-stats-grid">
+                        <article class="about-stat" data-aos="fade-up">
+                            <strong>3 မျက်နှာ</strong>
+                            <span>အနည်းဆုံး ဖတ်ရန်</span>
+                        </article>
+                        <article class="about-stat" data-aos="fade-up" data-aos-delay="70">
+                            <strong>10 စက္ကန့်</strong>
+                            <span>အနည်းဆုံး ဖတ်ချိန်</span>
+                        </article>
+                        <article class="about-stat" data-aos="fade-up" data-aos-delay="140">
+                            <strong>90%</strong>
+                            <span>စာအုပ်တို — 29 မျက်နှာအောက်</span>
+                        </article>
+                        <article class="about-stat" data-aos="fade-up" data-aos-delay="210">
+                            <strong>75%</strong>
+                            <span>စာအုပ်ရှည် — 29 မျက်နှာအထက်</span>
+                        </article>
+                    </div>
+                    <ul class="about-notes" data-aos="fade-up">
+                        <li>အင်တာနက်မရှိသော်လည်း အချက်လက်အား သိမ်းထားပြီး နောက်မှ အလိုအလျောက် တင်ပေးပါသည်။</li>
+                        <li>တင်မရသေးသော စာအုပ်များတွင် ? အမှတ်အသားဖြင့် အကြောင်းရင်းကို ဖော်ပြထားပြီး ပြည်စုံပါက ဝက်ဆိုဒ်တွင် တင်ပါသည်။</li>
+                        <li>စာဖတ်မှုအချက်လက်အောင်မြင်ပါက စာအုပ်သည် Completed တွင်မြင်နိင်ပြီး ဝက်ဆိုဒ်တွင်လည်း မြင်နိင်ပါသည်။</li>
+                        <li>Window &amp; Android &amp; iOS များတွင် လုပ်ဆောင်မှုအတူတူဖြစ်ပြီး ဝက်ဆိုဒ်တွင် မိမိနာမည်အား အချက်လက်ဖြည့်၍ ရှာဖွေနိင်ပါသည်။</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="about-section about-glow-a" aria-labelledby="sources-title">
+                <div class="container">
+                    <div class="about-head" data-aos="fade-up">
+                        <p class="eyebrow">Credits</p>
+                        <h2 id="sources-title">Where the books come from</h2>
+                    </div>
+                    <p class="about-prose" id="about-sources-lead" data-aos="fade-up" data-aos-delay="60"></p>
+                    <div class="about-sources" id="about-sources" data-aos="fade-up" data-aos-delay="90"></div>
+                </div>
+            </section>
+
+            <section class="about-section about-glow-c" aria-labelledby="copyright-title">
+                <div class="container">
+                    <div class="about-head" data-aos="fade-up">
+                        <p class="eyebrow">Copyright</p>
+                        <h2 id="copyright-title">Takedown requests</h2>
+                    </div>
+                    <div class="about-callout" data-aos="fade-up" data-aos-delay="60">
+                        <p class="about-prose" id="about-copyright"></p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="about-section about-glow-b" aria-labelledby="ads-title">
+                <div class="container">
+                    <div class="about-head" data-aos="fade-up">
+                        <p class="eyebrow">Transparency</p>
+                        <h2 id="ads-title">Advertising</h2>
+                    </div>
+                    <div class="about-note" data-aos="fade-up" data-aos-delay="60">
+                        <span class="about-note-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z" /><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" /></svg></span>
+                        <p class="about-prose" id="about-ads"></p>
+                    </div>
+                </div>
+            </section>
+
             <section class="about-section about-glow-a" aria-labelledby="contact-title">
                 <div class="container">
                     <div class="about-head" data-aos="fade-up">
                         <p class="eyebrow">Contact</p>
                         <h2 id="contact-title">Need support or want to contribute?</h2>
-                        <p>ပေးပို့သမျှ အီးမေးလ်အားလုံးကို ဖတ်ရှုပြီး များသောအားဖြင့် နှစ်ရက်အတွင်း ပြန်လည် ဖြေကြားပေးပါသည်။</p>
                     </div>
                     <div class="about-contact-grid">
                         <article class="about-contact-card" data-aos="fade-up">
-                            <h3>Support Email</h3>
-                            <p>မေးခွန်းများ၊ ပြင်ဆင်စရာများ၊ စာအုပ် တောင်းဆိုချက်များ သို့မဟုတ် မူပိုင်ခွင့် ဖယ်ရှားရေး အကြောင်းကြားချက်များကို ဤနေရာတွင် ပေးပို့ပါ။</p>
+                            <div class="about-contact-head">
+                                <span class="about-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m22 6-10 7L2 6" /></svg></span>
+                                <h3>Support Email</h3>
+                            </div>
                             <a class="about-mail" href="mailto:sawlai.library@gmail.com?subject=Sawlai%20Library%20-%20Support"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m22 6-10 7L2 6" /></svg>sawlai.library@gmail.com</a>
                         </article>
                         <article class="about-contact-card" data-aos="fade-up" data-aos-delay="90">
-                            <h3>Community Channels</h3>
-                            <p>စာအုပ်အသစ်များ၊ ဖတ်ရှုရန် အကြံပြုချက်များနှင့် ကြေညာချက်များအတွက် လိုက်ကြည့်ပါ။</p>
+                            <div class="about-contact-head">
+                                <span class="about-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" /></svg></span>
+                                <h3>Community Channels</h3>
+                            </div>
                             <div class="contact-socials">
                                 <a class="social-pill social-pill-telegram" href="https://t.me/shz421" target="_blank" rel="noopener" aria-label="Open Sawlai Library Telegram channel"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.9 19c-.2 1-.8 1.2-1.7.8l-4.6-3.4-2.2 2.1c-.25.25-.45.45-.9.45l.32-4.6L18.3 6.6c.36-.32-.08-.5-.56-.18L7.06 13.2l-4.5-1.4c-1-.3-1-1 .2-1.5L20.3 3c.8-.3 1.5.2 1.6 1.3z" /></svg>Telegram Channel</a>
                                 <a class="social-pill social-pill-facebook" href="https://www.facebook.com/profile.php?id=61590780832470" target="_blank" rel="noopener" aria-label="Open Sawlai Library Facebook page"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.25-1.5 1.55-1.5h1.65V4.6A22 22 0 0 0 14.3 4.5c-2.4 0-4 1.45-4 4.1v2.3H7.6V14h2.7v8h3.2z" /></svg>Facebook Page</a>
@@ -462,6 +832,228 @@
     <script src="assets/scripts/bootstrap.min.js"></script>
     <script src="assets/scripts/aos.js"></script>
     <script src="assets/scripts/site.js?v=8"></script>
+    <script>
+    (function() {
+        var API_URL = "https://lib.sawlai.com/json/Others/About-Us.json";
+
+        var KEY_GOALS = "ဘုံရည်မှန်းချက်";
+        var KEY_ADS = "ကြေငြာ";
+        var KEY_SOURCES = "ကူးယူး";
+        var KEY_COPYRIGHT = "မှုပိုင်ခွင့်";
+
+        var goalsEl = document.getElementById("about-goals");
+        var sourcesLeadEl = document.getElementById("about-sources-lead");
+        var sourcesEl = document.getElementById("about-sources");
+        var adsEl = document.getElementById("about-ads");
+        var copyrightEl = document.getElementById("about-copyright");
+
+        var FALLBACK_GOALS = [
+            "စာအုပ်ကောင်းများကို ဘယ်နေရာ ဒေသမဆို လွယ်ကူစွာ တစ်နေရာတည်း တိုက်ရိုက်ဖတ်ရှု အသိဉာဏ်တိုးပွားလာနိင်စေရန်၊",
+            "မြန်မာနိင်ငံရှိ တိုင်းရင်းသားလူမျိုးစုများ၏ စာပေ စာအုပ်ကောင်းများကို လူတိုင်းဖတ်ရှု ထိန်းသိမ်းနိင်စေရန်၊",
+            "အထူးစိတ်အားထက်သန်သော စာရေးဆရာသစ်လောင်းများအတွက် မိမိရေးထားသော စာအုပ်အသစ်များအား တိုက်ရိုက်တင်ရှိနိင်စေရန် ရည်ရွယ်ချက်များကြောင့် ဖန်တီးထားပါသည်။"
+        ];
+
+        var FALLBACK_ADS = "စာပေချစ်သူတိုင်းအတွက် အဆင်ပြေဆုံးသော ဝန်ဆောင်မှုများပေးစွမ်းနိင်ရန် အစောပိုင်းဗာရှင်းများတွင် ကြေငြာအသုံးပြုခြင်း မရှိသော်လည်း စာအုပ်များသိုလျှောင်သိမ်းဆည်းခြင်း နှင့် ဆာဗာကြေးများအတွက် အွန်လိုင်းတိုက်ရိုက်ဖတ်ခြင်းနှင့် ဒေါင်းယူသောနေရာ အချို့အစိတ်ပိုင်းများတွင်သာ ကြေငြာများအသုံးပြုရခြင်းဖြစ်ပြီး နောက်ဗာရှင်းများတွင် ကြေငြာများ လျှော့ချသွားပါမည်။";
+
+        var FALLBACK_SOURCES_LEAD = "အင်တာနက်ပေါ်မှ စာဖတ်ချစ်သူများအတွက် ဖန်တီး တင်ပေးထားကြသော စာအုပ်များကို အခြားပလက်ဖောင်းများမှ ကူးယူးဖော်ပြထားပြီး စာအုပ်အများစုကို အောက်တွင် ဖော်ပြထားသော ဝက်ဆိုဒ်၊ ချန်နယ်များမှ ရယူထားပါသည်။";
+
+        var FALLBACK_COPYRIGHT = "စာရေးဆရာများ နှင့် စာအုပ်များဖန်တီးတင်ပေးသော ဝက်ဆိုဒ် ချန်နယ်များအား အထူးကျေးဇူးတင်ပါသည်၊  အွန်လိုင်းပလက်ဖောင်းများတွင် ပျံကျဲနေသော စာအုပ်ကောင်းများကို စာဖတ်ချစ်သူများအတွက် တစ်နေရာတည်း ဖတ်ရှုနိင်ရန် သိုလှောင်သိမ်းဆည်းထားသော စာအုပ်များအား စာရေးဆရာ၊ မှုပိုင်လူပုဂ္ဂိုလ်တစ်ဦးတစ်ယောက်က ပယ်ဖျတ်နိင်ရန် မှုပိုင်ခွင့်ပေးထားပါသည်၊ သို့သော် ထိုစာအုပ်ကောင်းများသည် အခြားပလက်ဖောင်များတွင် ဆက်လက်ရှိနေမည်မှာ သတိချပ်စေချင်ပါသည်။ **မှုပိုင်ခွင့်ဆိုင်ရာကန့်သတ်ချက်များအတွက်** [ဒီမှာဆောင်ရွက်နိင်ပါသည်။](activity=DMCA)";
+
+        var FALLBACK_SOURCES = [
+            { img: "https://lib.sawlai.com/Others/others_37c87f36.png", name: "Myanmar Book Download", url: "" },
+            { img: "https://lib.sawlai.com/Others/others_2e44a428.png", name: "MM Bookshelf", url: "https://mbookshelf.naingdroidapps.com" },
+            { img: "https://lib.sawlai.com/Others/others_d581580a.png", name: "Books For You", url: "https://t.me/booksforyou1986" },
+            { img: "https://lib.sawlai.com/Others/others_96012fc6.png", name: "Black White Library", url: "https://t.me/black_white_Library" }
+        ];
+
+        function escapeHtml(text) {
+            return String(text == null ? "" : text)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#39;");
+        }
+
+        function renderLink(display, target) {
+            var m = /^(link|activity|fetch)=(.+)$/i.exec(String(target == null ? "" : target).trim());
+
+            if (!m) return display;
+
+            var kind = m[1].toLowerCase();
+            var value = m[2].trim();
+
+            if (kind === "link") {
+                if (!/^https?:\/\//i.test(value)) return display;
+
+                return '<a href="' + value + '" target="_blank" rel="noopener">' + display + "</a>";
+            }
+
+            if (kind === "activity") {
+                var activity = value.toLowerCase();
+
+                if (activity === "dmca" || activity === "copyright") return '<a href="dmca">' + display + "</a>";
+                if (activity === "about") return '<a href="about-us">' + display + "</a>";
+            }
+
+            return '<a href="/">' + display + "</a>";
+        }
+
+        function renderText(text) {
+            return escapeHtml(text)
+                .replace(/\[([^\]]+)\]\(([^)]+)\)/g, function(match, display, target) {
+                    return renderLink(display, target);
+                })
+                .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+        }
+
+        function readHeading(line) {
+            var text = String(line == null ? "" : line).trim();
+
+            if (text.indexOf("<m>") !== 0) return "";
+
+            var end = text.lastIndexOf("<m>");
+
+            if (end <= 0) return "";
+
+            return text.slice(3, end).replace(/<[^>]*>/g, "").replace(/\*\*/g, "").trim();
+        }
+
+        function parseSections(body) {
+            var lines = String(body == null ? "" : body).split("\n");
+            var sections = [];
+            var current = null;
+
+            for (var i = 0; i < lines.length; i++) {
+                var heading = readHeading(lines[i]);
+
+                if (heading) {
+                    current = { heading: heading, bullets: [], paras: [] };
+                    sections.push(current);
+                    continue;
+                }
+
+                if (!current) continue;
+
+                var line = lines[i].trim();
+
+                if (line === "") continue;
+
+                if (/^[-•]\s+/.test(line)) {
+                    current.bullets.push(line.replace(/^[-•]\s+/, ""));
+                } else {
+                    current.paras.push(line);
+                }
+            }
+
+            return sections;
+        }
+
+        function findSection(sections, keyword) {
+            for (var i = 0; i < sections.length; i++) {
+                if (sections[i].heading.indexOf(keyword) !== -1) return sections[i];
+            }
+
+            return null;
+        }
+
+        function parseSource(item) {
+            var m = /^\[image\]\(([^)]+)\)\s*\[([^\]]*)\]\(link=([^)]*)\)\s*$/.exec(item);
+
+            if (!m) return null;
+
+            var url = m[3].trim();
+
+            if (!/^https?:\/\//i.test(url)) url = "";
+
+            return { img: m[1].split("|")[0].trim(), name: m[2].trim(), url: url };
+        }
+
+        function hostLabel(url) {
+            var m = /^https?:\/\/([^/?#]+)([^?#]*)/i.exec(url);
+
+            if (!m) return "";
+
+            return (m[1] + m[2]).replace(/\/+$/, "").replace(/^www\./i, "");
+        }
+
+        function sourceMarkup(items) {
+            var out = "";
+
+            for (var i = 0; i < items.length; i++) {
+                var s = items[i];
+                var logo = '<span class="about-source-logo"><img src="' + escapeHtml(s.img) + '" alt="" width="52" height="52" loading="lazy" decoding="async"></span>';
+                var text = '<span class="about-source-text"><strong>' + escapeHtml(s.name) + "</strong>" + (s.url ? "<em>" + escapeHtml(hostLabel(s.url)) + "</em>" : "") + "</span>";
+
+                if (s.url) {
+                    out += '<a class="about-source" href="' + escapeHtml(s.url) + '" target="_blank" rel="noopener">' + logo + text + '<span class="about-source-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7" /><path d="M8 7h9v9" /></svg></span></a>';
+                } else {
+                    out += '<div class="about-source about-source-static">' + logo + text + "</div>";
+                }
+            }
+
+            return out;
+        }
+
+        function paintAll(body) {
+            var sections = parseSections(body);
+
+            if (goalsEl) {
+                var goalsSection = findSection(sections, KEY_GOALS);
+                var goals = goalsSection && goalsSection.bullets.length ? goalsSection.bullets : FALLBACK_GOALS;
+                var goalsOut = "";
+
+                for (var i = 0; i < goals.length; i++) {
+                    goalsOut += "<li>" + renderText(goals[i]) + "</li>";
+                }
+
+                goalsEl.innerHTML = goalsOut || "<li>No content available.</li>";
+            }
+
+            if (adsEl) {
+                var adsSection = findSection(sections, KEY_ADS);
+                adsEl.innerHTML = renderText(adsSection && adsSection.paras.length ? adsSection.paras.join(" ") : FALLBACK_ADS);
+            }
+
+            if (copyrightEl) {
+                var copyrightSection = findSection(sections, KEY_COPYRIGHT);
+                copyrightEl.innerHTML = renderText(copyrightSection && copyrightSection.paras.length ? copyrightSection.paras.join(" ") : FALLBACK_COPYRIGHT);
+            }
+
+            if (sourcesEl || sourcesLeadEl) {
+                var sourcesSection = findSection(sections, KEY_SOURCES);
+                var bullets = sourcesSection ? sourcesSection.bullets : [];
+                var cards = [];
+
+                for (var j = 0; j < bullets.length; j++) {
+                    var card = parseSource(bullets[j]);
+
+                    if (card) cards.push(card);
+                }
+
+                if (sourcesLeadEl) sourcesLeadEl.innerHTML = renderText(sourcesSection && sourcesSection.paras.length ? sourcesSection.paras[0] : FALLBACK_SOURCES_LEAD);
+                if (sourcesEl) sourcesEl.innerHTML = sourceMarkup(cards.length ? cards : FALLBACK_SOURCES);
+            }
+
+            if (typeof AOS !== "undefined") AOS.refresh();
+        }
+
+        if (goalsEl || sourcesEl || adsEl || copyrightEl) {
+            fetch(API_URL)
+                .then(function(r) {
+                    if (!r.ok) throw new Error("HTTP " + r.status);
+                    return r.json();
+                })
+                .then(function(data) {
+                    var doc = Array.isArray(data) ? data[0] : data;
+                    paintAll(doc && doc.Body);
+                })
+                .catch(function() {
+                    paintAll("");
+                });
+        }
+    })();
+    </script>
 </body>
 
 </html>
