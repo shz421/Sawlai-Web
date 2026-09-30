@@ -218,6 +218,12 @@
             border-radius: 18px;
             background: rgba(41, 182, 246, 0.08);
             border: 1px solid rgba(41, 182, 246, 0.32);
+            transition: border-color 0.2s ease, background 0.2s ease;
+        }
+
+        .premium-found.is-chosen {
+            background: rgba(52, 211, 153, 0.12);
+            border-color: rgba(52, 211, 153, 0.6);
         }
 
         .premium-found img,
@@ -251,6 +257,44 @@
             color: var(--saw-muted);
             font-size: 0.86rem;
             overflow-wrap: break-word;
+        }
+
+        .premium-found-lead {
+            margin: 18px 0 0;
+            color: var(--saw-muted);
+            font-size: 0.92rem;
+        }
+
+        .premium-found-lead + .premium-found {
+            margin-top: 12px;
+        }
+
+        .premium-found-list {
+            max-height: 430px;
+            overflow-y: auto;
+            overscroll-behavior: contain;
+        }
+
+        .premium-found-list .premium-found:first-child {
+            margin-top: 12px;
+        }
+
+        .premium-found .premium-pick {
+            flex: 0 0 auto;
+            white-space: nowrap;
+        }
+
+        .premium-found .premium-pick:disabled {
+            opacity: 1;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--saw-muted);
+            cursor: default;
+        }
+
+        .premium-found.is-chosen .premium-pick:disabled {
+            background: rgba(52, 211, 153, 0.18);
+            color: #8af0c8;
+            box-shadow: inset 0 0 0 1px rgba(52, 211, 153, 0.5);
         }
 
         .premium-plans {
@@ -856,40 +900,81 @@
                 if (typeof AOS !== "undefined") AOS.refresh();
             }
 
-            function renderFound(reader) {
+            function foundRowHtml(reader, index) {
                 var photo = safeUrl(reader.photo);
                 var tile = photo
                     ? '<img src="' + escapeHtml(photo) + '" alt="">'
                     : '<span class="premium-found-fallback">' + escapeHtml(initialsOf(reader.username)) + "</span>";
 
-                var detail = reader.deviceId
-                    ? "Profile ID " + escapeHtml(maskDeviceId(reader.deviceId))
-                    : "Premium will be added to this account";
+                var detail;
+                if (reader.deviceId) {
+                    detail = "Profile ID " + escapeHtml(maskDeviceId(reader.deviceId));
+                } else if (reader.idTail) {
+                    detail = "Profile ID ending " + escapeHtml(reader.idTail);
+                } else {
+                    detail = "Premium will be added to this account";
+                }
 
-                result.innerHTML =
-                    '<div class="premium-found">' +
+                return '<div class="premium-found">' +
                     tile +
                     '<div class="premium-found-text">' +
                     "<strong>" + escapeHtml(reader.username || "Sawlai reader") + "</strong>" +
                     "<span>" + detail + "</span>" +
                     "</div>" +
-                    '<button class="premium-btn" id="premium-select-account" type="button">This is me</button>' +
+                    '<button class="premium-btn premium-pick" type="button" data-index="' +
+                    index + '">This is me</button>' +
+                    "</div>";
+            }
+
+            function renderFound(readers, mode) {
+                var lead = "";
+
+                if (readers.length > 1) {
+                    var why = mode === "email"
+                        ? "accounts use this email"
+                        : (mode === "username" ? "accounts share this name" : "accounts found");
+
+                    lead = '<p class="premium-found-lead">' + readers.length + " " + why;
+
+                    if (readers.length > 8) {
+                        lead += ". If you cannot spot yours, switch to Profile ID - that finds only your account";
+                    } else {
+                        lead += ". Pick yours";
+                    }
+
+                    lead += ".</p>";
+                }
+
+                result.innerHTML = lead +
+                    '<div class="premium-found-list">' +
+                    readers.map(foundRowHtml).join("") +
                     "</div>";
                 result.hidden = false;
 
-                var pick = document.getElementById("premium-select-account");
-                if (pick) {
+                var picks = Array.prototype.slice.call(result.querySelectorAll(".premium-pick"));
+                var rows = Array.prototype.slice.call(result.querySelectorAll(".premium-found"));
+
+                picks.forEach(function(pick) {
                     pick.addEventListener("click", function() {
-                        selectAccount(reader);
+                        selectAccount(readers[Number(pick.getAttribute("data-index"))]);
                         say(note, "Account selected - continue to step 2.");
-                        pick.disabled = true;
+                        picks.forEach(function(other) {
+                            other.disabled = true;
+                        });
+                        rows.forEach(function(row) {
+                            row.classList.remove("is-chosen");
+                        });
                         pick.textContent = "Selected";
+                        var row = pick.parentNode;
+                        if (row) row.classList.add("is-chosen");
+                        var lead = result.querySelector(".premium-found-lead");
+                        if (lead && lead.parentNode) lead.parentNode.removeChild(lead);
                     });
-                }
+                });
             }
 
             var SEARCH_UNAVAILABLE = "Search is not available right now. Please try again later.";
-            var SEARCH_EMPTY = "No account found. Please check what you entered and try again.";
+            var SEARCH_EMPTY = "No account found.";
 
             function fetchReader(mode, value) {
                 var url = mode === "device_id"
@@ -906,14 +991,24 @@
                             if (mode === "device_id" && response.status === 404) throw new Error(SEARCH_EMPTY);
                             throw new Error(SEARCH_UNAVAILABLE);
                         }
-                        var reader = data && data.reader;
-                        if (!reader || !reader.id) throw new Error(SEARCH_EMPTY);
-                        return {
-                            userId: String(reader.id),
-                            deviceId: mode === "device_id" ? value : "",
-                            username: reader.username || "",
-                            photo: reader.photo || ""
-                        };
+                        var raw = Array.isArray(data && data.readers)
+                            ? data.readers
+                            : ((data && data.reader) ? [data.reader] : []);
+
+                        var readers = raw.filter(function(item) {
+                            return item && item.id;
+                        }).map(function(item) {
+                            return {
+                                userId: String(item.id),
+                                deviceId: mode === "device_id" ? value : "",
+                                username: item.username || "",
+                                photo: item.photo || "",
+                                idTail: item.idTail || ""
+                            };
+                        });
+
+                        if (!readers.length) throw new Error(SEARCH_EMPTY);
+                        return readers;
                     });
                 });
             }
@@ -944,9 +1039,9 @@
                 say(note, "Searching...");
                 searchBtn.disabled = true;
                 fetchReader(mode, value)
-                    .then(function(reader) {
+                    .then(function(readers) {
                         say(note, "");
-                        renderFound(reader);
+                        renderFound(readers, mode);
                     })
                     .catch(function(error) {
                         say(note, error.message || SEARCH_UNAVAILABLE, true);
