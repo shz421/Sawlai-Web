@@ -385,35 +385,111 @@
         }
 
         .premium-upload {
-            display: block;
+            display: flex;
+            align-items: center;
+            gap: 16px;
             margin-top: 22px;
-            padding: 26px 20px;
+            padding: 16px 18px;
             border-radius: 18px;
-            text-align: center;
             cursor: pointer;
             background: rgba(255, 255, 255, 0.04);
-            border: 1px dashed var(--saw-border);
-            transition: border-color 0.25s ease;
+            border: 1.5px dashed rgba(87, 199, 255, 0.5);
+            transition: border-color 0.25s ease, background 0.25s ease;
         }
 
-        .premium-upload:hover {
+        .premium-upload:hover,
+        .premium-upload:focus-within {
             border-color: var(--saw-accent-2);
+            background: rgba(87, 199, 255, 0.08);
         }
 
         .premium-upload input {
             display: none;
         }
 
-        .premium-upload strong {
-            display: block;
-            color: #fff;
-            margin-bottom: 6px;
+        .premium-upload-icon,
+        .premium-upload-thumb {
+            flex: 0 0 auto;
+            width: 54px;
+            height: 54px;
+            border-radius: 14px;
         }
 
-        .premium-upload span {
+        .premium-upload-icon {
+            display: grid;
+            place-items: center;
+            color: var(--saw-accent-2);
+            background: rgba(87, 199, 255, 0.14);
+        }
+
+        .premium-upload-thumb {
+            object-fit: cover;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(61, 220, 151, 0.5);
+        }
+
+        .premium-upload-copy {
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+
+        .premium-upload-copy strong {
+            display: block;
+            color: #fff;
+            margin-bottom: 4px;
+            overflow-wrap: break-word;
+        }
+
+        .premium-upload-copy span {
+            display: block;
             color: var(--saw-muted);
             font-size: 0.86rem;
             overflow-wrap: break-word;
+        }
+
+        .premium-upload-pill {
+            flex: 0 0 auto;
+            padding: 10px 18px;
+            border-radius: 999px;
+            font-size: 0.84rem;
+            font-weight: 600;
+            white-space: nowrap;
+            color: #06121f;
+            background: var(--saw-accent);
+        }
+
+        .premium-upload.is-filled {
+            border-style: solid;
+            border-color: rgba(61, 220, 151, 0.55);
+            background: rgba(61, 220, 151, 0.07);
+        }
+
+        .premium-upload.is-filled .premium-upload-pill {
+            color: var(--saw-accent-2);
+            background: rgba(87, 199, 255, 0.18);
+        }
+
+        .premium-upload.is-error {
+            border-style: solid;
+            border-color: rgba(255, 107, 107, 0.65);
+            background: rgba(255, 107, 107, 0.08);
+        }
+
+        .premium-upload.is-error .premium-upload-icon,
+        .premium-upload.is-error .premium-upload-pill {
+            color: #ff9b9b;
+            background: rgba(255, 107, 107, 0.18);
+        }
+
+        @media (max-width: 520px) {
+            .premium-upload {
+                flex-wrap: wrap;
+            }
+
+            .premium-upload-pill {
+                width: 100%;
+                text-align: center;
+            }
         }
 
         .premium-preview {
@@ -605,10 +681,21 @@
                             <div class="premium-pay-tabs" id="premium-pay-tabs"></div>
                             <div class="premium-pay-body" id="premium-pay-body"></div>
 
-                            <label class="premium-upload" for="premium-proof">
+                            <label class="premium-upload" id="premium-upload" for="premium-proof">
                                 <input id="premium-proof" type="file" accept="image/png,image/jpeg,image/webp">
-                                <strong>Attach your payment screenshot</strong>
-                                <span id="premium-proof-name">PNG, JPG သို့မဟုတ် WEBP - အများဆုံး 5 MB</span>
+                                <img class="premium-upload-thumb" id="premium-proof-thumb" alt="" hidden>
+                                <span class="premium-upload-icon" id="premium-proof-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 16V4" />
+                                        <path d="m7 9 5-5 5 5" />
+                                        <path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3" />
+                                    </svg>
+                                </span>
+                                <span class="premium-upload-copy">
+                                    <strong id="premium-proof-title">Attach your payment screenshot</strong>
+                                    <span id="premium-proof-name">PNG, JPG သို့မဟုတ် WEBP - အများဆုံး 5 MB</span>
+                                </span>
+                                <span class="premium-upload-pill" id="premium-proof-pill">Choose file</span>
                             </label>
 
                             <button class="premium-btn premium-submit" id="premium-submit" type="button" disabled>Send premium request</button>
@@ -695,6 +782,12 @@
             var payBody = document.getElementById("premium-pay-body");
             var proofInput = document.getElementById("premium-proof");
             var proofName = document.getElementById("premium-proof-name");
+            var proofUpload = document.getElementById("premium-upload");
+            var proofThumb = document.getElementById("premium-proof-thumb");
+            var proofIcon = document.getElementById("premium-proof-icon");
+            var proofTitle = document.getElementById("premium-proof-title");
+            var proofPill = document.getElementById("premium-proof-pill");
+            var proofUrl = "";
             var submitBtn = document.getElementById("premium-submit");
             var submitNote = document.getElementById("premium-submit-note");
             var preview = document.getElementById("premium-preview");
@@ -974,21 +1067,66 @@
                 if (methods.length) paint(methods[0]);
             }
 
+            var PROOF_HINT = "PNG, JPG သို့မဟုတ် WEBP - အများဆုံး 5 MB";
+
+            function releaseProofUrl() {
+                if (proofUrl) {
+                    URL.revokeObjectURL(proofUrl);
+                    proofUrl = "";
+                }
+            }
+
+            function resetProof() {
+                releaseProofUrl();
+                proofInput.value = "";
+                proofThumb.hidden = true;
+                proofThumb.removeAttribute("src");
+                proofIcon.hidden = false;
+                proofUpload.classList.remove("is-filled", "is-error");
+                proofTitle.textContent = "Attach your payment screenshot";
+                proofName.textContent = PROOF_HINT;
+                proofPill.textContent = "Choose file";
+                state.proof = null;
+                setStepState();
+            }
+
             proofInput.addEventListener("change", function() {
                 var file = proofInput.files && proofInput.files[0];
-                state.proof = null;
+
                 if (!file) {
-                    proofName.textContent = "PNG, JPG သို့မဟုတ် WEBP - အများဆုံး 5 MB";
-                    setStepState();
+                    resetProof();
                     return;
                 }
+
+                releaseProofUrl();
+
                 if (file.size > MAX_PROOF_BYTES) {
-                    proofName.textContent = "That file is too large - maximum 5 MB.";
+                    var oversize = proofInput.files[0];
+                    state.proof = null;
+                    proofInput.value = "";
+                    proofThumb.hidden = true;
+                    proofThumb.removeAttribute("src");
+                    proofIcon.hidden = false;
+                    proofUpload.classList.remove("is-filled");
+                    proofUpload.classList.add("is-error");
+                    proofTitle.textContent = "That image is too large";
+                    proofName.textContent = Math.round(oversize.size / 1024 / 1024 * 10) / 10 + " MB - maximum 5 MB. Choose a smaller screenshot.";
+                    proofPill.textContent = "Choose file";
                     setStepState();
                     return;
                 }
+
                 state.proof = file;
-                proofName.textContent = file.name + " (" + Math.round(file.size / 1024) + " KB)";
+                proofInput.value = "";
+                proofUrl = URL.createObjectURL(file);
+                proofThumb.src = proofUrl;
+                proofThumb.hidden = false;
+                proofIcon.hidden = true;
+                proofUpload.classList.remove("is-error");
+                proofUpload.classList.add("is-filled");
+                proofTitle.textContent = "Payment screenshot attached";
+                proofName.textContent = file.name + " - " + Math.round(file.size / 1024) + " KB. Tap to change.";
+                proofPill.textContent = "Change";
                 setStepState();
             });
 
