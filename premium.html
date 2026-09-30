@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sawlai Premium - ad-free reading, unlimited downloads and cloud sync.">
+    <title>Premium - Sawlai Library</title>
+    <link rel="icon" type="image/png" href="assets/images/app-logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Myanmar:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/styles/aos.css">
+    <link rel="stylesheet" href="assets/styles/style.css">
+    <link rel="stylesheet" href="assets/styles/responsive.css">
+    <link rel="stylesheet" href="assets/styles/site.css?v=12">
+    <style>
+        .premium-shell {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        .premium-hero {
+            text-align: center;
+            margin-bottom: 44px;
+        }
+
+        .premium-hero h1 {
+            color: #fff;
+            font-size: 2.4rem;
+            margin: 8px 0 14px;
+        }
+
+        .premium-sub {
+            max-width: 780px;
+            margin: 0 auto;
+            color: var(--saw-muted);
+            line-height: 1.95;
+        }
+
+        .premium-features {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            max-width: 880px;
+            margin: 24px auto 0;
+            padding: 0;
+        }
+
+        .premium-features li {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 16px;
+            border-radius: 999px;
+            font-size: 0.88rem;
+            color: var(--saw-muted);
+            background: var(--saw-glass);
+            border: 1px solid var(--saw-border);
+        }
+
+        .premium-features li::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--saw-accent-2);
+            box-shadow: 0 0 10px rgba(41, 182, 246, 0.6);
+        }
+
+        .premium-step {
+            position: relative;
+            margin-bottom: 22px;
+            padding: 28px 30px 30px;
+            border-radius: 24px;
+            background: var(--saw-glass);
+            border: 1px solid var(--saw-border);
+            transition: border-color 0.25s ease, opacity 0.25s ease;
+        }
+
+        .premium-step.is-active {
+            border-color: rgba(41, 182, 246, 0.45);
+            box-shadow: 0 18px 44px rgba(41, 182, 246, 0.12);
+        }
+
+        .premium-step.is-locked,
+        .premium-step.is-locked.aos-animate {
+            opacity: 0.45;
+            pointer-events: none;
+        }
+
+        .premium-step-head {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .premium-step-num {
+            display: grid;
+            place-items: center;
+            flex: 0 0 auto;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            font-weight: 800;
+            color: #fff;
+            background: linear-gradient(120deg, var(--saw-accent), var(--saw-accent-2));
+            box-shadow: 0 0 18px rgba(41, 182, 246, 0.32);
+        }
+
+        .premium-step.is-done .premium-step-num::after {
+            content: "\2713";
+        }
+
+        .premium-step.is-done .premium-step-num {
+            font-size: 0;
+        }
+
+        .premium-step.is-done .premium-step-num::after {
+            font-size: 1.05rem;
+        }
+
+        .premium-step-head h2 {
+            color: #fff;
+            font-size: 1.16rem;
+            margin: 0 0 4px;
+        }
+
+        .premium-step-head p {
+            margin: 0;
+            color: var(--saw-muted);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .premium-search-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .premium-select,
+        .premium-input {
+            height: 48px;
+            padding: 0 16px;
+            border-radius: 14px;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--saw-border);
+            outline: none;
+            font-family: inherit;
+        }
+
+        .premium-select {
+            flex: 0 0 190px;
+        }
+
+        .premium-select option {
+            color: #0b1220;
+        }
+
+        .premium-input {
+            flex: 1 1 240px;
+            min-width: 0;
+        }
+
+        .premium-select:focus,
+        .premium-input:focus {
+            border-color: var(--saw-accent);
+            box-shadow: 0 0 0 3px rgba(41, 182, 246, 0.18);
+        }
+
+        .premium-btn {
+            height: 48px;
+            padding: 0 26px;
+            border: 0;
+            border-radius: 14px;
+            font-weight: 700;
+            font-family: inherit;
+            color: #05121c;
+            cursor: pointer;
+            background: linear-gradient(120deg, var(--saw-accent), var(--saw-accent-2));
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .premium-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(41, 182, 246, 0.32);
+        }
+
+        .premium-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .premium-note {
+            margin: 14px 0 0;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: var(--saw-muted);
+        }
+
+        .premium-note.is-error {
+            color: #ff9db1;
+        }
+
+        .premium-found {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-top: 18px;
+            padding: 18px 20px;
+            border-radius: 18px;
+            background: rgba(41, 182, 246, 0.08);
+            border: 1px solid rgba(41, 182, 246, 0.32);
+        }
+
+        .premium-found img,
+        .premium-found .premium-found-fallback {
+            flex: 0 0 auto;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+            color: #fff;
+            background: linear-gradient(120deg, var(--saw-accent), var(--saw-accent-2));
+        }
+
+        .premium-found-text {
+            flex: 1 1 auto;
+            min-width: 0;
+            text-align: left;
+        }
+
+        .premium-found-text strong {
+            display: block;
+            color: #fff;
+            font-size: 1.02rem;
+            overflow-wrap: break-word;
+        }
+
+        .premium-found-text span {
+            color: var(--saw-muted);
+            font-size: 0.86rem;
+            overflow-wrap: break-word;
+        }
+
+        .premium-plans {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+        }
+
+        .premium-plan {
+            position: relative;
+            padding: 22px 18px;
+            border-radius: 18px;
+            text-align: center;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--saw-border);
+            transition: border-color 0.25s ease, transform 0.25s ease;
+        }
+
+        .premium-plan:hover {
+            transform: translateY(-3px);
+            border-color: rgba(41, 182, 246, 0.5);
+        }
+
+        .premium-plan.is-selected {
+            border-color: var(--saw-accent-2);
+            background: rgba(41, 182, 246, 0.14);
+        }
+
+        .premium-plan-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 3px 12px;
+            border-radius: 999px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: #05121c;
+            background: linear-gradient(120deg, var(--saw-accent), var(--saw-accent-2));
+        }
+
+        .premium-plan-name {
+            display: block;
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .premium-plan-price {
+            display: block;
+            color: var(--saw-accent-2);
+            font-weight: 800;
+            font-size: 1.12rem;
+        }
+
+        .premium-pay-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .premium-pay-tab {
+            padding: 10px 22px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-weight: 700;
+            color: var(--saw-muted);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--saw-border);
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .premium-pay-tab.is-selected {
+            color: #fff;
+            border-color: var(--saw-accent-2);
+            background: rgba(41, 182, 246, 0.14);
+        }
+
+        .premium-pay-body {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 24px;
+            padding: 22px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--saw-border);
+        }
+
+        .premium-qr {
+            flex: 0 0 auto;
+            width: 188px;
+            height: 188px;
+            padding: 10px;
+            border-radius: 16px;
+            background: #fff;
+            object-fit: contain;
+        }
+
+        .premium-pay-info {
+            flex: 1 1 260px;
+            min-width: 0;
+            text-align: left;
+        }
+
+        .premium-pay-info dl {
+            margin: 0;
+        }
+
+        .premium-pay-info dt {
+            color: var(--saw-muted);
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-top: 14px;
+        }
+
+        .premium-pay-info dt:first-child {
+            margin-top: 0;
+        }
+
+        .premium-pay-info dd {
+            margin: 4px 0 0;
+            color: #fff;
+            font-weight: 700;
+            overflow-wrap: break-word;
+        }
+
+        .premium-upload {
+            display: block;
+            margin-top: 22px;
+            padding: 26px 20px;
+            border-radius: 18px;
+            text-align: center;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px dashed var(--saw-border);
+            transition: border-color 0.25s ease;
+        }
+
+        .premium-upload:hover {
+            border-color: var(--saw-accent-2);
+        }
+
+        .premium-upload input {
+            display: none;
+        }
+
+        .premium-upload strong {
+            display: block;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .premium-upload span {
+            color: var(--saw-muted);
+            font-size: 0.86rem;
+            overflow-wrap: break-word;
+        }
+
+        .premium-preview {
+            margin-top: 18px;
+            padding: 18px 20px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--saw-border);
+        }
+
+        .premium-preview pre {
+            margin: 0;
+            color: var(--saw-muted);
+            font-size: 0.82rem;
+            white-space: pre-wrap;
+            overflow-wrap: break-word;
+        }
+
+        .premium-submit {
+            margin-top: 22px;
+            width: 100%;
+        }
+
+        .premium-sent {
+            display: none;
+            margin-top: 22px;
+            padding: 26px 24px;
+            border-radius: 18px;
+            text-align: center;
+            background: rgba(61, 220, 151, 0.1);
+            border: 1px solid rgba(61, 220, 151, 0.4);
+        }
+
+        .premium-sent strong {
+            display: block;
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .premium-sent p {
+            margin: 0;
+            color: var(--saw-muted);
+            line-height: 1.8;
+        }
+
+        @media (max-width: 991px) {
+            .premium-plans {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 767px) {
+            .premium-hero h1 {
+                font-size: 1.85rem;
+            }
+
+            .premium-step {
+                padding: 22px 20px 24px;
+            }
+
+            .premium-step-head {
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .premium-select,
+            .premium-input,
+            .premium-btn {
+                flex: 1 1 100%;
+                width: 100%;
+            }
+
+            .premium-pay-body {
+                justify-content: center;
+            }
+
+            .premium-pay-info {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page_wrapper sawlai_site">
+        <div id="preloader" aria-hidden="true">
+            <div class="brand-loader">
+                <img src="assets/images/app-logo.png" alt="Sawlai Library">
+                <p>Sawlai Library</p>
+                <div id="loader"></div>
+            </div>
+        </div>
+
+        <header class="saw-header" id="home">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg saw-nav" aria-label="Main Navigation">
+                    <a class="navbar-brand saw-brand" href="/">
+                        <img src="assets/images/app-logo.png" alt="Sawlai Library Logo">
+                        <span>Sawlai Library</span>
+                    </a>
+
+                    <button class="navbar-toggler saw-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span></span><span></span><span></span>
+                    </button>
+
+                    <div class="saw-menu" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto saw-links">
+                            <li class="nav-item"><a class="nav-link" href="/#home">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="readers">Readers</a></li>
+                            <li class="nav-item"><a class="nav-link" href="premium">Premium</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/#download">Download</a></li>
+                            <li class="nav-item"><a class="nav-link" href="about-us">About Us</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <section class="section-pad">
+                <div class="container">
+                    <div class="premium-shell">
+                        <div class="premium-hero" data-aos="fade-up">
+                            <p class="eyebrow">Premium</p>
+                            <h1>Sawlai Premium</h1>
+                            <p class="premium-sub">ဆောလိုင်ပရီမီယံ ရယူမှုစနစ်အား ဝက်ဆိုဒ်တွင်လုပ်ဆောင်နိင်ပြီး အကောင့်တစ်ခုအား
+                                ဖုန်းနှစ်မျိုးဖြင့် သုံးစွဲနိင်သည်။ သင့်၏ သူငယ်များအား ပရီမီယံလက်ဆောင်များပေးနိင်ပါသည်။ မိမိ
+                                အကောင့်နာမည်၊ အီမေးလ်၊ ပရိုဖိုင်နံပိတ်များ ရိုက်ထည့်၍ လုပ်ဆောင်နိင်မည်ဖြစ်သည်။</p>
+                            <ul class="premium-features" data-aos="fade-up" data-aos-delay="50">
+                                <li>ကြောငြာများ လုံးဝမပါရှိခြင်း</li>
+                                <li>ဒေါင်းလုဒ် အကန့်သတ်မရှိခြင်း</li>
+                                <li>Highlights &amp; Notes ဆာဗာတင်ခြင်း</li>
+                                <li>မှုလဒေတာများ ပြန်ရခြင်း</li>
+                                <li>ကွန်ပြူတာဗာရှင်းတွင် စာဖတ်နိင်ခြင်း</li>
+                                <li>စာအုပ်အသစ်များကို ချက်ချင်းဖတ်နိင်ခြင်း</li>
+                            </ul>
+                        </div>
+
+                        <article class="premium-step is-active" id="step-account" data-aos="fade-up" data-aos-delay="100">
+                            <div class="premium-step-head">
+                                <span class="premium-step-num">1</span>
+                                <div>
+                                    <h2>Find your account</h2>
+                                    <p>သင့်အကောင့်အား Username၊ Profile ID သို့မဟုတ် Email ဖြင့် ရှာဖွေပါ။</p>
+                                </div>
+                            </div>
+
+                            <form id="premium-search-form" role="search">
+                                <div class="premium-search-row">
+                                    <select class="premium-select" id="premium-search-mode" aria-label="Search by">
+                                        <option value="device_id">Profile ID</option>
+                                        <option value="username">Username</option>
+                                        <option value="email">Email</option>
+                                    </select>
+                                    <input class="premium-input" id="premium-search-input" type="text" autocomplete="off"
+                                        autocapitalize="off" spellcheck="false" maxlength="128"
+                                        placeholder="Enter your profile ID" aria-label="Search value">
+                                    <button class="premium-btn" id="premium-search-btn" type="submit">Search</button>
+                                </div>
+                                <p class="premium-note" id="premium-search-note" role="status" aria-live="polite" hidden></p>
+                            </form>
+
+                            <div id="premium-search-result" hidden></div>
+                        </article>
+
+                        <article class="premium-step is-locked" id="step-plan" data-aos="fade-up" data-aos-delay="150">
+                            <div class="premium-step-head">
+                                <span class="premium-step-num">2</span>
+                                <div>
+                                    <h2>Choose your plan</h2>
+                                    <p>မိမိနှစ်သက်ရာ ပရီမိယံအစီစဥ်ကို ရွေးချယ်ပါ။</p>
+                                </div>
+                            </div>
+                            <div class="premium-plans" id="premium-plans">
+                                <p class="premium-note">Loading plans...</p>
+                            </div>
+                        </article>
+
+                        <article class="premium-step is-locked" id="step-pay" data-aos="fade-up" data-aos-delay="200">
+                            <div class="premium-step-head">
+                                <span class="premium-step-num">3</span>
+                                <div>
+                                    <h2>Pay and send your proof</h2>
+                                    <p>အောက်ပါ ဘဏ်များဖြင့် ငွေလွှဲပြီး ပြေစာအား တင်ပေးပါ။</p>
+                                </div>
+                            </div>
+
+                            <div class="premium-pay-tabs" id="premium-pay-tabs"></div>
+                            <div class="premium-pay-body" id="premium-pay-body"></div>
+
+                            <label class="premium-upload" for="premium-proof">
+                                <input id="premium-proof" type="file" accept="image/png,image/jpeg,image/webp">
+                                <strong>Attach your payment screenshot</strong>
+                                <span id="premium-proof-name">PNG, JPG သို့မဟုတ် WEBP - အများဆုံး 5 MB</span>
+                            </label>
+
+                            <button class="premium-btn premium-submit" id="premium-submit" type="button" disabled>Send premium request</button>
+                            <p class="premium-note" id="premium-submit-note" role="status" aria-live="polite" hidden></p>
+
+                            <div class="premium-preview" id="premium-preview" hidden>
+                                <pre id="premium-preview-body"></pre>
+                            </div>
+
+                            <div class="premium-sent" id="premium-sent">
+                                <strong>Request sent</strong>
+                                <p>သင့် Premium တောင်းဆိုမှုအား ပေးပို့ပြီးပါပြီ။ စစ်ဆေးပြီးပါက အဖွဲ့ဝင်အဖြစ်
+                                    အတည်ပြုပေးပါမည်။</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="saw-footer">
+            <div class="container">
+                <div class="footer-top">
+                    <a class="footer-brand" href="/">
+                        <img src="assets/images/app-logo.png" alt="Sawlai Library logo">
+                        <span>Sawlai Library</span>
+                    </a>
+                    <ul class="social-links" aria-label="Social links">
+                        <li><a href="https://t.me/shz421" target="_blank" rel="noopener">Telegram</a></li>
+                        <li><a href="privacy-policy">Privacy</a></li>
+                        <li><a href="dmca">DMCA</a></li>
+                    </ul>
+                </div>
+                <p class="copyright">Copyright 2024 - 2026 All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="assets/scripts/jquery.js"></script>
+    <script src="assets/scripts/bootstrap.min.js"></script>
+    <script src="assets/scripts/aos.js"></script>
+    <script src="assets/scripts/site.js?v=8"></script>
+    <script>
+        (function() {
+            var SETTINGS_URL = "https://lib.sawlai.com/json/Controls/Settings.json";
+            var API_BASE = "https://lib.sawlai.com";
+            var MAX_PROOF_BYTES = 5 * 1024 * 1024;
+
+            var PLAN_MONTHS = [1, 3, 6, 12];
+            var FALLBACK_SETTINGS = {
+                PremiumPlan1Name: "1 month", PremiumPlan1Price: "5000MMK",
+                PremiumPlan3Name: "3 months", PremiumPlan3Price: "15000MMK",
+                PremiumPlan6Name: "6 months", PremiumPlan6Price: "30000MMK",
+                PremiumPlan12Name: "12 months", PremiumPlan12Price: "50000MMK",
+                PremiumPlanBadgeTarget: "3m", PremiumPlanBadgeText: "Popular",
+                PremiumKPayName: "KBZPay", PremiumKPayHolderName: "Hanni Oo",
+                PremiumKPayNumber: "", PremiumKPayQrPhoto: "",
+                PremiumWaveName: "WavePay", PremiumWaveHolderName: "Marn Hein",
+                PremiumWaveNumber: "", PremiumWaveQrPhoto: ""
+            };
+
+            var state = {
+                userId: "",
+                deviceId: "",
+                username: "",
+                plan: null,
+                payment: null,
+                proof: null,
+                sent: false,
+                settings: FALLBACK_SETTINGS
+            };
+
+            var accountStep = document.getElementById("step-account");
+            var planStep = document.getElementById("step-plan");
+            var payStep = document.getElementById("step-pay");
+            var form = document.getElementById("premium-search-form");
+            var modeSelect = document.getElementById("premium-search-mode");
+            var input = document.getElementById("premium-search-input");
+            var searchBtn = document.getElementById("premium-search-btn");
+            var note = document.getElementById("premium-search-note");
+            var result = document.getElementById("premium-search-result");
+            var plansWrap = document.getElementById("premium-plans");
+            var payTabs = document.getElementById("premium-pay-tabs");
+            var payBody = document.getElementById("premium-pay-body");
+            var proofInput = document.getElementById("premium-proof");
+            var proofName = document.getElementById("premium-proof-name");
+            var submitBtn = document.getElementById("premium-submit");
+            var submitNote = document.getElementById("premium-submit-note");
+            var preview = document.getElementById("premium-preview");
+            var previewBody = document.getElementById("premium-preview-body");
+            var sent = document.getElementById("premium-sent");
+
+            var isLocal = location.hostname === "localhost" || location.hostname === "127.0.0.1";
+
+            function escapeHtml(text) {
+                return String(text == null ? "" : text)
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#39;");
+            }
+
+            function say(node, message, isError) {
+                if (!node) return;
+                node.textContent = message || "";
+                node.hidden = !message;
+                node.classList.toggle("is-error", !!isError);
+            }
+
+            function safeUrl(value) {
+                var url = String(value == null ? "" : value).trim();
+                return /^https:\/\//i.test(url) ? url : "";
+            }
+
+            function maskDeviceId(value) {
+                var text = String(value || "");
+                if (text.length <= 10) return text;
+                return text.slice(0, 6) + "****" + text.slice(-4);
+            }
+
+            function initialsOf(name) {
+                var text = String(name || "").trim();
+                return text ? text.slice(0, 1).toUpperCase() : "?";
+            }
+
+            function hasAccount() {
+                return !!(state.userId || state.deviceId);
+            }
+
+            function setStepState() {
+                var found = hasAccount();
+
+                accountStep.classList.toggle("is-done", found);
+                accountStep.classList.toggle("is-active", !found);
+
+                planStep.classList.toggle("is-locked", !found);
+                planStep.classList.toggle("is-active", found && !state.plan);
+                planStep.classList.toggle("is-done", !!state.plan);
+
+                payStep.classList.toggle("is-locked", !state.plan);
+                payStep.classList.toggle("is-active", !!state.plan && !state.sent);
+
+                submitBtn.disabled = !(found && state.plan && state.payment && state.proof);
+            }
+
+            function selectAccount(reader) {
+                state.userId = reader.userId || "";
+                state.deviceId = reader.deviceId || "";
+                state.username = reader.username || "";
+                setStepState();
+                if (typeof AOS !== "undefined") AOS.refresh();
+            }
+
+            function renderFound(reader) {
+                var photo = safeUrl(reader.photo);
+                var tile = photo
+                    ? '<img src="' + escapeHtml(photo) + '" alt="">'
+                    : '<span class="premium-found-fallback">' + escapeHtml(initialsOf(reader.username)) + "</span>";
+
+                var detail = reader.deviceId
+                    ? "Profile ID " + escapeHtml(maskDeviceId(reader.deviceId))
+                    : "Premium will be added to this account";
+
+                result.innerHTML =
+                    '<div class="premium-found">' +
+                    tile +
+                    '<div class="premium-found-text">' +
+                    "<strong>" + escapeHtml(reader.username || "Sawlai reader") + "</strong>" +
+                    "<span>" + detail + "</span>" +
+                    "</div>" +
+                    '<button class="premium-btn" id="premium-select-account" type="button">This is me</button>' +
+                    "</div>";
+                result.hidden = false;
+
+                var pick = document.getElementById("premium-select-account");
+                if (pick) {
+                    pick.addEventListener("click", function() {
+                        selectAccount(reader);
+                        say(note, "Account selected - continue to step 2.");
+                        pick.disabled = true;
+                        pick.textContent = "Selected";
+                    });
+                }
+            }
+
+            var SEARCH_UNAVAILABLE = "Search is not available right now. Please try again later.";
+            var SEARCH_EMPTY = "No account found. Please check what you entered and try again.";
+
+            function fetchReader(mode, value) {
+                var url = mode === "device_id"
+                    ? API_BASE + "/v2/public/readers/search?device_id=" + encodeURIComponent(value)
+                    : API_BASE + "/v2/web/find-user?" + mode + "=" + encodeURIComponent(value);
+
+                return fetch(url).catch(function() {
+                    throw new Error(SEARCH_UNAVAILABLE);
+                }).then(function(response) {
+                    return response.json().catch(function() {
+                        return {};
+                    }).then(function(data) {
+                        if (!response.ok) {
+                            if (mode === "device_id" && response.status === 404) throw new Error(SEARCH_EMPTY);
+                            throw new Error(SEARCH_UNAVAILABLE);
+                        }
+                        var reader = data && data.reader;
+                        if (!reader || !reader.id) throw new Error(SEARCH_EMPTY);
+                        return {
+                            userId: String(reader.id),
+                            deviceId: mode === "device_id" ? value : "",
+                            username: reader.username || "",
+                            photo: reader.photo || ""
+                        };
+                    });
+                });
+            }
+
+            form.addEventListener("submit", function(event) {
+                event.preventDefault();
+                var mode = modeSelect.value;
+                var value = (input.value || "").trim();
+
+                result.hidden = true;
+                result.innerHTML = "";
+
+                if (!value) {
+                    say(note, "Please enter a value to search.", true);
+                    return;
+                }
+
+                if (mode === "device_id" && value.length < 8) {
+                    say(note, "Enter your full profile ID - it is at least 8 characters.", true);
+                    return;
+                }
+
+                if (mode === "email" && value.indexOf("@") < 1) {
+                    say(note, "Enter your full email address.", true);
+                    return;
+                }
+
+                say(note, "Searching...");
+                searchBtn.disabled = true;
+                fetchReader(mode, value)
+                    .then(function(reader) {
+                        say(note, "");
+                        renderFound(reader);
+                    })
+                    .catch(function(error) {
+                        say(note, error.message || SEARCH_UNAVAILABLE, true);
+                    })
+                    .finally(function() {
+                        searchBtn.disabled = false;
+                    });
+            });
+
+            modeSelect.addEventListener("change", function() {
+                var mode = modeSelect.value;
+                input.value = "";
+                input.placeholder = mode === "email"
+                    ? "Enter your full email address"
+                    : (mode === "username" ? "Enter your username" : "Enter your profile ID");
+                result.hidden = true;
+                result.innerHTML = "";
+                say(note, "");
+            });
+
+            function planKey(months, suffix) {
+                return "PremiumPlan" + months + suffix;
+            }
+
+            function renderPlans() {
+                var settings = state.settings;
+                var badgeTarget = String(settings.PremiumPlanBadgeTarget || "").trim().toLowerCase();
+                var badgeText = String(settings.PremiumPlanBadgeText || "").trim();
+
+                plansWrap.innerHTML = PLAN_MONTHS.map(function(months) {
+                    var name = String(settings[planKey(months, "Name")] || (months + " month"));
+                    var price = String(settings[planKey(months, "Price")] || "");
+                    var showBadge = badgeText && badgeTarget === (months + "m");
+                    return '<div class="premium-plan" data-months="' + months + '" role="button" tabindex="0">' +
+                        (showBadge ? '<span class="premium-plan-badge">' + escapeHtml(badgeText) + "</span>" : "") +
+                        '<span class="premium-plan-name">' + escapeHtml(name) + "</span>" +
+                        '<span class="premium-plan-price">' + escapeHtml(price) + "</span>" +
+                        "</div>";
+                }).join("");
+
+                Array.prototype.forEach.call(plansWrap.querySelectorAll(".premium-plan"), function(card) {
+                    var choose = function() {
+                        Array.prototype.forEach.call(plansWrap.querySelectorAll(".premium-plan"), function(other) {
+                            other.classList.remove("is-selected");
+                        });
+                        card.classList.add("is-selected");
+                        state.plan = {
+                            months: Number(card.getAttribute("data-months")),
+                            name: card.querySelector(".premium-plan-name").textContent,
+                            price: card.querySelector(".premium-plan-price").textContent
+                        };
+                        setStepState();
+                        if (typeof AOS !== "undefined") AOS.refresh();
+                    };
+                    card.addEventListener("click", choose);
+                    card.addEventListener("keydown", function(event) {
+                        if (event.key === "Enter" || event.key === " ") {
+                            event.preventDefault();
+                            choose();
+                        }
+                    });
+                });
+            }
+
+            function paymentMethods() {
+                var settings = state.settings;
+                return [{
+                    id: "kbz",
+                    name: String(settings.PremiumKPayName || "KBZPay"),
+                    holder: String(settings.PremiumKPayHolderName || ""),
+                    number: String(settings.PremiumKPayNumber || ""),
+                    qr: safeUrl(settings.PremiumKPayQrPhoto)
+                }, {
+                    id: "wave",
+                    name: String(settings.PremiumWaveName || "WavePay"),
+                    holder: String(settings.PremiumWaveHolderName || ""),
+                    number: String(settings.PremiumWaveNumber || ""),
+                    qr: safeUrl(settings.PremiumWaveQrPhoto)
+                }];
+            }
+
+            function renderPayment() {
+                var methods = paymentMethods();
+
+                payTabs.innerHTML = methods.map(function(method) {
+                    return '<button class="premium-pay-tab" type="button" data-id="' + escapeHtml(method.id) + '">' +
+                        escapeHtml(method.name) + "</button>";
+                }).join("");
+
+                var paint = function(method) {
+                    state.payment = method;
+                    Array.prototype.forEach.call(payTabs.querySelectorAll(".premium-pay-tab"), function(tab) {
+                        tab.classList.toggle("is-selected", tab.getAttribute("data-id") === method.id);
+                    });
+
+                    var rows = "";
+                    if (method.holder) rows += "<dt>Account name</dt><dd>" + escapeHtml(method.holder) + "</dd>";
+                    if (method.number) rows += "<dt>Account number</dt><dd>" + escapeHtml(method.number) + "</dd>";
+
+                    payBody.innerHTML = (method.qr
+                            ? '<img class="premium-qr" src="' + escapeHtml(method.qr) + '" alt="' + escapeHtml(method.name) + ' QR">'
+                            : "") +
+                        '<div class="premium-pay-info"><dl>' + rows + "</dl></div>";
+
+                    setStepState();
+                };
+
+                Array.prototype.forEach.call(payTabs.querySelectorAll(".premium-pay-tab"), function(tab) {
+                    tab.addEventListener("click", function() {
+                        var id = tab.getAttribute("data-id");
+                        var method = methods.filter(function(item) {
+                            return item.id === id;
+                        })[0];
+                        if (method) paint(method);
+                    });
+                });
+
+                if (methods.length) paint(methods[0]);
+            }
+
+            proofInput.addEventListener("change", function() {
+                var file = proofInput.files && proofInput.files[0];
+                state.proof = null;
+                if (!file) {
+                    proofName.textContent = "PNG, JPG သို့မဟုတ် WEBP - အများဆုံး 5 MB";
+                    setStepState();
+                    return;
+                }
+                if (file.size > MAX_PROOF_BYTES) {
+                    proofName.textContent = "That file is too large - maximum 5 MB.";
+                    setStepState();
+                    return;
+                }
+                state.proof = file;
+                proofName.textContent = file.name + " (" + Math.round(file.size / 1024) + " KB)";
+                setStepState();
+            });
+
+            function describePayload() {
+                return [
+                    "subject: Premium Membership Request",
+                    "device_id: " + (state.deviceId || "(matched by account)"),
+                    "user_id: " + (state.userId || "-"),
+                    "username: " + (state.username || "-"),
+                    "plan: " + (state.plan ? state.plan.name + " (" + state.plan.price + ")" : "-"),
+                    "payment: " + (state.payment ? state.payment.name : "-"),
+                    "proof: " + (state.proof ? state.proof.name : "-")
+                ].join("\n");
+            }
+
+            submitBtn.addEventListener("click", function() {
+                if (submitBtn.disabled) return;
+
+                var body = new FormData();
+                body.append("device_id", state.deviceId || "");
+                body.append("user_id", state.userId || "");
+                body.append("username", state.username || "");
+                body.append("plan_months", String(state.plan ? state.plan.months : ""));
+                body.append("plan_label", state.plan ? state.plan.name + " (" + state.plan.price + ")" : "");
+                body.append("payment_method", state.payment ? state.payment.name : "");
+                body.append("proof", state.proof);
+
+                if (isLocal) {
+                    previewBody.textContent = describePayload();
+                    preview.hidden = false;
+                }
+
+                say(submitNote, "Sending...");
+                submitBtn.disabled = true;
+
+                fetch(API_BASE + "/v2/web/premium-request", { method: "POST", body: body })
+                    .then(function(response) {
+                        return response.json().catch(function() {
+                            return {};
+                        }).then(function(data) {
+                            if (!response.ok) throw new Error(data && data.error ? data.error : "Request failed");
+                            return data;
+                        });
+                    })
+                    .then(function() {
+                        say(submitNote, "");
+                        state.sent = true;
+                        sent.style.display = "block";
+                        submitBtn.style.display = "none";
+                        setStepState();
+                        if (typeof AOS !== "undefined") AOS.refresh();
+                    })
+                    .catch(function() {
+                        say(submitNote, "Could not send your request right now. Please try again later.", true);
+                        submitBtn.disabled = false;
+                    });
+            });
+
+            fetch(SETTINGS_URL)
+                .then(function(response) {
+                    if (!response.ok) throw new Error("HTTP " + response.status);
+                    return response.json();
+                })
+                .then(function(data) {
+                    var settings = Array.isArray(data) ? data[0] : data;
+                    if (settings && typeof settings === "object") state.settings = settings;
+                })
+                .catch(function() {})
+                .finally(function() {
+                    renderPlans();
+                    renderPayment();
+                    setStepState();
+                    if (typeof AOS !== "undefined") AOS.refresh();
+                });
+
+            setStepState();
+        })();
+    </script>
+</body>
+
+</html>
