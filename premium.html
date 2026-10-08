@@ -281,6 +281,7 @@
 
         .premium-found .premium-pick {
             flex: 0 0 auto;
+            width: auto;
             white-space: nowrap;
         }
 
@@ -603,6 +604,17 @@
             .premium-select,
             .premium-input,
             .premium-btn {
+                flex: 1 1 100%;
+                width: 100%;
+            }
+
+            .premium-found {
+                flex-wrap: wrap;
+                gap: 14px;
+                padding: 16px;
+            }
+
+            .premium-found .premium-pick {
                 flex: 1 1 100%;
                 width: 100%;
             }
