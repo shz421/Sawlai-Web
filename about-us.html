@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="assets/styles/aos.css">
     <link rel="stylesheet" href="assets/styles/style.css">
     <link rel="stylesheet" href="assets/styles/responsive.css">
-    <link rel="stylesheet" href="assets/styles/site.css?v=12">
+    <link rel="stylesheet" href="assets/styles/site.css?v=15">
     <style>
         .about-hero {
             min-height: auto;
@@ -602,10 +602,12 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="assets/styles/library-theme.css">
+    <link rel="stylesheet" href="assets/styles/about-redesign.css">
 </head>
 
 <body>
-    <div class="page_wrapper sawlai_site">
+    <div class="page_wrapper sawlai_site about-page">
         <div id="preloader" aria-hidden="true">
             <div class="brand-loader">
                 <img src="assets/images/app-logo.png" alt="Sawlai Library">
@@ -643,14 +645,18 @@
                 <div class="hero-bg" aria-hidden="true"></div>
                 <div class="particle-layer" aria-hidden="true"></div>
                 <div class="container">
-                    <div class="section-head" data-aos="fade-up">
-                        <p class="eyebrow">About Us</p>
-                        <h1 id="about-title">Your Digital Library</h1>
-                        <p class="about-lead">
-                            Sawlai Library သည် လူငယ်လူရွယ်တို့ စာဖတ်အား မြှင့်တင်ပေးနိုင်ရန် နှင့် စာအုပ်ပေါင်းစုံများကို တစ်နေရာတည်း ကြည့်ရှု၊ တိုက်ရိုက်ဖတ်နိုင်အောင် တည်ဆောက်ထားသော စာကြည့်တိုက်ဖြစ်ပါသည်။
-                        </p>
-                        <div class="hero-buttons" data-aos="fade-up" data-aos-delay="90">
-                            <a class="btn-ghost" href="dmca">DMCA &amp; Copyright</a>
+                    <div class="section-head about-intro" data-aos="fade-up">
+                        <div class="about-title-block">
+                            <p class="eyebrow">About Us</p>
+                            <h1 id="about-title">Your Digital Library</h1>
+                        </div>
+                        <div class="about-intro-panel">
+                            <p class="about-lead">
+                                Sawlai Library သည် လူငယ်လူရွယ်တို့ စာဖတ်အား မြှင့်တင်ပေးနိုင်ရန် နှင့် စာအုပ်ပေါင်းစုံများကို တစ်နေရာတည်း ကြည့်ရှု၊ တိုက်ရိုက်ဖတ်နိုင်အောင် တည်ဆောက်ထားသော စာကြည့်တိုက်ဖြစ်ပါသည်။
+                            </p>
+                            <div class="hero-buttons" data-aos="fade-up" data-aos-delay="90">
+                                <a class="btn-ghost" href="dmca">DMCA &amp; Copyright</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -693,7 +699,7 @@
                 </div>
             </section>
 
-            <section class="about-section about-glow-c" aria-labelledby="reading-title">
+            <section class="about-section about-glow-c" id="reading-guide" aria-labelledby="reading-title">
                 <div class="container">
                     <div class="about-head" data-aos="fade-up">
                         <p class="eyebrow">For Readers</p>
@@ -1036,6 +1042,13 @@
             }
 
             if (typeof AOS !== "undefined") AOS.refresh();
+            // Goals load above the guide; keep deep links aligned after they appear.
+            if (window.location.hash === "#reading-guide") {
+                window.requestAnimationFrame(function() {
+                    var guide = document.getElementById("reading-guide");
+                    if (guide) guide.scrollIntoView();
+                });
+            }
         }
 
         if (goalsEl || sourcesEl || adsEl || copyrightEl) {

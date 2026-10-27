@@ -1,0 +1,33 @@
+/* One calm cinematic background across the whole site. */
+:root {
+    --saw-bg: #050711;
+    --saw-secondary: #090e1b;
+    --library-background:
+        radial-gradient(ellipse at 74% 47%, rgba(23, 90, 132, .24), transparent 48%),
+        radial-gradient(ellipse at 18% 18%, rgba(41, 66, 126, .2), transparent 42%),
+        linear-gradient(115deg, #050711 5%, #090e1b 58%, #07111c 100%);
+}
+
+body { background: var(--saw-bg); }
+
+.sawlai_site {
+    min-height: 100svh;
+    background: var(--library-background);
+    background-attachment: fixed;
+}
+
+/* Let the shared background show through every section, including the hero. */
+.sawlai_site main > section,
+.sawlai_site .saw-footer { background: transparent; }
+
+.sawlai_site .hero-section > .hero-bg,
+.sawlai_site .hero-section::after,
+.sawlai_site .particle-layer,
+.sawlai_site .features-section::before,
+.sawlai_site .about-section::before { display: none; }
+
+.saw-header.scrolled { background: rgba(5, 7, 17, .82); }
+
+@media (max-width: 767px) {
+    .sawlai_site { background-attachment: scroll; }
+}

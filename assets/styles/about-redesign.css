@@ -1,0 +1,90 @@
+/* A quiet editorial treatment for the About page. */
+.about-page .about-hero { min-height: auto; padding: clamp(58px, 8vw, 104px) 0 clamp(52px, 7vw, 86px); }
+.about-page .about-hero .container,
+.about-page .about-section .container { max-width: 1020px; }
+.about-page .about-intro { display: block; max-width: 850px; margin: 0; text-align: left; }
+.about-page .about-title-block .eyebrow,
+.about-page .about-head .eyebrow { margin: 0 0 14px; color: #76cef4; font-size: .72rem; font-weight: 700; letter-spacing: .16em; }
+.about-page .about-hero h1 { max-width: none; margin: 0 0 24px; font-size: clamp(2.15rem, 4.4vw, 3.75rem); line-height: 1.12; letter-spacing: -.045em; }
+.about-page .about-intro-panel { max-width: 760px; padding: 0; border: 0; background: none; box-shadow: none; }
+.about-page .about-lead { max-width: none; margin: 0; color: #bdc8d6; font-size: clamp(1rem, 1.45vw, 1.11rem); line-height: 1.95; text-align: left; }
+.about-page .about-hero .hero-buttons { justify-content: flex-start; margin: 22px 0 0; }
+.about-page .about-intro-panel .btn-ghost { width: auto; min-height: auto; padding: 0 0 3px; border: 0; border-bottom: 1px solid rgba(113, 205, 246, .58); border-radius: 0; background: none; box-shadow: none; color: #91d9f8; font-size: .86rem; font-weight: 600; }
+
+.about-page .about-section { padding: 60px 0; border-top: 1px solid rgba(173, 198, 217, .13); }
+.about-page .about-head { max-width: none; margin: 0 0 28px; text-align: left; }
+.about-page .about-head h2 { max-width: 760px; margin: 0; font-size: clamp(1.45rem, 2.35vw, 2.05rem); line-height: 1.28; letter-spacing: -.027em; }
+.about-page #reading-guide { scroll-margin-top: 84px; }
+.about-page .about-prose,
+.about-page .about-goals,
+.about-page .about-steps,
+.about-page .about-notes,
+.about-page .about-sources,
+.about-page .about-callout,
+.about-page .about-note { max-width: none; margin-left: 0; margin-right: 0; }
+.about-page .about-prose { color: #bdc8d6; font-size: .98rem; line-height: 1.9; }
+
+/* Numbered text reads as a list instead of a stack of panels. */
+.about-page .about-goals { gap: 0; }
+.about-page .about-goals li { min-height: 64px; padding: 16px 0 17px 55px; border: 0; border-top: 1px solid rgba(173, 198, 217, .15); border-radius: 0; background: none; box-shadow: none; color: #c3ccd8; line-height: 1.82; }
+.about-page .about-goals li:last-child { border-bottom: 1px solid rgba(173, 198, 217, .15); }
+.about-page .about-goals li:hover { border-color: rgba(173, 198, 217, .15); box-shadow: none; }
+.about-page .about-goals li::before { top: 18px; left: 0; font-size: .86rem; }
+
+.about-page .about-stats-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; padding: 20px 0; border-top: 1px solid rgba(173, 198, 217, .15); border-bottom: 1px solid rgba(173, 198, 217, .15); }
+.about-page .about-stat { padding: 7px 20px; border: 0; border-right: 1px solid rgba(173, 198, 217, .15); border-radius: 0; background: none; backdrop-filter: none; text-align: left; }
+.about-page .about-stat:first-child { padding-left: 0; }
+.about-page .about-stat:last-child { border-right: 0; }
+.about-page .about-stat strong { margin-bottom: 7px; font-size: clamp(1.22rem, 2vw, 1.7rem); }
+.about-page .about-stat span { font-size: .85rem; line-height: 1.6; }
+
+.about-page .about-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 36px; margin-top: 30px; }
+.about-page .about-steps li { padding: 4px 0 4px 48px; border: 0; border-radius: 0; background: none; box-shadow: none; }
+.about-page .about-steps li:hover { border-color: transparent; box-shadow: none; }
+.about-page .about-steps li::before { top: 1px; left: 0; width: 30px; height: 30px; border: 1px solid rgba(113, 205, 246, .52); background: none; box-shadow: none; color: #91d9f8; font-size: .82rem; }
+.about-page .about-steps h3 { font-size: 1rem; line-height: 1.55; }
+.about-page .about-steps p { line-height: 1.83; }
+.about-page .about-steps + .about-stats-grid { margin-top: 38px; }
+.about-page .about-notes { margin-top: 28px; }
+.about-page .about-notes li { line-height: 1.8; }
+
+
+.about-page .about-sources { gap: 0 28px; margin-top: 22px; }
+.about-page .about-source { padding: 13px 0; border: 0; border-bottom: 1px solid rgba(173, 198, 217, .15); border-radius: 0; background: none; box-shadow: none; }
+.about-page a.about-source:hover { transform: none; box-shadow: none; }
+.about-page .about-source-logo { width: 43px; height: 43px; }
+.about-page .about-callout,
+.about-page .about-note { padding: 0 0 0 20px; border: 0; border-left: 2px solid rgba(113, 205, 246, .65); border-radius: 0; background: none; }
+.about-page .about-note { gap: 16px; }
+.about-page .about-note-icon { width: 32px; height: 32px; border: 0; border-radius: 0; background: none; }
+.about-page .about-note-icon svg { width: 22px; height: 22px; }
+
+.about-page .about-contact-grid { gap: 0 36px; }
+.about-page .about-contact-card { padding: 0; border: 0; border-radius: 0; background: none; backdrop-filter: none; }
+.about-page .about-contact-head { margin-bottom: 12px; }
+.about-page .about-contact-head .about-icon { width: 36px; height: 36px; margin: 0; border-radius: 10px; }
+.about-page .about-mail { align-self: flex-start; min-height: 0; padding: 0; border-radius: 0; background: none; box-shadow: none; color: #91d9f8 !important; font-size: .9rem; }
+.about-page .about-mail:hover { transform: none; box-shadow: none; text-decoration: underline; }
+
+@media (max-width: 767px) {
+    .about-page .about-hero { padding: 48px 0 52px; }
+    .about-page .about-section { padding: 44px 0; }
+    .about-page .about-head { margin-bottom: 24px; }
+    .about-page .about-stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 20px; }
+    .about-page .about-stat:nth-child(2) { border-right: 0; }
+    .about-page .about-stat:nth-child(3) { padding-left: 0; }
+    .about-page .about-steps { grid-template-columns: 1fr; gap: 23px; }
+    .about-page .about-contact-grid { gap: 32px; }
+}
+@media (max-width: 520px) {
+    .about-page .about-hero h1 { font-size: 2.15rem; }
+    .about-page .about-sources { grid-template-columns: 1fr; }
+    .about-page .about-goals li { padding-left: 43px; }
+    .about-page .about-stat { padding: 6px 12px; }
+    .about-page .about-contact-card .contact-socials { justify-content: flex-start; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .about-page .about-goals li,
+    .about-page .about-steps li,
+    .about-page .about-source { transition: none; }
+}

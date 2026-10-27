@@ -20,7 +20,9 @@
     <link rel="stylesheet" href="assets/styles/aos.css">
     <link rel="stylesheet" href="assets/styles/style.css">
     <link rel="stylesheet" href="assets/styles/responsive.css">
-    <link rel="stylesheet" href="assets/styles/site.css?v=12">
+    <link rel="stylesheet" href="assets/styles/site.css?v=15">
+    <link rel="stylesheet" href="assets/styles/3d-showcase.css">
+    <link rel="stylesheet" href="assets/styles/library-theme.css">
 </head>
 
 <body>
@@ -89,7 +91,10 @@
                         <div class="hero-visual" data-aos="fade-left" data-aos-duration="1000">
                             <div class="phone-orb"></div>
                             <div class="phone-mockup">
-                                <img src="assets/images/homep.png" alt="Sawlai app home screen">
+                                <img class="hero-phone-fallback" src="assets/images/homep.png"
+                                    alt="Sawlai app home screen">
+                                <canvas id="hero-phone-canvas" role="img"
+                                    aria-label="Sawlai Library app home screen displayed on a 3D phone"></canvas>
                             </div>
                             <div class="floating-card card-top">26000+ Books</div>
                             <div class="floating-card card-bottom">Audio Books</div>
@@ -136,51 +141,24 @@
 
             <section class="showcase-section section-pad" aria-labelledby="showcase-title">
                 <div class="container">
-                    <div class="section-head" data-aos="fade-up">
-                        <p class="eyebrow">Screenshots</p>
-                        <h2 id="showcase-title">Inside the app experience</h2>
-                    </div>
-                    <div class="showcase-slider" data-aos="fade-up">
-                        <div class="showcase-viewport" id="showcase-track" tabindex="0" role="region"
-                            aria-label="App screenshots">
-                            <div class="shot-card"><img src="assets/images/homep.png"
-                                    alt="Sawlai home screen with categories, newly added and trending books"
-                                    loading="lazy" decoding="async"></div>
-                            <div class="shot-card"><img src="assets/images/search.png"
-                                    alt="Search for books by author or title" loading="lazy" decoding="async">
-                            </div>
-                            <div class="shot-card"><img src="assets/images/bookinfo.png"
-                                    alt="Book detail page with overview and Read Now button" loading="lazy"
-                                    decoding="async"></div>
-                            <div class="shot-card"><img src="assets/images/groupspeople.png"
-                                    alt="Book collection page with its books list" loading="lazy"
-                                    decoding="async"></div>
-                            <div class="shot-card"><img src="assets/images/authors.png"
-                                    alt="Authors list with an author profile and follow option" loading="lazy"
-                                    decoding="async"></div>
-                            <div class="shot-card"><img src="assets/images/readingProgress.png"
-                                    alt="My Reading page with reading progress and completed books"
-                                    loading="lazy" decoding="async"></div>
-                            <div class="shot-card"><img src="assets/images/audioplayer.png"
-                                    alt="Audio player with cover art and playback controls" loading="lazy"
-                                    decoding="async"></div>
+                    <div class="showcase-3d-layout" id="showcase-3d-layout">
+                        <div class="section-head" data-aos="fade-up">
+                            <p class="eyebrow">Screenshots</p>
+                            <h2 id="showcase-title">Inside the app experience</h2>
                         </div>
-
-                        <div class="showcase-nav">
-                            <button type="button" class="showcase-arrow" id="showcase-prev"
-                                aria-controls="showcase-track" aria-label="Previous screenshots">
-                                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                                    <path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </button>
-                            <button type="button" class="showcase-arrow" id="showcase-next"
-                                aria-controls="showcase-track" aria-label="Next screenshots">
-                                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                                    <path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </button>
+                        <div class="showcase-viewport" id="showcase-track" tabindex="0"
+                            aria-label="Sawlai Library app screenshots">
+                            <article class="shot-card"><img src="assets/images/homep.png" alt="Sawlai home screen with categories, newly added and trending books" loading="lazy"></article>
+                            <article class="shot-card"><img src="assets/images/search.png" alt="Search for books by author or title" loading="lazy"></article>
+                            <article class="shot-card"><img src="assets/images/bookinfo.png" alt="Book detail page with overview and Read Now button" loading="lazy"></article>
+                            <article class="shot-card"><img src="assets/images/groupspeople.png" alt="Book collection page with its books list" loading="lazy"></article>
+                            <article class="shot-card"><img src="assets/images/authors.png" alt="Authors list with an author profile and follow option" loading="lazy"></article>
+                            <article class="shot-card"><img src="assets/images/readingProgress.png" alt="My Reading page with reading progress and completed books" loading="lazy"></article>
+                            <article class="shot-card"><img src="assets/images/audioplayer.png" alt="Audio player with cover art and playback controls" loading="lazy"></article>
+                        </div>
+                        <div class="showcase-nav" aria-label="Screenshot navigation">
+                            <button class="showcase-arrow" id="showcase-prev" type="button" aria-label="Previous screenshots">‹</button>
+                            <button class="showcase-arrow" id="showcase-next" type="button" aria-label="Next screenshots">›</button>
                         </div>
                     </div>
                 </div>
@@ -365,6 +343,9 @@
     <script src="assets/scripts/bootstrap.min.js"></script>
     <script src="assets/scripts/aos.js"></script>
     <script src="assets/scripts/site.js?v=8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script type="module" async src="assets/scripts/3d-showcase.js"></script>
 </body>
 
 </html>
