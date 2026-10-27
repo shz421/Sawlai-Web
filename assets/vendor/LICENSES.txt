@@ -1,6 +1,19 @@
-The MIT License
+Third-party software notices
 
-Copyright © 2010-2024 three.js authors
+Three.js r169
+Copyright (c) 2010-2024 Three.js Authors
+Licensed under the MIT License.
+
+Bootstrap v4.6.1
+Copyright (c) 2011-2021 The Bootstrap Authors
+Copyright (c) 2011-2021 Twitter, Inc.
+Licensed under the MIT License.
+
+jQuery v3.5.1
+Copyright (c) JS Foundation and other contributors
+License information: https://jquery.org/license/
+
+The MIT License
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

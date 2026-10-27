@@ -63,6 +63,7 @@
             <section class="hero-section section-pad" aria-labelledby="hero-title">
                 <div class="hero-bg" aria-hidden="true"></div>
                 <div class="particle-layer" aria-hidden="true"></div>
+                <canvas class="hero-books-canvas" id="hero-books-canvas" aria-hidden="true"></canvas>
                 <div class="container">
                     <div class="hero-grid">
                         <div class="hero-copy" data-aos="fade-up" data-aos-duration="900">
@@ -93,8 +94,7 @@
                             <div class="phone-mockup">
                                 <img class="hero-phone-fallback" src="assets/images/homep.png"
                                     alt="Sawlai app home screen">
-                                <canvas id="hero-phone-canvas" role="img"
-                                    aria-label="Sawlai Library app home screen displayed on a 3D phone"></canvas>
+                                <canvas id="hero-phone-canvas" aria-hidden="true"></canvas>
                             </div>
                             <div class="floating-card card-top">26000+ Books</div>
                             <div class="floating-card card-bottom">Audio Books</div>
@@ -343,9 +343,7 @@
     <script src="assets/scripts/bootstrap.min.js"></script>
     <script src="assets/scripts/aos.js"></script>
     <script src="assets/scripts/site.js?v=8"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-    <script type="module" async src="assets/scripts/3d-showcase.js"></script>
+    <script type="module" src="assets/js/3d-hero.js"></script>
 </body>
 
 </html>

@@ -45,7 +45,6 @@ html {
     background: radial-gradient(circle at 50% 48%, rgba(37, 130, 184, 0.14), transparent 35%), #060b15;
 }
 
-/* A small opening book keeps the loading screen tied to reading. */
 .brand-loader {
     display: flex;
     flex-direction: column;

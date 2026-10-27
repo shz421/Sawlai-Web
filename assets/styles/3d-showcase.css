@@ -1,4 +1,21 @@
-/* The 3D device lives beside the hero download call to action. */
+.hero-books-canvas {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(90deg, rgba(5, 7, 17, .76), rgba(5, 7, 17, .33) 58%, rgba(5, 7, 17, .26));
+    pointer-events: none;
+}
+
 .phone-mockup {
     width: min(330px, 80vw);
     aspect-ratio: 368 / 679;
@@ -19,6 +36,7 @@
     opacity: 0;
     filter: drop-shadow(0 18px 22px rgba(0, 0, 0, .4));
     touch-action: pan-y;
+    pointer-events: none;
 }
 
 .phone-mockup .hero-phone-fallback { width: 100%; height: 100%; object-fit: contain; }

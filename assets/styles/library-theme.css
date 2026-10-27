@@ -1,4 +1,3 @@
-/* One calm cinematic background across the whole site. */
 :root {
     --saw-bg: #050711;
     --saw-secondary: #090e1b;
@@ -16,7 +15,6 @@ body { background: var(--saw-bg); }
     background-attachment: fixed;
 }
 
-/* Let the shared background show through every section, including the hero. */
 .sawlai_site main > section,
 .sawlai_site .saw-footer { background: transparent; }
 
