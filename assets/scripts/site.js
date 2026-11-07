@@ -643,7 +643,7 @@
         }, { passive: true });
 
         window.setInterval(function () {
-            if (document.hidden) return;
+            if (document.hidden || reduced.matches) return;
             if (Date.now() < resumeAt) return;
             slide(1, true);
         }, 3200);

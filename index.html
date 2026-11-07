@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="assets/styles/style.css">
     <link rel="stylesheet" href="assets/styles/responsive.css">
     <link rel="stylesheet" href="assets/styles/site.css?v=15">
-    <link rel="stylesheet" href="assets/styles/3d-showcase.css">
+    <link rel="stylesheet" href="assets/styles/3d-showcase.css?v=8">
     <link rel="stylesheet" href="assets/styles/library-theme.css">
 </head>
 
@@ -63,7 +63,6 @@
             <section class="hero-section section-pad" aria-labelledby="hero-title">
                 <div class="hero-bg" aria-hidden="true"></div>
                 <div class="particle-layer" aria-hidden="true"></div>
-                <canvas class="hero-books-canvas" id="hero-books-canvas" aria-hidden="true"></canvas>
                 <div class="container">
                     <div class="hero-grid">
                         <div class="hero-copy" data-aos="fade-up" data-aos-duration="900">
@@ -89,12 +88,54 @@
                             </div>
                         </div>
 
-                        <div class="hero-visual" data-aos="fade-left" data-aos-duration="1000">
-                            <div class="phone-orb"></div>
-                            <div class="phone-mockup">
-                                <img class="hero-phone-fallback" src="assets/images/homep.png"
-                                    alt="Sawlai app home screen">
-                                <canvas id="hero-phone-canvas" aria-hidden="true"></canvas>
+                        <div class="hero-visual" id="phone-showcase">
+                            <div class="phone-orb" aria-hidden="true"></div>
+                            <div class="phone-entry">
+                                <div class="phone-float">
+                                    <div class="phone-rotor">
+                                        <div class="phone-body" aria-hidden="true">
+                                            <span class="phone-rim" style="--rim-depth: -6px"></span>
+                                            <span class="phone-rim" style="--rim-depth: -4px"></span>
+                                            <span class="phone-rim" style="--rim-depth: -2px"></span>
+                                            <span class="phone-rim" style="--rim-depth: 0px"></span>
+                                            <span class="phone-rim" style="--rim-depth: 2px"></span>
+                                            <span class="phone-rim" style="--rim-depth: 4px"></span>
+                                            <span class="phone-rim" style="--rim-depth: 6px"></span>
+                                            <span class="phone-edge phone-edge-left"></span>
+                                            <span class="phone-edge phone-edge-right"></span>
+                                            <span class="phone-edge phone-edge-top"></span>
+                                            <span class="phone-edge phone-edge-bottom"></span>
+                                        </div>
+                                        <div class="phone-back" aria-hidden="true">
+                                            <div class="phone-camera-cluster">
+                                                <span class="phone-camera-lens"></span>
+                                                <span class="phone-camera-lens"></span>
+                                                <span class="phone-camera-lens"></span>
+                                                <span class="phone-camera-flash"></span>
+                                            </div>
+                                            <div class="phone-back-brand">
+                                                <svg class="phone-logo-filter" width="0" height="0" aria-hidden="true" focusable="false">
+                                                    <defs>
+                                                        <filter id="phone-logo-remove-blue" color-interpolation-filters="sRGB">
+                                                            <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  1.191588785 0 0 0 -0.191588785" />
+                                                        </filter>
+                                                    </defs>
+                                                </svg>
+                                                <img src="assets/images/app-logo.png" alt="" width="48" height="48">
+                                                <span>Sawlai Lib</span>
+                                            </div>
+                                        </div>
+                                        <div class="phone-mockup">
+                                            <span class="phone-side-key" aria-hidden="true"></span>
+                                            <div class="phone-screen" role="img" aria-label="Sawlai app home screen">
+                                                <div class="phone-slide is-current" aria-hidden="true">
+                                                    <img class="phone-screen-image" src="assets/images/homep.png"
+                                                        alt="" width="368" height="679" fetchpriority="high" decoding="async">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="floating-card card-top">26000+ Books</div>
                             <div class="floating-card card-bottom">Audio Books</div>
@@ -342,8 +383,8 @@
     <script src="assets/scripts/jquery.js"></script>
     <script src="assets/scripts/bootstrap.min.js"></script>
     <script src="assets/scripts/aos.js"></script>
-    <script src="assets/scripts/site.js?v=8"></script>
-    <script type="module" src="assets/js/3d-hero.js"></script>
+    <script src="assets/scripts/site.js?v=9"></script>
+    <script src="assets/js/phone-showcase.js?v=5" defer></script>
 </body>
 
 </html>
