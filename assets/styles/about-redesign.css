@@ -68,18 +68,37 @@
     .about-page .about-hero { padding: 48px 0 52px; }
     .about-page .about-section { padding: 44px 0; }
     .about-page .about-head { margin-bottom: 24px; }
+    .about-page .about-goals li::before { top: 50%; transform: translateY(-50%); }
     .about-page .about-stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 20px; }
+    .about-page .about-stats-grid .about-stat { padding: 7px 12px; text-align: center; }
     .about-page .about-stat:nth-child(2) { border-right: 0; }
-    .about-page .about-stat:nth-child(3) { padding-left: 0; }
     .about-page .about-steps { grid-template-columns: 1fr; gap: 23px; }
     .about-page .about-contact-grid { gap: 32px; }
+
+    .about-page .about-contact-section .about-head { margin-bottom: 26px; text-align: center; }
+    .about-page .about-contact-section .about-head .eyebrow { margin-bottom: 10px; }
+    .about-page .about-contact-section .about-head h2 { max-width: 22ch; margin-inline: auto; font-size: clamp(1.35rem, 5.6vw, 1.65rem); line-height: 1.4; }
+    .about-page .about-contact-section .about-contact-grid { grid-template-columns: minmax(0, 1fr); max-width: 420px; margin-inline: auto; gap: 22px; }
+    .about-page .about-contact-section .about-contact-card { min-width: 0; padding: 24px 16px 18px; border: 1px solid rgba(113, 205, 246, .2); border-radius: 20px; background: linear-gradient(145deg, rgba(33, 70, 93, .35), rgba(12, 24, 39, .65)); text-align: center; }
+    .about-page .about-contact-section .about-contact-head { flex-direction: column; justify-content: center; gap: 12px; margin-bottom: 16px; }
+    .about-page .about-contact-section .about-contact-head .about-icon { width: 46px; height: 46px; border-radius: 14px; background: rgba(41, 182, 246, .1); }
+    .about-page .about-contact-section .about-contact-head h3 { font-size: .8rem; font-weight: 500; color: #bdc8d6; }
+    .about-page .about-contact-section .about-mail { align-self: stretch; width: 100%; min-width: 0; min-height: 48px; padding: 12px 8px; border: 1px solid rgba(113, 205, 246, .2); border-radius: 12px; background: rgba(41, 182, 246, .07); font-size: clamp(.76rem, 3.5vw, .92rem); font-weight: 500; line-height: 1.6; text-align: center; }
+    .about-page .about-contact-section .about-mail svg { display: none; }
+    .about-page .about-contact-section .about-contact-card + .about-contact-card { padding: 0; border: 0; border-radius: 0; background: none; }
+    .about-page .about-contact-section .about-contact-card + .about-contact-card .about-contact-head { margin-bottom: 12px; }
+    .about-page .about-contact-section .about-contact-card + .about-contact-card .about-icon { display: none; }
+    .about-page .about-contact-section .contact-socials { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .about-page .about-contact-section .contact-socials .social-pill { justify-content: center; min-width: 0; min-height: 48px; padding: 10px 8px; gap: 8px; border-radius: 12px; background: rgba(255, 255, 255, .04); border-color: rgba(173, 198, 217, .2); box-shadow: none; font-size: .8rem; }
+    .about-page .about-contact-section .social-pill-telegram svg { color: #57c7ff; }
+    .about-page .about-contact-section .social-pill-facebook svg { color: #78aaff; }
+    .about-page .about-contact-section a:focus-visible { outline: 2px solid #76cef4; outline-offset: 4px; }
 }
 @media (max-width: 520px) {
     .about-page .about-hero h1 { font-size: 2.15rem; }
     .about-page .about-sources { grid-template-columns: 1fr; }
     .about-page .about-goals li { padding-left: 43px; }
     .about-page .about-stat { padding: 6px 12px; }
-    .about-page .about-contact-card .contact-socials { justify-content: flex-start; }
 }
 @media (prefers-reduced-motion: reduce) {
     .about-page .about-goals li,
