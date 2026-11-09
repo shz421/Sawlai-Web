@@ -212,51 +212,6 @@
         });
     });
 
-    const downloadNowBtn = document.getElementById("download-now-btn");
-    if (downloadNowBtn) {
-        downloadNowBtn.addEventListener("click", function (event) {
-            event.preventDefault();
-
-            const ua = navigator.userAgent || "";
-            const isAndroid = /Android/i.test(ua);
-            const isIOS = /iPhone|iPad|iPod/i.test(ua);
-            const isMobile = isAndroid || isIOS;
-
-            const androidDeepLink = "intent://open#Intent;scheme=sawlai;package=digital.online.books;end";
-            const androidFallback = "https://play.google.com/store/apps/details?id=digital.online.books";
-            const iosDeepLink = "sawlai://open";
-            const iosFallback = "https://apps.apple.com/";
-            const desktopFallback = "/#download";
-
-            let fallbackUrl = desktopFallback;
-            let deepLink = "";
-
-            if (isAndroid) {
-                deepLink = androidDeepLink;
-                fallbackUrl = androidFallback;
-            } else if (isIOS) {
-                deepLink = iosDeepLink;
-                fallbackUrl = iosFallback;
-            }
-
-            let didLeavePage = false;
-            const onHidden = function () {
-                didLeavePage = true;
-            };
-            document.addEventListener("visibilitychange", onHidden, { once: true });
-
-            if (isMobile && deepLink) {
-                window.location.href = deepLink;
-            }
-
-            window.setTimeout(function () {
-                if (!didLeavePage) {
-                    window.location.href = fallbackUrl;
-                }
-            }, 1200);
-        });
-    }
-
     if (typeof AOS !== "undefined") {
         AOS.init({
             once: false,
